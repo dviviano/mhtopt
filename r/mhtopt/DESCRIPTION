@@ -1,0 +1,28 @@
+Package: mhtopt
+Title: Optimal Multiple Hypothesis Testing Corrections
+Version: 0.1.0
+Authors@R: c(
+    person("Davide", "Viviano", role = "aut"),
+    person("Kaspar", "Wuthrich", role = "aut"),
+    person("Paul", "Niehaus", role = "aut"),
+    person("Erick", "Rosas Lopez", email = "erosasl@ucsd.edu", role = c("cre", "ctb"))
+    )
+Description: Implements the optimal multiple hypothesis testing correction from
+    Viviano, Wuthrich, and Niehaus (2026, arXiv:2104.13367v10). Derives the
+    optimal per-test significance level from the economic incentives of research
+    production, providing a correction that lies between Bonferroni (too
+    conservative) and unadjusted (too permissive). Supports two cost models:
+    Linear (FDA calibration) and Cobb-Douglas (J-PAL calibration). Reports
+    optimal, Bonferroni, Holm, BH, and unadjusted results side by side.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports:
+    stats
+Suggests:
+    testthat (>= 3.0.0),
+    haven,
+    fixest,
+    estimatr
+Config/testthat/edition: 3

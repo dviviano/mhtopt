@@ -1,0 +1,60 @@
+name: Bug report
+description: Report a problem with the Stata, R, or Python port.
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: port
+    attributes:
+      label: Which language port?
+      options:
+        - Stata (SSC)
+        - R (CRAN)
+        - Python (PyPI)
+        - Multiple / unsure
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Package version
+      description: Output of `which mht_critical` (Stata), `packageVersion("mhtopt")` (R), or `mhtopt.__version__` (Python).
+      placeholder: "e.g. 1.0.0"
+    validations:
+      required: true
+  - type: input
+    id: language-version
+    attributes:
+      label: Language / engine version
+      description: e.g. Stata 18.0 SE, R 4.4.1, Python 3.12.4
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: "macOS 14.5 / Windows 11 / Ubuntu 24.04"
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal reproducible example
+      description: The shortest possible code that triggers the problem. Include any non-default options.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected vs. actual behavior
+      description: What did you expect, and what happened instead? Include full error message.
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: Context, screenshots, links to related issues.
+    validations:
+      required: false

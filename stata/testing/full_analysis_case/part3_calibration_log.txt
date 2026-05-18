@@ -1,0 +1,425 @@
+
+  PART 3: Cost Calibration from Table 4, Panel A
+
+(Household Table)
+
+=== HH-level sample sizes ===
+
+  Ethiopia: Total=925  Treated=458  Control=467
+  Ghana: Total=2606  Treated=666  Control=1940
+  Honduras: Total=2403  Treated=799  Control=1604
+  India: Total=991  Treated=521  Control=470
+  Pakistan: Total=1299  Treated=660  Control=639
+  Peru: Total=2284  Treated=785  Control=1499
+
+  TOTAL: N=10508  Treated=3889
+
+=== MB-level sample sizes ===
+
+  Ethiopia: Total=1551  Treated=771
+  Ghana: Total=2617  Treated=670
+  Honduras: Total=4999  Treated=1643
+  India: Total=2292  Treated=1231
+  Pakistan: Total=4181  Treated=2112
+  Peru: Total=4172  Treated=1437
+
+=== Table 4 Panel A: Cost per Participant (2014 USD PPP) ===
+
+  Country        Total/pp  Transfer/pp  Super/pp  Overhead/pp
+
+  --------------------------------------------------------------
+
+  Ethiopia           3591        1228        1900         464
+  Ghana              4672         680        2832        1159
+  Honduras           2670         724        1633         313
+  India              1257         700         407         150
+  Pakistan           5150        2048           .         470
+  Peru               4960        1095        3357         508
+
+=== Total Program Costs per Country Arm ===
+
+  (Cost per participant x N treated)
+
+  Country        N_treat  Cost/pp    Arm Cost     Transfer Cost
+
+  ------------------------------------------------------------------
+
+  Ethiopia         458   $    3591  $     1644788  $      562364
+  Ghana            666   $    4672  $     3111585  $      453020
+  Honduras         799   $    2670  $     2133050  $      578276
+  India            521   $    1257  $      654767  $      364611
+  Pakistan         660   $    5150  $     3399092  $     1351779
+  Peru             785   $    4960  $     3893412  $      859669
+
+  ------------------------------------------------------------------
+
+  TOTAL            3889             $    14836694  $     4169720
+
+=== Cost Decomposition for cf_share Calibration ===
+
+  Direct transfer share of total cost: 0.281
+
+    (Assets + food stipends: clearly per-participant)
+
+  Non-transfer share of total cost:    0.719
+
+    (Supervision + overhead + startup)
+
+  KEY INSIGHT:
+
+  Table 4 reports per-participant costs for each country arm.
+
+  ALL reported costs scale with the number of treated participants.
+
+  Dropping a country arm saves ~1/6 of total cost.
+
+  => The study-wide fixed cost (shared across arms) is SMALL.
+
+  Average arm cost: $     2472782
+
+  Average per-participant cost: $    3815
+
+=== Calibrated alpha_opt under Linear Model ===
+
+  J=6, alpha_bar=0.05, one-sided
+
+  n_bar (avg obs per arm):     1751
+
+  cf_share   J_bar  alpha_opt(1s)  alpha_opt(2s)  Interpretation
+
+  ------------------------------------------------------------------------
+
+  ------------------------------------------------------------------------
+
+  Bonferroni:              0.008333
+
+  Unadjusted:              0.050000
+
+=== Sensitivity: J_bar = 3 (J-PAL average) ===
+
+  cf_share   J_bar  alpha_opt(1s)  alpha_opt(2s)
+
+  -------------------------------------------------------
+
+  -------------------------------------------------------
+
+  Exercise 2 with CALIBRATED Linear Model (cf_share=0.10, J_bar=6)
+
+(Household Table)
+
+(10,508 missing values generated)
+(925 real changes made)
+(2,600 real changes made)
+(2,373 real changes made)
+(978 real changes made)
+(1,280 real changes made)
+(2,161 real changes made)
+(10,508 missing values generated)
+(0 real changes made)
+(2,599 real changes made)
+(2,375 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2,157 real changes made)
+(10,508 missing values generated)
+(0 real changes made)
+(0 real changes made)
+(2,375 real changes made)
+(978 real changes made)
+(1,260 real changes made)
+(2,157 real changes made)
+(174 missing values generated)
+(3 real changes made)
+(2,601 real changes made)
+(2,375 real changes made)
+(978 real changes made)
+(1,294 real changes made)
+(2,161 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,522 real changes made)
+(2,279 real changes made)
+(817 real changes made)
+(1,073 real changes made)
+(2,101 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,520 real changes made)
+(2,279 real changes made)
+(2,101 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,254 real changes made)
+(817 real changes made)
+(1,073 real changes made)
+(2,056 real changes made)
+(793 missing values generated)
+(915 real changes made)
+(2,525 real changes made)
+(2,280 real changes made)
+(817 real changes made)
+(1,075 real changes made)
+(2,103 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,437 real changes made)
+(2,224 real changes made)
+(879 real changes made)
+(1,011 real changes made)
+(2,016 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,435 real changes made)
+(2,221 real changes made)
+(2,017 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,220 real changes made)
+(879 real changes made)
+(1,016 real changes made)
+(2,017 real changes made)
+(1,026 missing values generated)
+(908 real changes made)
+(2,437 real changes made)
+(2,224 real changes made)
+(879 real changes made)
+(1,016 real changes made)
+(2,018 real changes made)
+
+(10,508 missing values generated)
+(925 real changes made)
+(0 real changes made)
+(2,376 real changes made)
+(0 real changes made)
+(1,289 real changes made)
+(2,138 real changes made)
+(10,508 missing values generated)
+(925 real changes made)
+(2,605 real changes made)
+(2,369 real changes made)
+(978 real changes made)
+(1,289 real changes made)
+(2,100 real changes made)
+(10,508 missing values generated)
+(0 real changes made)
+(2,603 real changes made)
+(2,372 real changes made)
+(975 real changes made)
+(0 real changes made)
+(2,105 real changes made)
+(10,508 missing values generated)
+(925 real changes made)
+(2,604 real changes made)
+(2,374 real changes made)
+(978 real changes made)
+(1,299 real changes made)
+(2,161 real changes made)
+(164 missing values generated)
+(925 real changes made)
+(2,605 real changes made)
+(2,376 real changes made)
+(978 real changes made)
+(1,299 real changes made)
+(2,161 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,519 real changes made)
+(2,285 real changes made)
+(815 real changes made)
+(1,074 real changes made)
+(2,104 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,531 real changes made)
+(2,258 real changes made)
+(817 real changes made)
+(1,083 real changes made)
+(2,061 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,522 real changes made)
+(2,281 real changes made)
+(798 real changes made)
+(1,068 real changes made)
+(2,103 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,525 real changes made)
+(2,277 real changes made)
+(817 real changes made)
+(2,103 real changes made)
+(723 missing values generated)
+(915 real changes made)
+(2,581 real changes made)
+(2,285 real changes made)
+(817 real changes made)
+(1,083 real changes made)
+(2,104 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,436 real changes made)
+(2,229 real changes made)
+(879 real changes made)
+(1,017 real changes made)
+(2,025 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,225 real changes made)
+(879 real changes made)
+(1,009 real changes made)
+(2,022 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,438 real changes made)
+(2,225 real changes made)
+(877 real changes made)
+(1,014 real changes made)
+(2,019 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,438 real changes made)
+(2,216 real changes made)
+(879 real changes made)
+(1,015 real changes made)
+(2,015 real changes made)
+(1,001 missing values generated)
+(908 real changes made)
+(2,438 real changes made)
+(2,229 real changes made)
+(879 real changes made)
+(1,027 real changes made)
+(2,026 real changes made)
+
+(10,508 missing values generated)
+(925 real changes made)
+(2,602 real changes made)
+(2,376 real changes made)
+(978 real changes made)
+(1,250 real changes made)
+(2,082 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,525 real changes made)
+(2,287 real changes made)
+(816 real changes made)
+(1,041 real changes made)
+(2,104 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,434 real changes made)
+(2,229 real changes made)
+(879 real changes made)
+(1,016 real changes made)
+(2,029 real changes made)
+
+(295 real changes made)
+(164 real changes made)
+(198 real changes made)
+(174 real changes made)
+
+  Running HH regressions...
+
+    Consumption_end: J=6  N10=4  BH=4  CD=3  Lin_def=4  Lin_cal=4
+    Consumption_fup: J=6  N10=5  BH=3  CD=3  Lin_def=3  Lin_cal=3
+    Income_end: J=6  N10=5  BH=5  CD=5  Lin_def=5  Lin_cal=5
+    Income_fup: J=6  N10=6  BH=6  CD=4  Lin_def=4  Lin_cal=5
+    Assets_end: J=6  N10=5  BH=5  CD=5  Lin_def=5  Lin_cal=5
+    Assets_fup: J=6  N10=5  BH=4  CD=4  Lin_def=4  Lin_cal=4
+    FoodSecurity_end: J=6  N10=4  BH=4  CD=2  Lin_def=4  Lin_cal=4
+    FoodSecurity_fup: J=6  N10=4  BH=2  CD=2  Lin_def=2  Lin_cal=2
+    FinInclusion_end: J=6  N10=4  BH=3  CD=3  Lin_def=3  Lin_cal=3
+    FinInclusion_fup: J=6  N10=3  BH=3  CD=3  Lin_def=3  Lin_cal=3
+
+(19,812 missing values generated)
+(1,317 real changes made)
+(0 real changes made)
+(4,746 real changes made)
+(1,729 real changes made)
+(3,078 real changes made)
+(3,113 real changes made)
+(19,812 missing values generated)
+(899 real changes made)
+(2,377 real changes made)
+(4,585 real changes made)
+(1,505 real changes made)
+(2,672 real changes made)
+(3,502 real changes made)
+(19,812 missing values generated)
+(902 real changes made)
+(2,279 real changes made)
+(4,363 real changes made)
+(1,759 real changes made)
+(2,309 real changes made)
+(3,108 real changes made)
+
+(2,617 real changes made)
+(5,829 real changes made)
+(5,829 real changes made)
+(2,821 real changes made)
+(2,821 real changes made)
+(4,181 real changes made)
+(7,253 real changes made)
+(7,253 real changes made)
+(3,820 real changes made)
+(3,820 real changes made)
+(8,890 real changes made)
+(8,890 real changes made)
+
+  Running MB regressions...
+
+    TimeUse_end: J=6  N10=3  BH=3  CD=3  Lin_def=3  Lin_cal=3
+    TimeUse_fup: J=6  N10=2  BH=2  CD=2  Lin_def=2  Lin_cal=2
+    PhysHealth_end: J=6  N10=5  BH=3  CD=1  Lin_def=2  Lin_cal=3
+    PhysHealth_fup: J=6  N10=1  BH=0  CD=0  Lin_def=1  Lin_cal=1
+    MentalHealth_end: J=5  N10=2  BH=2  CD=2  Lin_def=2  Lin_cal=2
+    MentalHealth_fup: J=6  N10=2  BH=2  CD=2  Lin_def=2  Lin_cal=2
+    PolInvolve_end: J=6  N10=2  BH=2  CD=2  Lin_def=2  Lin_cal=2
+    PolInvolve_fup: J=6  N10=4  BH=3  CD=2  Lin_def=3  Lin_cal=3
+    WomensEmp_end: J=6  N10=1  BH=1  CD=1  Lin_def=1  Lin_cal=1
+    WomensEmp_fup: J=5  N10=0  BH=0  CD=0  Lin_def=0  Lin_cal=0
+
+  SUMMARY: Default vs Calibrated Linear Model
+
+  Default: cf_share=0.46, J_bar=3 (FDA pharma)
+
+  Calibrated: cf_share=0.10, J_bar=6 (Banerjee et al. costs)
+
+  Thresholds (one-sided, alpha_bar=0.05, J=6):
+
+    Default Lin (0.46/3):    0.020052
+
+    Calibrated Lin (0.10/6): 0.033333
+
+    Default CD:              0.010519
+
+    Bonferroni:              0.008333
+
+    Unadjusted:              0.050000
+
+  -----------------------------------------------------------------------------
+
+  Outcome        |   EL1 (endline)              |   EL2 (follow-up)            
+
+                 |  J  Naive  BH  CD  L_def L_cal|  J  Naive  BH  CD  L_def L_c
+
+  -----------------------------------------------------------------------------
+
+  Consumption     | 6   4   4   3   4   4 | 6   5   3   3   3   3 |
+  Income          | 6   5   5   5   5   5 | 6   6   6   4   4   5 |
+  Assets          | 6   5   5   5   5   5 | 6   5   4   4   4   4 |
+  FoodSecurity    | 6   4   4   2   4   4 | 6   4   2   2   2   2 |
+  FinInclusion    | 6   4   3   3   3   3 | 6   3   3   3   3   3 |
+  TimeUse         | 6   3   3   3   3   3 | 6   2   2   2   2   2 |
+  PhysHealth      | 6   5   3   1   2   3 | 6   1   0   0   1   1 |
+  MentalHealth    | 5   2   2   2   2   2 | 6   2   2   2   2   2 |
+  PolInvolve      | 6   2   2   2   2   2 | 6   4   3   2   3   3 |
+  WomensEmp       | 6   1   1   1   1   1 | 5   0   0   0   0   0 |
+
+  -----------------------------------------------------------------------------
+
+  L_def = Linear default (cf_share=0.46, J_bar=3)
+
+  L_cal = Linear calibrated (cf_share=0.10, J_bar=6)
+
+  PART 3 COMPLETE
+

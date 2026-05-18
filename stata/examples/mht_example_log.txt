@@ -1,0 +1,459 @@
+
+  PART 1: Postestimation -- The Typical Workflow (mht_est)
+
+(1978 automobile data)
+
+Testing mpg, weight, foreign jointly (Linear cost model, one-sided):
+
+  MHT Postestimation Results
+  Viviano, Wuthrich, and Niehaus (2026)
+  After: regress
+
+  Hypotheses tested:      3
+  Benchmark alpha:     0.0500
+  Cost model:          Linear (Eq. 26)
+  P-values:            one-sided (positive direction)
+  n/m ratio:           1.0000
+
+  ----------------------------------------------------------
+  Procedure              Test size    Rejections
+  ----------------------------------------------------------
+  Optimal (model-based)       0.026042         2
+  Bonferroni                  0.016667         2
+  Holm (step-down)             step-wise       2
+  BH (FDR control)             step-wise       2
+  Unadjusted                  0.050000         2
+  ----------------------------------------------------------
+
+  Coefficient-level results:
+
+  Variable            Coef.     SE      t-stat  p-val   Opt  Bonf Holm BH   Unadj
+  --------------------------------------------------------------------------------
+  mpg                21.8536  80.7467   0.271  0.3937    .     .      .      .     .    
+  weight              3.4647  0.7776   4.456  0.0000    *     *      *      *     *    
+  foreign            3.7e+03  664.9361   5.524  0.0000    *     *      *      *     *    
+  --------------------------------------------------------------------------------
+  * = reject;  . = fail to reject
+
+Same regression, Cobb-Douglas cost model:
+
+  MHT Postestimation Results
+  Viviano, Wuthrich, and Niehaus (2026)
+  After: regress
+
+  Hypotheses tested:      3
+  Benchmark alpha:     0.0500
+  Cost model:          Cobb-Douglas (Eq. 28)
+  P-values:            one-sided (positive direction)
+  n/m ratio:           1.0000
+
+  ----------------------------------------------------------
+  Procedure              Test size    Rejections
+  ----------------------------------------------------------
+  Optimal (model-based)       0.019225         2
+  Bonferroni                  0.016667         2
+  Holm (step-down)             step-wise       2
+  BH (FDR control)             step-wise       2
+  Unadjusted                  0.050000         2
+  ----------------------------------------------------------
+
+  Coefficient-level results:
+
+  Variable            Coef.     SE      t-stat  p-val   Opt  Bonf Holm BH   Unadj
+  --------------------------------------------------------------------------------
+  mpg                21.8536  80.7467   0.271  0.3937    .     .      .      .     .    
+  weight              3.4647  0.7776   4.456  0.0000    *     *      *      *     *    
+  foreign            3.7e+03  664.9361   5.524  0.0000    *     *      *      *     *    
+  --------------------------------------------------------------------------------
+  * = reject;  . = fail to reject
+
+Stored scalars (from the last call):
+
+  alpha_opt  = 0.01923
+
+  alpha_bonf = 0.01667
+
+  n_reject (optimal) = 2
+
+  PART 2: Testing a Collection of P-values (mht_test)
+
+Input: 6 one-sided p-values
+
+  +-----------------+
+  | hypoth~s   pval |
+  |-----------------|
+  |        1   .003 |
+  |        2   .015 |
+  |        3    .03 |
+  |        4   .048 |
+  |        5    .12 |
+  |-----------------|
+  |        6     .5 |
+  +-----------------+
+
+  Multiple Hypothesis Testing Results
+  Viviano, Wuthrich, and Niehaus (2026)
+
+  Hypotheses tested:        6
+  Benchmark alpha:        0.0500
+  Cost model:          Linear
+
+  -------------------------------------------------
+  Procedure              Test size    Rejections
+  -------------------------------------------------
+  Optimal (model-based)     0.020052         2
+  Bonferroni                0.008333         1
+  Holm (step-down)          0.050000 *       1
+  BH (FDR control)          0.050000 *       2
+  Unadjusted                0.050000         4
+  -------------------------------------------------
+  * Step-wise procedures; effective threshold varies by rank
+
+  Generated variables: mht_reject_opt, mht_reject_bonf,
+    mht_reject_holm, mht_reject_bh, mht_reject_unadj,
+    mht_alpha_opt
+
+Side-by-side rejection decisions:
+
+  +------------------------------------------------------------------------+
+  | hypoth~s   pval   mht_re~t   mht_re~f   mht_re~m   mht_re~h   mht_re~j |
+  |------------------------------------------------------------------------|
+  |        1   .003          1          1          1          1          1 |
+  |        2   .015          1          0          0          1          1 |
+  |        3    .03          0          0          0          0          1 |
+  |        4   .048          0          0          0          0          1 |
+  |        5    .12          0          0          0          0          0 |
+  |------------------------------------------------------------------------|
+  |        6     .5          0          0          0          0          0 |
+  +------------------------------------------------------------------------+
+
+  Multiple Hypothesis Testing Results
+  Viviano, Wuthrich, and Niehaus (2026)
+
+  Hypotheses tested:        6
+  Benchmark alpha:        0.0500
+  Cost model:          Linear
+
+  -------------------------------------------------
+  Procedure              Test size    Rejections
+  -------------------------------------------------
+  Optimal (model-based)     0.020052         2
+  Bonferroni                0.008333         1
+  Holm (step-down)          0.050000 *       1
+  BH (FDR control)          0.050000 *       2
+  Unadjusted                0.050000         4
+  -------------------------------------------------
+  * Step-wise procedures; effective threshold varies by rank
+
+  Generated variables: z_reject_opt, z_reject_bonf,
+    z_reject_holm, z_reject_bh, z_reject_unadj,
+    z_alpha_opt
+
+Same results from z-statistics:
+
+  +------------------------------------------------------+
+  | hypoth~s      zstat   z_reje~t   z_reje~f   z_reje~j |
+  |------------------------------------------------------|
+  |        1   2.747781          1          1          1 |
+  |        2    2.17009          1          0          1 |
+  |        3   1.880794          0          0          1 |
+  |        4   1.664563          0          0          1 |
+  |        5   1.174987          0          0          0 |
+  |------------------------------------------------------|
+  |        6          0          0          0          0 |
+  +------------------------------------------------------+
+
+  Multiple Hypothesis Testing Results
+  Viviano, Wuthrich, and Niehaus (2026)
+
+  Hypotheses tested:        6
+  Benchmark alpha:        0.0500
+  Cost model:          Cobb-Douglas
+
+  -------------------------------------------------
+  Procedure              Test size    Rejections
+  -------------------------------------------------
+  Optimal (model-based)     0.012360         1
+  Bonferroni                0.008333         1
+  Holm (step-down)          0.050000 *       1
+  BH (FDR control)          0.050000 *       2
+  Unadjusted                0.050000         4
+  -------------------------------------------------
+  * Step-wise procedures; effective threshold varies by rank
+
+  Generated variables: mht_reject_opt, mht_reject_bonf,
+    mht_reject_holm, mht_reject_bh, mht_reject_unadj,
+    mht_alpha_opt
+
+Cobb-Douglas with custom parameters (beta=0.22, iota=0.136):
+
+  +--------------------------------------------------+
+  | hypoth~s   pval   mht_re~t   mht_re~f   mht_re~j |
+  |--------------------------------------------------|
+  |        1   .003          1          1          1 |
+  |        2   .015          0          0          1 |
+  |        3    .03          0          0          1 |
+  |        4   .048          0          0          1 |
+  |        5    .12          0          0          0 |
+  |--------------------------------------------------|
+  |        6     .5          0          0          0 |
+  +--------------------------------------------------+
+
+  PART 3: Reference Table (mht_table)
+
+  Optimal Test Sizes  [Table 1, Viviano, Wuthrich & Niehaus 2026]
+  Model: Linear (Eq. 27)
+  Benchmark alpha: 0.0500
+
+  |J|    n/m=50%    n/m=100%    n/m=200%  Sid(a=.025)  Sid(a=.05)
+  ----------------------------------------------------------
+  1    0.0430    0.0500    0.0641  0.0250  0.0500
+  2    0.0250    0.0320    0.0461  0.0126  0.0253
+  3    0.0190    0.0260    0.0401  0.0084  0.0170
+  5    0.0142    0.0213    0.0353  0.0051  0.0102
+  9    0.0110    0.0181    0.0321  0.0028  0.0057
+  Inf    0.0070    0.0141    0.0281  0.0000  0.0000
+  ----------------------------------------------------------
+
+  Optimal Test Sizes  [Table 1, Viviano, Wuthrich & Niehaus 2026]
+  Model: Cobb-Douglas (App. A)
+  Benchmark alpha: 0.0500
+
+  |J|    n/m=50%    n/m=100%    n/m=200%  Sid(a=.025)  Sid(a=.05)
+  ----------------------------------------------------------
+  1    0.0475    0.0500    0.0527  0.0250  0.0500
+  2    0.0260    0.0274    0.0288  0.0126  0.0253
+  3    0.0183    0.0192    0.0203  0.0084  0.0170
+  5    0.0117    0.0123    0.0130  0.0051  0.0102
+  9    0.0070    0.0074    0.0078  0.0028  0.0057
+  Inf    0.0000    0.0000    0.0000  0.0000  0.0000
+  ----------------------------------------------------------
+
+  PART 4: Computing Optimal Critical Values (mht_critical)
+
+  Optimal MHT Critical Values
+  Viviano, Wuthrich, and Niehaus (2026)
+
+  Cost model:          Linear (Eq. 27)
+  Fixed cost share:     0.460
+  Avg subgroups (J):      3.0
+  Number of hypotheses:     5
+  Benchmark alpha:     0.0500
+  Sample size ratio:     1.00
+
+  Optimal test size:    0.021250
+  Optimal z-threshold:    2.0286
+
+  Bonferroni size:      0.010000
+  Bonferroni z-thresh:    2.3263
+  Sidak size:           0.010206
+  Sidak z-threshold:      2.3187
+  Unadjusted size:      0.050000
+
+  Optimal MHT Critical Values
+  Viviano, Wuthrich, and Niehaus (2026)
+
+  Cost model:          Cobb-Douglas (App. A)
+  Beta (arms elast.):   0.130
+  Iota (size elast.):   0.075
+  Number of hypotheses:     5
+  Benchmark alpha:     0.0500
+  Sample size ratio:     1.00
+
+  Optimal test size:    0.012327
+  Optimal z-threshold:    2.2468
+
+  Bonferroni size:      0.010000
+  Bonferroni z-thresh:    2.3263
+  Sidak size:           0.010206
+  Sidak z-threshold:      2.3187
+  Unadjusted size:      0.050000
+
+Reproducing Table 1 (linear calibration, n_bar/m_bar = 1):
+
+  |J|    alpha_bar=0.025   0.05    0.10    0.15
+
+   1         0.0250      0.0500    0.1000    0.1500
+   2         0.0160      0.0320    0.0641    0.0961
+   3         0.0130      0.0260    0.0521    0.0781
+   4         0.0115      0.0230    0.0461    0.0691
+   5         0.0106      0.0213    0.0425    0.0638
+   6         0.0100      0.0201    0.0401    0.0602
+   7         0.0096      0.0192    0.0384    0.0576
+   8         0.0093      0.0186    0.0371    0.0557
+   9         0.0090      0.0181    0.0361    0.0542
+
+Varying sample size (|J|=5, alpha_bar=0.025):
+
+  n/m = 0.5: alpha_opt =  0.00711
+  n/m = 1.0: alpha_opt =  0.01063
+  n/m = 1.5: alpha_opt =  0.01414
+  n/m = 2.0: alpha_opt =  0.01766
+
+  PART 5: Estimating Cost Parameters (mht_cost_estimate)
+
+  Using simulated project-level cost data
+
+--- Cobb-Douglas estimation (no controls) ---
+
+    True parameters: beta=0.20, iota=0.15
+
+  Cost Function Estimation (Cobb-Douglas)
+  log(cost) = const + beta*log(arms) + iota*log(sample_size)
+
+Linear regression                               Number of obs     =        500
+                                                F(2, 497)         =      28.14
+                                                Prob > F          =     0.0000
+                                                R-squared         =     0.0977
+                                                Root MSE          =     .43941
+
+             |               Robust
+    __000001 | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+    __000002 |   .2304478   .0332542     6.93   0.000     .1651115     .295784
+    __000003 |    .097924   .0352255     2.78   0.006     .0287147    .1671332
+       _cons |   10.63519   .2774757    38.33   0.000     10.09002    11.18036
+
+  Hypothesis Tests on Cost Parameters
+  H0: beta = 0 (Bonferroni appropriate):     p = 0.0000
+  H0: beta = 1 (no adjustment needed):       p = 0.0000
+  H0: iota = 0 (costs invariant to n):       p = 0.0056
+  H0: iota = 1 (costs proportional to n):    p = 0.0000
+
+  Implied Optimal Test Sizes
+  alpha(|J|, n/m) = alpha_bar * |J|^(beta-1) * (n/m)^iota
+  Using alpha_bar = 0.0500
+  beta =  0.230, iota =  0.098
+
+  |J|     n/m=0.5    n/m=1.0    n/m=1.5    n/m=2.0
+  --------------------------------------------------
+   1         0.0467     0.0500     0.0520     0.0535
+   2         0.0274     0.0293     0.0305     0.0314
+   3         0.0201     0.0215     0.0223     0.0230
+   4         0.0161     0.0172     0.0179     0.0184
+   5         0.0135     0.0145     0.0151     0.0155
+   6         0.0118     0.0126     0.0131     0.0135
+   7         0.0105     0.0112     0.0116     0.0120
+   8         0.0094     0.0101     0.0105     0.0108
+   9         0.0086     0.0092     0.0096     0.0099
+  --------------------------------------------------
+
+--- Cobb-Douglas estimation (with project-type controls) ---
+
+  Cost Function Estimation (Cobb-Douglas)
+  log(cost) = const + beta*log(arms) + iota*log(sample_size)
+
+Linear regression                               Number of obs     =        500
+                                                F(4, 495)         =      42.30
+                                                Prob > F          =     0.0000
+                                                R-squared         =     0.2535
+                                                Root MSE          =     .40048
+
+             |               Robust
+    __000001 | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+    __000002 |   .2250539   .0311185     7.23   0.000     .1639132    .2861945
+    __000003 |   .1062639    .031403     3.38   0.001     .0445642    .1679635
+      ptype2 |   .3175344   .0432114     7.35   0.000     .2326339    .4024348
+      ptype3 |   .4416082   .0447578     9.87   0.000     .3536696    .5295468
+       _cons |    10.3205   .2476086    41.68   0.000      9.83401      10.807
+
+  Hypothesis Tests on Cost Parameters
+  H0: beta = 0 (Bonferroni appropriate):     p = 0.0000
+  H0: beta = 1 (no adjustment needed):       p = 0.0000
+  H0: iota = 0 (costs invariant to n):       p = 0.0008
+  H0: iota = 1 (costs proportional to n):    p = 0.0000
+
+  Implied Optimal Test Sizes
+  alpha(|J|, n/m) = alpha_bar * |J|^(beta-1) * (n/m)^iota
+  Using alpha_bar = 0.0500
+  beta =  0.225, iota =  0.106
+
+  |J|     n/m=0.5    n/m=1.0    n/m=1.5    n/m=2.0
+  --------------------------------------------------
+   1         0.0464     0.0500     0.0522     0.0538
+   2         0.0271     0.0292     0.0305     0.0315
+   3         0.0198     0.0213     0.0223     0.0230
+   4         0.0159     0.0171     0.0178     0.0184
+   5         0.0133     0.0144     0.0150     0.0155
+   6         0.0116     0.0125     0.0130     0.0134
+   7         0.0103     0.0111     0.0116     0.0119
+   8         0.0093     0.0100     0.0104     0.0107
+   9         0.0085     0.0091     0.0095     0.0098
+  --------------------------------------------------
+
+--- Linear model estimation ---
+
+  Cost Function Estimation (Linear Model)
+  C = c_f + c_v * |J| * n
+
+Linear regression                               Number of obs     =        500
+                                                F(1, 498)         =      33.04
+                                                Prob > F          =     0.0000
+                                                R-squared         =     0.0618
+                                                Root MSE          =      54385
+
+             |               Robust
+        cost | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+    __000001 |   2.378442   .4137909     5.75   0.000     1.565451    3.191433
+       _cons |   102987.1   3962.917    25.99   0.000     95201.01    110773.2
+
+  Estimated Parameters
+  Fixed cost (c_f):           102987.10
+  Variable cost (c_v):           2.3784
+  Fixed cost share:               0.843
+  Mean arms (J_bar):                2.9
+
+  |J|     n/m=0.5    n/m=1.0    n/m=1.5    n/m=2.0
+  --------------------------------------------------
+   1         0.0485     0.0500     0.0515     0.0530
+   2         0.0250     0.0265     0.0280     0.0295
+   3         0.0172     0.0187     0.0202     0.0216
+   4         0.0132     0.0147     0.0162     0.0177
+   5         0.0109     0.0124     0.0139     0.0154
+   6         0.0093     0.0108     0.0123     0.0138
+   7         0.0082     0.0097     0.0112     0.0127
+   8         0.0074     0.0089     0.0104     0.0119
+   9         0.0067     0.0082     0.0097     0.0112
+  --------------------------------------------------
+
+--- Using estimated parameters in mht_test ---
+
+    Estimated beta = 0.230, iota = 0.098
+
+  Multiple Hypothesis Testing Results
+  Viviano, Wuthrich, and Niehaus (2026)
+
+  Hypotheses tested:        4
+  Benchmark alpha:        0.0500
+  Cost model:          Cobb-Douglas
+
+  -------------------------------------------------
+  Procedure              Test size    Rejections
+  -------------------------------------------------
+  Optimal (model-based)     0.017205         1
+  Bonferroni                0.012500         1
+  Holm (step-down)          0.050000 *       1
+  BH (FDR control)          0.050000 *       1
+  Unadjusted                0.050000         2
+  -------------------------------------------------
+  * Step-wise procedures; effective threshold varies by rank
+
+  Generated variables: mht_reject_opt, mht_reject_bonf,
+    mht_reject_holm, mht_reject_bh, mht_reject_unadj,
+    mht_alpha_opt
+
+Test results using study-specific cost parameters:
+
+  +---------------------------------------+
+  | pval   mht_re~t   mht_re~f   mht_re~j |
+  |---------------------------------------|
+  |  .01          1          1          1 |
+  |  .03          0          0          1 |
+  |  .06          0          0          0 |
+  |  .15          0          0          0 |
+  +---------------------------------------+
+
+  All examples completed successfully!
+

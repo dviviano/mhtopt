@@ -1,0 +1,692 @@
+
+  PART 4: cf_share Gradient (Exercise 2 Revisited)
+
+  Varying cf_share from 0.00 to 0.50, J_bar=6 throughout
+
+  BH benchmark: one-sided, alpha_bar=0.05
+
+=== Phase 1: Running regressions ===
+
+(Household Table)
+
+(10,508 missing values generated)
+(925 real changes made)
+(2,600 real changes made)
+(2,373 real changes made)
+(978 real changes made)
+(1,280 real changes made)
+(2,161 real changes made)
+(10,508 missing values generated)
+(0 real changes made)
+(2,599 real changes made)
+(2,375 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2,157 real changes made)
+(10,508 missing values generated)
+(0 real changes made)
+(0 real changes made)
+(2,375 real changes made)
+(978 real changes made)
+(1,260 real changes made)
+(2,157 real changes made)
+(174 missing values generated)
+(3 real changes made)
+(2,601 real changes made)
+(2,375 real changes made)
+(978 real changes made)
+(1,294 real changes made)
+(2,161 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,522 real changes made)
+(2,279 real changes made)
+(817 real changes made)
+(1,073 real changes made)
+(2,101 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,520 real changes made)
+(2,279 real changes made)
+(2,101 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,254 real changes made)
+(817 real changes made)
+(1,073 real changes made)
+(2,056 real changes made)
+(793 missing values generated)
+(915 real changes made)
+(2,525 real changes made)
+(2,280 real changes made)
+(817 real changes made)
+(1,075 real changes made)
+(2,103 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,437 real changes made)
+(2,224 real changes made)
+(879 real changes made)
+(1,011 real changes made)
+(2,016 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,435 real changes made)
+(2,221 real changes made)
+(2,017 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,220 real changes made)
+(879 real changes made)
+(1,016 real changes made)
+(2,017 real changes made)
+(1,026 missing values generated)
+(908 real changes made)
+(2,437 real changes made)
+(2,224 real changes made)
+(879 real changes made)
+(1,016 real changes made)
+(2,018 real changes made)
+
+(10,508 missing values generated)
+(925 real changes made)
+(0 real changes made)
+(2,376 real changes made)
+(0 real changes made)
+(1,289 real changes made)
+(2,138 real changes made)
+(10,508 missing values generated)
+(925 real changes made)
+(2,605 real changes made)
+(2,369 real changes made)
+(978 real changes made)
+(1,289 real changes made)
+(2,100 real changes made)
+(10,508 missing values generated)
+(0 real changes made)
+(2,603 real changes made)
+(2,372 real changes made)
+(975 real changes made)
+(0 real changes made)
+(2,105 real changes made)
+(10,508 missing values generated)
+(925 real changes made)
+(2,604 real changes made)
+(2,374 real changes made)
+(978 real changes made)
+(1,299 real changes made)
+(2,161 real changes made)
+(164 missing values generated)
+(925 real changes made)
+(2,605 real changes made)
+(2,376 real changes made)
+(978 real changes made)
+(1,299 real changes made)
+(2,161 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,519 real changes made)
+(2,285 real changes made)
+(815 real changes made)
+(1,074 real changes made)
+(2,104 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,531 real changes made)
+(2,258 real changes made)
+(817 real changes made)
+(1,083 real changes made)
+(2,061 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,522 real changes made)
+(2,281 real changes made)
+(798 real changes made)
+(1,068 real changes made)
+(2,103 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,525 real changes made)
+(2,277 real changes made)
+(817 real changes made)
+(2,103 real changes made)
+(723 missing values generated)
+(915 real changes made)
+(2,581 real changes made)
+(2,285 real changes made)
+(817 real changes made)
+(1,083 real changes made)
+(2,104 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,436 real changes made)
+(2,229 real changes made)
+(879 real changes made)
+(1,017 real changes made)
+(2,025 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,225 real changes made)
+(879 real changes made)
+(1,009 real changes made)
+(2,022 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,438 real changes made)
+(2,225 real changes made)
+(877 real changes made)
+(1,014 real changes made)
+(2,019 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,438 real changes made)
+(2,216 real changes made)
+(879 real changes made)
+(1,015 real changes made)
+(2,015 real changes made)
+(1,001 missing values generated)
+(908 real changes made)
+(2,438 real changes made)
+(2,229 real changes made)
+(879 real changes made)
+(1,027 real changes made)
+(2,026 real changes made)
+
+(10,508 missing values generated)
+(925 real changes made)
+(2,602 real changes made)
+(2,376 real changes made)
+(978 real changes made)
+(1,250 real changes made)
+(2,082 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,525 real changes made)
+(2,287 real changes made)
+(816 real changes made)
+(1,041 real changes made)
+(2,104 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,434 real changes made)
+(2,229 real changes made)
+(879 real changes made)
+(1,016 real changes made)
+(2,029 real changes made)
+
+(295 real changes made)
+(164 real changes made)
+(198 real changes made)
+(174 real changes made)
+
+  Running HH regressions...
+
+    Consumption_end: J=6  BH=4
+    Consumption_fup: J=6  BH=3
+    Income_end: J=6  BH=5
+    Income_fup: J=6  BH=6
+    Assets_end: J=6  BH=5
+    Assets_fup: J=6  BH=4
+    FoodSecurity_end: J=6  BH=4
+    FoodSecurity_fup: J=6  BH=2
+    FinInclusion_end: J=6  BH=3
+    FinInclusion_fup: J=6  BH=3
+
+(19,812 missing values generated)
+(1,317 real changes made)
+(0 real changes made)
+(4,746 real changes made)
+(1,729 real changes made)
+(3,078 real changes made)
+(3,113 real changes made)
+(19,812 missing values generated)
+(899 real changes made)
+(2,377 real changes made)
+(4,585 real changes made)
+(1,505 real changes made)
+(2,672 real changes made)
+(3,502 real changes made)
+(19,812 missing values generated)
+(902 real changes made)
+(2,279 real changes made)
+(4,363 real changes made)
+(1,759 real changes made)
+(2,309 real changes made)
+(3,108 real changes made)
+
+(2,617 real changes made)
+(5,829 real changes made)
+(5,829 real changes made)
+(2,821 real changes made)
+(2,821 real changes made)
+(4,181 real changes made)
+(7,253 real changes made)
+(7,253 real changes made)
+(3,820 real changes made)
+(3,820 real changes made)
+(8,890 real changes made)
+(8,890 real changes made)
+
+  Running MB regressions...
+
+    TimeUse_end: J=6  BH=3
+    TimeUse_fup: J=6  BH=2
+    PhysHealth_end: J=6  BH=3
+    PhysHealth_fup: J=6  BH=0
+    MentalHealth_end: J=5  BH=2
+    MentalHealth_fup: J=6  BH=2
+    PolInvolve_end: J=6  BH=2
+    PolInvolve_fup: J=6  BH=3
+    WomensEmp_end: J=6  BH=1
+    WomensEmp_fup: J=5  BH=0
+
+  Phase 1 complete. P-values and BH results stored.
+
+  PHASE 2: cf_share Gradient
+
+=== Optimal Thresholds by cf_share ===
+
+  (One-sided, alpha_bar=0.05, J_bar=6, nm_ratio=1)
+
+  cf_share   alpha*(J=6)   alpha*(J=5)   2s equiv(J=6)
+
+  ------------------------------------------------------------
+
+  ------------------------------------------------------------
+
+  BH (J=6): step-up thresholds = k*0.05/6 for rank k
+
+    Rank 1: 0.00833  Rank 2: 0.01667  Rank 3: 0.02500
+
+    Rank 4: 0.03333  Rank 5: 0.04167  Rank 6: 0.05000
+
+  Bonferroni: 0.008333
+
+=== Rejection Counts by cf_share ===
+
+  Note: both L_cal and BH reject 'prefixes' of sorted p-values,
+
+  so equal counts => identical rejection sets (no composition changes).
+
+  cf_share  alpha*  TotL  TotBH  #(L>BH)  #(BH>L)  #(L=BH)
+
+  -----------------------------------------------------------------
+
+  -----------------------------------------------------------------
+
+  * = Part 3 calibration (10%)   ** = ambiguous as fixed (23%)
+
+  TotL/TotBH = sum of country rejections across all 20 cells
+
+  #(L>BH) = number of outcome-period cells where L_cal rejects more
+
+=== Detail: Where L_cal and BH Differ ===
+
+--- cf_share = 0.00  (alpha*(J=6) = 0.05000) ---
+  Consumption EL2: L_cal=5, BH=3 (L > BH)
+    Pakistan: p1s=0.03916  L_cal=YES  BH=no
+    Peru: p1s=0.04295  L_cal=YES  BH=no
+  FoodSecurity EL2: L_cal=4, BH=2 (L > BH)
+    Ghana: p1s=0.04287  L_cal=YES  BH=no
+    Honduras: p1s=0.04633  L_cal=YES  BH=no
+  FinInclusion EL1: L_cal=4, BH=3 (L > BH)
+    India: p1s=0.03830  L_cal=YES  BH=no
+  PhysHealth EL1: L_cal=4, BH=3 (L > BH)
+    Honduras: p1s=0.03748  L_cal=YES  BH=no
+  PhysHealth EL2: L_cal=1, BH=0 (L > BH)
+    Peru: p1s=0.01623  L_cal=YES  BH=no
+  PolInvolve EL2: L_cal=4, BH=3 (L > BH)
+    Ghana: p1s=0.03801  L_cal=YES  BH=no
+
+--- cf_share = 0.05  (alpha*(J=6) = 0.04000) ---
+  Consumption EL2: L_cal=4, BH=3 (L > BH)
+    Pakistan: p1s=0.03916  L_cal=YES  BH=no
+  Income EL2: L_cal=5, BH=6 (BH > L)
+    Pakistan: p1s=0.04916  L_cal=no  BH=YES
+  FinInclusion EL1: L_cal=4, BH=3 (L > BH)
+    India: p1s=0.03830  L_cal=YES  BH=no
+  PhysHealth EL1: L_cal=4, BH=3 (L > BH)
+    Honduras: p1s=0.03748  L_cal=YES  BH=no
+  PhysHealth EL2: L_cal=1, BH=0 (L > BH)
+    Peru: p1s=0.01623  L_cal=YES  BH=no
+  PolInvolve EL2: L_cal=4, BH=3 (L > BH)
+    Ghana: p1s=0.03801  L_cal=YES  BH=no
+
+--- cf_share = 0.10  (alpha*(J=6) = 0.03333) ---
+  Income EL2: L_cal=5, BH=6 (BH > L)
+    Pakistan: p1s=0.04916  L_cal=no  BH=YES
+  PhysHealth EL2: L_cal=1, BH=0 (L > BH)
+    Peru: p1s=0.01623  L_cal=YES  BH=no
+
+--- cf_share = 0.15  (alpha*(J=6) = 0.02857) ---
+  Income EL2: L_cal=4, BH=6 (BH > L)
+    Pakistan: p1s=0.04916  L_cal=no  BH=YES
+    Peru: p1s=0.03315  L_cal=no  BH=YES
+  PhysHealth EL2: L_cal=1, BH=0 (L > BH)
+    Peru: p1s=0.01623  L_cal=YES  BH=no
+
+--- cf_share = 0.20  (alpha*(J=6) = 0.02500) ---
+  Income EL2: L_cal=4, BH=6 (BH > L)
+    Pakistan: p1s=0.04916  L_cal=no  BH=YES
+    Peru: p1s=0.03315  L_cal=no  BH=YES
+  PhysHealth EL2: L_cal=1, BH=0 (L > BH)
+    Peru: p1s=0.01623  L_cal=YES  BH=no
+
+--- cf_share = 0.23  (alpha*(J=6) = 0.02326) ---
+  Income EL2: L_cal=4, BH=6 (BH > L)
+    Pakistan: p1s=0.04916  L_cal=no  BH=YES
+    Peru: p1s=0.03315  L_cal=no  BH=YES
+  PhysHealth EL2: L_cal=1, BH=0 (L > BH)
+    Peru: p1s=0.01623  L_cal=YES  BH=no
+
+--- cf_share = 0.25  (alpha*(J=6) = 0.02222) ---
+  Income EL2: L_cal=4, BH=6 (BH > L)
+    Pakistan: p1s=0.04916  L_cal=no  BH=YES
+    Peru: p1s=0.03315  L_cal=no  BH=YES
+  PhysHealth EL1: L_cal=2, BH=3 (BH > L)
+    Peru: p1s=0.02265  L_cal=no  BH=YES
+  PhysHealth EL2: L_cal=1, BH=0 (L > BH)
+    Peru: p1s=0.01623  L_cal=YES  BH=no
+
+--- cf_share = 0.30  (alpha*(J=6) = 0.02000) ---
+  Income EL2: L_cal=4, BH=6 (BH > L)
+    Pakistan: p1s=0.04916  L_cal=no  BH=YES
+    Peru: p1s=0.03315  L_cal=no  BH=YES
+  PhysHealth EL1: L_cal=2, BH=3 (BH > L)
+    Peru: p1s=0.02265  L_cal=no  BH=YES
+  PhysHealth EL2: L_cal=1, BH=0 (L > BH)
+    Peru: p1s=0.01623  L_cal=YES  BH=no
+
+--- cf_share = 0.35  (alpha*(J=6) = 0.01818) ---
+  Consumption EL1: L_cal=3, BH=4 (BH > L)
+    Ghana: p1s=0.01825  L_cal=no  BH=YES
+  Income EL2: L_cal=4, BH=6 (BH > L)
+    Pakistan: p1s=0.04916  L_cal=no  BH=YES
+    Peru: p1s=0.03315  L_cal=no  BH=YES
+  FoodSecurity EL1: L_cal=3, BH=4 (BH > L)
+    Pakistan: p1s=0.01964  L_cal=no  BH=YES
+  PhysHealth EL1: L_cal=2, BH=3 (BH > L)
+    Peru: p1s=0.02265  L_cal=no  BH=YES
+  PhysHealth EL2: L_cal=1, BH=0 (L > BH)
+    Peru: p1s=0.01623  L_cal=YES  BH=no
+
+--- cf_share = 0.40  (alpha*(J=6) = 0.01667) ---
+  Consumption EL1: L_cal=3, BH=4 (BH > L)
+    Ghana: p1s=0.01825  L_cal=no  BH=YES
+  Income EL2: L_cal=4, BH=6 (BH > L)
+    Pakistan: p1s=0.04916  L_cal=no  BH=YES
+    Peru: p1s=0.03315  L_cal=no  BH=YES
+  FoodSecurity EL1: L_cal=3, BH=4 (BH > L)
+    Pakistan: p1s=0.01964  L_cal=no  BH=YES
+  PhysHealth EL1: L_cal=2, BH=3 (BH > L)
+    Peru: p1s=0.02265  L_cal=no  BH=YES
+  PhysHealth EL2: L_cal=1, BH=0 (L > BH)
+    Peru: p1s=0.01623  L_cal=YES  BH=no
+
+--- cf_share = 0.45  (alpha*(J=6) = 0.01538) ---
+  Consumption EL1: L_cal=3, BH=4 (BH > L)
+    Ghana: p1s=0.01825  L_cal=no  BH=YES
+  Income EL2: L_cal=4, BH=6 (BH > L)
+    Pakistan: p1s=0.04916  L_cal=no  BH=YES
+    Peru: p1s=0.03315  L_cal=no  BH=YES
+  FoodSecurity EL1: L_cal=3, BH=4 (BH > L)
+    Pakistan: p1s=0.01964  L_cal=no  BH=YES
+  PhysHealth EL1: L_cal=2, BH=3 (BH > L)
+    Peru: p1s=0.02265  L_cal=no  BH=YES
+
+--- cf_share = 0.50  (alpha*(J=6) = 0.01429) ---
+  Consumption EL1: L_cal=3, BH=4 (BH > L)
+    Ghana: p1s=0.01825  L_cal=no  BH=YES
+  Income EL2: L_cal=4, BH=6 (BH > L)
+    Pakistan: p1s=0.04916  L_cal=no  BH=YES
+    Peru: p1s=0.03315  L_cal=no  BH=YES
+  FoodSecurity EL1: L_cal=3, BH=4 (BH > L)
+    Pakistan: p1s=0.01964  L_cal=no  BH=YES
+  PhysHealth EL1: L_cal=2, BH=3 (BH > L)
+    Peru: p1s=0.02265  L_cal=no  BH=YES
+
+  Full Table: cf_share = 0.10 vs 0.23
+
+  (10% = Part 3 calibration; 23% = ambiguous items classified as fixed)
+
+  cf_share=0.10: alpha*(J=6) =  0.033333  (2s =  0.066667)
+
+  cf_share=0.23: alpha*(J=6) =  0.023256  (2s =  0.046512)
+
+  -----------------------------------------------------------------------------
+
+  Outcome        |    EL1                      |    EL2                      |
+
+                 |  J  Naive  BH  L_10  L_23  |  J  Naive  BH  L_10  L_23  |
+
+  -----------------------------------------------------------------------------
+
+  Consumption     | 6   4   4   4    4  | 6   5   3   3    3  |
+  Income          | 6   5   5   5    5  | 6   6   6   5    4  |
+  Assets          | 6   5   5   5    5  | 6   5   4   4    4  |
+  FoodSecurity    | 6   4   4   4    4  | 6   4   2   2    2  |
+  FinInclusion    | 6   4   3   3    3  | 6   3   3   3    3  |
+  TimeUse         | 6   3   3   3    3  | 6   2   2   2    2  |
+  PhysHealth      | 6   5   3   3    3  | 6   1   0   1    1  |
+  MentalHealth    | 5   2   2   2    2  | 6   2   2   2    2  |
+  PolInvolve      | 6   2   2   2    2  | 6   4   3   3    3  |
+  WomensEmp       | 6   1   1   1    1  | 5   0   0   0    0  |
+
+  -----------------------------------------------------------------------------
+
+  Naive = two-sided p < 0.10
+
+  BH = BH step-up (one-sided, alpha_bar=0.05)
+
+  L_10 = VWN Linear (cf_share=0.10, J_bar=6)
+
+  L_23 = VWN Linear (cf_share=0.23, J_bar=6)
+
+  PHASE 4: Sorted P-values with Rejection Grid
+
+  * = rejected at that cf_share; . = not rejected
+
+  Countries sorted by one-sided p-value (smallest first)
+
+  Column headers = cf_share values (×100)
+
+Consumption EL1 (J=6, BH=4):
+  Country     p1s      00  05  10  15  20  23  25  30  35  40  45  50  BH
+  --------------------------------------------------------------------------
+  India     0.00006   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Ethiopia  0.00021   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Pakistan  0.00361   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Ghana     0.01825   *   *   *   *   *   *   *   *   .   .   .   .  *
+  Peru      0.15699   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Honduras  0.41800   .   .   .   .   .   .   .   .   .   .   .   .  .
+
+Consumption EL2 (J=6, BH=3):
+  Country     p1s      00  05  10  15  20  23  25  30  35  40  45  50  BH
+  --------------------------------------------------------------------------
+  Ethiopia  0.00000   *   *   *   *   *   *   *   *   *   *   *   *  *
+  India     0.00015   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Ghana     0.00264   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Pakistan  0.03916   *   *   .   .   .   .   .   .   .   .   .   .  .
+  Peru      0.04295   *   .   .   .   .   .   .   .   .   .   .   .  .
+  Honduras  0.92274   .   .   .   .   .   .   .   .   .   .   .   .  .
+
+Income EL1 (J=6, BH=5):
+  Country     p1s      00  05  10  15  20  23  25  30  35  40  45  50  BH
+  --------------------------------------------------------------------------
+  Ethiopia  0.00000   *   *   *   *   *   *   *   *   *   *   *   *  *
+  India     0.00000   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Honduras  0.00000   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Ghana     0.00059   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Peru      0.00340   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Pakistan  0.07009   .   .   .   .   .   .   .   .   .   .   .   .  .
+
+Income EL2 (J=6, BH=6):
+  Country     p1s      00  05  10  15  20  23  25  30  35  40  45  50  BH
+  --------------------------------------------------------------------------
+  India     0.00000   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Ghana     0.00000   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Ethiopia  0.00004   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Honduras  0.00007   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Peru      0.03315   *   *   *   .   .   .   .   .   .   .   .   .  *
+  Pakistan  0.04916   *   .   .   .   .   .   .   .   .   .   .   .  *
+
+Assets EL1 (J=6, BH=5):
+  Country     p1s      00  05  10  15  20  23  25  30  35  40  45  50  BH
+  --------------------------------------------------------------------------
+  Ethiopia  0.00000   *   *   *   *   *   *   *   *   *   *   *   *  *
+  India     0.00000   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Ghana     0.00000   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Pakistan  0.00000   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Peru      0.00552   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Honduras  0.39270   .   .   .   .   .   .   .   .   .   .   .   .  .
+
+Assets EL2 (J=6, BH=4):
+  Country     p1s      00  05  10  15  20  23  25  30  35  40  45  50  BH
+  --------------------------------------------------------------------------
+  Ethiopia  0.00000   *   *   *   *   *   *   *   *   *   *   *   *  *
+  India     0.00000   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Ghana     0.00000   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Pakistan  0.00780   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Peru      0.05315   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Honduras  0.96845   .   .   .   .   .   .   .   .   .   .   .   .  .
+
+FoodSecurity EL1 (J=6, BH=4):
+  Country     p1s      00  05  10  15  20  23  25  30  35  40  45  50  BH
+  --------------------------------------------------------------------------
+  India     0.00013   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Honduras  0.00272   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Ethiopia  0.01155   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Pakistan  0.01964   *   *   *   *   *   *   *   *   .   .   .   .  *
+  Ghana     0.06550   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Peru      0.36000   .   .   .   .   .   .   .   .   .   .   .   .  .
+
+FoodSecurity EL2 (J=6, BH=2):
+  Country     p1s      00  05  10  15  20  23  25  30  35  40  45  50  BH
+  --------------------------------------------------------------------------
+  India     0.00000   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Ethiopia  0.00135   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Ghana     0.04287   *   .   .   .   .   .   .   .   .   .   .   .  .
+  Honduras  0.04633   *   .   .   .   .   .   .   .   .   .   .   .  .
+  Peru      0.08465   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Pakistan  0.15899   .   .   .   .   .   .   .   .   .   .   .   .  .
+
+FinInclusion EL1 (J=6, BH=3):
+  Country     p1s      00  05  10  15  20  23  25  30  35  40  45  50  BH
+  --------------------------------------------------------------------------
+  Ethiopia  0.00000   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Ghana     0.00001   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Honduras  0.00017   *   *   *   *   *   *   *   *   *   *   *   *  *
+  India     0.03830   *   *   .   .   .   .   .   .   .   .   .   .  .
+  Peru      0.36978   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Pakistan  0.42564   .   .   .   .   .   .   .   .   .   .   .   .  .
+
+FinInclusion EL2 (J=6, BH=3):
+  Country     p1s      00  05  10  15  20  23  25  30  35  40  45  50  BH
+  --------------------------------------------------------------------------
+  Ethiopia  0.00000   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Ghana     0.00001   *   *   *   *   *   *   *   *   *   *   *   *  *
+  India     0.00130   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Honduras  0.14673   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Peru      0.21091   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Pakistan  0.76407   .   .   .   .   .   .   .   .   .   .   .   .  .
+
+TimeUse EL1 (J=6, BH=3):
+  Country     p1s      00  05  10  15  20  23  25  30  35  40  45  50  BH
+  --------------------------------------------------------------------------
+  India     0.00000   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Ethiopia  0.00000   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Honduras  0.00661   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Ghana     0.31759   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Pakistan  0.35677   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Peru      0.40100   .   .   .   .   .   .   .   .   .   .   .   .  .
+
+TimeUse EL2 (J=6, BH=2):
+  Country     p1s      00  05  10  15  20  23  25  30  35  40  45  50  BH
+  --------------------------------------------------------------------------
+  Ethiopia  0.00027   *   *   *   *   *   *   *   *   *   *   *   *  *
+  India     0.00244   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Pakistan  0.14616   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Honduras  0.15629   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Ghana     0.19345   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Peru      0.75793   .   .   .   .   .   .   .   .   .   .   .   .  .
+
+PhysHealth EL1 (J=6, BH=3):
+  Country     p1s      00  05  10  15  20  23  25  30  35  40  45  50  BH
+  --------------------------------------------------------------------------
+  India     0.00859   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Ghana     0.01425   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Peru      0.02265   *   *   *   *   *   *   .   .   .   .   .   .  *
+  Honduras  0.03748   *   *   .   .   .   .   .   .   .   .   .   .  .
+  Ethiopia  0.73816   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Pakistan  0.98941   .   .   .   .   .   .   .   .   .   .   .   .  .
+
+PhysHealth EL2 (J=6, BH=0):
+  Country     p1s      00  05  10  15  20  23  25  30  35  40  45  50  BH
+  --------------------------------------------------------------------------
+  Peru      0.01623   *   *   *   *   *   *   *   *   *   *   .   .  .
+  Honduras  0.19101   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Ethiopia  0.21909   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Pakistan  0.51960   .   .   .   .   .   .   .   .   .   .   .   .  .
+  India     0.53718   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Ghana     0.59819   .   .   .   .   .   .   .   .   .   .   .   .  .
+
+MentalHealth EL1 (J=5, BH=2):
+  Country     p1s      00  05  10  15  20  23  25  30  35  40  45  50  BH
+  --------------------------------------------------------------------------
+  Ghana     0.00045   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Honduras  0.00054   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Peru      0.09816   .   .   .   .   .   .   .   .   .   .   .   .  .
+  India     0.09909   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Ethiopia  0.17068   .   .   .   .   .   .   .   .   .   .   .   .  .
+
+MentalHealth EL2 (J=6, BH=2):
+  Country     p1s      00  05  10  15  20  23  25  30  35  40  45  50  BH
+  --------------------------------------------------------------------------
+  Peru      0.00014   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Honduras  0.01039   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Pakistan  0.10953   .   .   .   .   .   .   .   .   .   .   .   .  .
+  India     0.12684   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Ghana     0.29624   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Ethiopia  0.72190   .   .   .   .   .   .   .   .   .   .   .   .  .
+
+PolInvolve EL1 (J=6, BH=2):
+  Country     p1s      00  05  10  15  20  23  25  30  35  40  45  50  BH
+  --------------------------------------------------------------------------
+  Pakistan  0.00003   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Ghana     0.00040   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Ethiopia  0.05660   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Peru      0.37946   .   .   .   .   .   .   .   .   .   .   .   .  .
+  India     0.54481   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Honduras  0.78442   .   .   .   .   .   .   .   .   .   .   .   .  .
+
+PolInvolve EL2 (J=6, BH=3):
+  Country     p1s      00  05  10  15  20  23  25  30  35  40  45  50  BH
+  --------------------------------------------------------------------------
+  India     0.00085   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Pakistan  0.00327   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Ethiopia  0.01373   *   *   *   *   *   *   *   *   *   *   *   *  *
+  Ghana     0.03801   *   *   .   .   .   .   .   .   .   .   .   .  .
+  Peru      0.65420   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Honduras  0.65974   .   .   .   .   .   .   .   .   .   .   .   .  .
+
+WomensEmp EL1 (J=6, BH=1):
+  Country     p1s      00  05  10  15  20  23  25  30  35  40  45  50  BH
+  --------------------------------------------------------------------------
+  Pakistan  0.00172   *   *   *   *   *   *   *   *   *   *   *   *  *
+  India     0.08137   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Ghana     0.24078   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Honduras  0.25385   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Peru      0.70653   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Ethiopia  0.79890   .   .   .   .   .   .   .   .   .   .   .   .  .
+
+WomensEmp EL2 (J=5, BH=0):
+  Country     p1s      00  05  10  15  20  23  25  30  35  40  45  50  BH
+  --------------------------------------------------------------------------
+  Pakistan  0.12689   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Peru      0.22831   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Ghana     0.34499   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Honduras  0.46201   .   .   .   .   .   .   .   .   .   .   .   .  .
+  Ethiopia  0.71396   .   .   .   .   .   .   .   .   .   .   .   .  .
+
+  PART 4 COMPLETE
+

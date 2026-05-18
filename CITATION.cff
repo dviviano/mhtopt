@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+title: "mhtopt: Optimal Multiple Hypothesis Testing Corrections"
+message: "If you use this software, please cite the underlying paper."
+type: software
+authors:
+  - family-names: Viviano
+    given-names: Davide
+  - family-names: Wüthrich
+    given-names: Kaspar
+  - family-names: Niehaus
+    given-names: Paul
+  - family-names: Rosas Lopez
+    given-names: Erick
+    email: erosasl@ucsd.edu
+    affiliation: UC San Diego
+repository-code: "https://github.com/OWNER/mhtopt"
+license: MIT
+version: 0.1.0
+date-released: 2026-05-18
+preferred-citation:
+  type: article
+  title: "A Model of Multiple Hypothesis Testing"
+  authors:
+    - family-names: Viviano
+      given-names: Davide
+    - family-names: Wüthrich
+      given-names: Kaspar
+    - family-names: Niehaus
+      given-names: Paul
+  year: 2026
+  journal: "arXiv preprint"
+  identifiers:
+    - type: other
+      value: "arXiv:2104.13367"
+      description: "arXiv version 10"

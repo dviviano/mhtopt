@@ -1,0 +1,323 @@
+
+====================================================================== 
+  MHT Package for R -- Complete Example
+  Viviano, Wuthrich, and Niehaus (2026)
+====================================================================== 
+
+--- 1. mht_critical ---
+
+Linear model, J=5, alpha_bar=0.05:
+
+------------------------------------------------------------ 
+  Optimal MHT Critical Values
+  Viviano, Wuthrich, and Niehaus (2026)
+------------------------------------------------------------ 
+
+  Cost model:          Linear (Eq. 27)
+  Number of hypotheses: 5
+  Benchmark alpha:      0.0500
+  Sample size ratio:    1.00
+
+------------------------------------------------------------ 
+  Optimal test size:    0.021250
+  Optimal z-threshold:  2.0286
+
+  Bonferroni size:      0.010000
+  Bonferroni z-thresh:  2.3263
+  Sidak size:           0.010206
+  Sidak z-threshold:    2.3187
+  Unadjusted size:      0.050000
+------------------------------------------------------------ 
+
+Cobb-Douglas model, J=5, alpha_bar=0.05:
+
+------------------------------------------------------------ 
+  Optimal MHT Critical Values
+  Viviano, Wuthrich, and Niehaus (2026)
+------------------------------------------------------------ 
+
+  Cost model:          Cobb-Douglas (Appendix A)
+  Number of hypotheses: 5
+  Benchmark alpha:      0.0500
+  Sample size ratio:    1.00
+
+------------------------------------------------------------ 
+  Optimal test size:    0.012327
+  Optimal z-threshold:  2.2468
+
+  Bonferroni size:      0.010000
+  Bonferroni z-thresh:  2.3263
+  Sidak size:           0.010206
+  Sidak z-threshold:    2.3187
+  Unadjusted size:      0.050000
+------------------------------------------------------------ 
+
+Linear model, J=5, alpha_bar=0.05, nm_ratio=1.5:
+
+------------------------------------------------------------ 
+  Optimal MHT Critical Values
+  Viviano, Wuthrich, and Niehaus (2026)
+------------------------------------------------------------ 
+
+  Cost model:          Linear (Eq. 27)
+  Number of hypotheses: 5
+  Benchmark alpha:      0.0500
+  Sample size ratio:    1.50
+
+------------------------------------------------------------ 
+  Optimal test size:    0.028281
+  Optimal z-threshold:  1.9067
+
+  Bonferroni size:      0.010000
+  Bonferroni z-thresh:  2.3263
+  Sidak size:           0.010206
+  Sidak z-threshold:    2.3187
+  Unadjusted size:      0.050000
+------------------------------------------------------------ 
+
+--- 2. mht_test ---
+
+Testing 6 p-values:  0.003, 0.015, 0.03, 0.048, 0.12, 0.5 
+
+
+----------------------------------------------------------------- 
+  Multiple Hypothesis Testing Results
+  Viviano, Wuthrich, and Niehaus (2026)
+----------------------------------------------------------------- 
+
+  Hypotheses tested:    6
+  Benchmark alpha:      0.0500
+  Cost model:           Linear
+
+------------------------------------------------------- 
+  Procedure                 Test size   Rejections
+------------------------------------------------------- 
+  Optimal (model-based)      0.020052            2
+  Bonferroni                 0.008333            1
+  Holm (step-down)           0.0500 *            1
+  BH (FDR control)           0.0500 *            2
+  Unadjusted                 0.050000            4
+------------------------------------------------------- 
+  * Step-wise; effective threshold varies by rank
+
+  Detailed results:
+ p_value reject_optimal reject_bonferroni reject_holm reject_bh
+   0.003           TRUE              TRUE        TRUE      TRUE
+   0.015           TRUE             FALSE       FALSE      TRUE
+   0.030          FALSE             FALSE       FALSE     FALSE
+   0.048          FALSE             FALSE       FALSE     FALSE
+   0.120          FALSE             FALSE       FALSE     FALSE
+   0.500          FALSE             FALSE       FALSE     FALSE
+ reject_unadjusted
+              TRUE
+              TRUE
+              TRUE
+              TRUE
+             FALSE
+             FALSE
+
+Same p-values, Cobb-Douglas model:
+
+----------------------------------------------------------------- 
+  Multiple Hypothesis Testing Results
+  Viviano, Wuthrich, and Niehaus (2026)
+----------------------------------------------------------------- 
+
+  Hypotheses tested:    6
+  Benchmark alpha:      0.0500
+  Cost model:           Cobb-Douglas
+
+------------------------------------------------------- 
+  Procedure                 Test size   Rejections
+------------------------------------------------------- 
+  Optimal (model-based)      0.010519            1
+  Bonferroni                 0.008333            1
+  Holm (step-down)           0.0500 *            1
+  BH (FDR control)           0.0500 *            2
+  Unadjusted                 0.050000            4
+------------------------------------------------------- 
+  * Step-wise; effective threshold varies by rank
+
+  Detailed results:
+ p_value reject_optimal reject_bonferroni reject_holm reject_bh
+   0.003           TRUE              TRUE        TRUE      TRUE
+   0.015          FALSE             FALSE       FALSE      TRUE
+   0.030          FALSE             FALSE       FALSE     FALSE
+   0.048          FALSE             FALSE       FALSE     FALSE
+   0.120          FALSE             FALSE       FALSE     FALSE
+   0.500          FALSE             FALSE       FALSE     FALSE
+ reject_unadjusted
+              TRUE
+              TRUE
+              TRUE
+              TRUE
+             FALSE
+             FALSE
+
+--- 3. mht_est ---
+
+Regression: y ~ treat1 + treat2 + treat3 + treat4 + x1 + x2
+Testing 4 treatment coefficients:
+
+
+------------------------------------------------------------------------ 
+  MHT Postestimation Results
+  Viviano, Wuthrich, and Niehaus (2026)
+------------------------------------------------------------------------ 
+
+  Hypotheses tested:    4
+  Benchmark alpha:      0.0500
+  Cost model:           Linear
+  P-values:             one-sided (positive direction)
+
+---------------------------------------------------------- 
+  Procedure                 Test size   Rejections
+---------------------------------------------------------- 
+  Optimal (model-based)      0.023047            1
+  Bonferroni                 0.012500            1
+  Holm (step-down)          step-wise            1
+  BH (FDR control)          step-wise            1
+  Unadjusted                 0.050000            1
+---------------------------------------------------------- 
+
+  Detailed results (* = reject at threshold):
+
+   term estimate     se t_stat p_value optimal  bonf  holm    bh unadj
+ treat1   0.3714 0.1077  3.449  0.0003     *     *     *     *     *  
+ treat2  -0.0149 0.1033 -0.144  0.5571     .     .     .     .     .  
+ treat3  -0.1897 0.1068 -1.776  0.9618     .     .     .     .     .  
+ treat4   0.0991 0.1046  0.948  0.1719     .     .     .     .     .  
+
+Same regression, with mbar=200 (benchmark per-arm sample size):
+
+
+------------------------------------------------------------------------ 
+  MHT Postestimation Results
+  Viviano, Wuthrich, and Niehaus (2026)
+------------------------------------------------------------------------ 
+
+  Hypotheses tested:    4
+  Benchmark alpha:      0.0500
+  Cost model:           Linear
+  P-values:             one-sided (positive direction)
+
+---------------------------------------------------------- 
+  Procedure                 Test size   Rejections
+---------------------------------------------------------- 
+  Optimal (model-based)      0.017773            1
+  Bonferroni                 0.012500            1
+  Holm (step-down)          step-wise            1
+  BH (FDR control)          step-wise            1
+  Unadjusted                 0.050000            1
+---------------------------------------------------------- 
+
+  Detailed results (* = reject at threshold):
+
+   term estimate     se t_stat p_value optimal  bonf  holm    bh unadj
+ treat1   0.3714 0.1077  3.449  0.0003     *     *     *     *     *  
+ treat2  -0.0149 0.1033 -0.144  0.5571     .     .     .     .     .  
+ treat3  -0.1897 0.1068 -1.776  0.9618     .     .     .     .     .  
+ treat4   0.0991 0.1046  0.948  0.1719     .     .     .     .     .  
+
+--- 4. mht_table ---
+
+Table 1 (Linear model, default parameters):
+
+
+===================================================================================================================================================== 
+  Optimal Critical Values (Linear (Eq. 27) model)
+  Viviano, Wuthrich, and Niehaus (2026)
+===================================================================================================================================================== 
+
+      n/m=50%                         n/m=100%                        n/m=150%                        n/m=200%                        Sidak           
+----------------------------------------------------------------------------------------------------------------------------------------------------- 
+  |J| a=0.025 a=0.050 a=0.100 a=0.150 a=0.025 a=0.050 a=0.100 a=0.150 a=0.025 a=0.050 a=0.100 a=0.150 a=0.025 a=0.050 a=0.100 a=0.150 a=0.025 a=0.050 
+----------------------------------------------------------------------------------------------------------------------------------------------------- 
+    1  0.021  0.043  0.086  0.129  0.025  0.050  0.100  0.150  0.029  0.057  0.114  0.171  0.032  0.064  0.128  0.192  0.025  0.050 
+    2  0.012  0.025  0.050  0.075  0.016  0.032  0.064  0.096  0.020  0.039  0.078  0.117  0.023  0.046  0.092  0.138  0.013  0.025 
+    3  0.010  0.019  0.038  0.057  0.013  0.026  0.052  0.078  0.017  0.033  0.066  0.099  0.020  0.040  0.080  0.120  0.008  0.017 
+    4  0.008  0.016  0.032  0.048  0.012  0.023  0.046  0.069  0.015  0.030  0.060  0.090  0.019  0.037  0.074  0.111  0.006  0.013 
+    5  0.007  0.014  0.028  0.043  0.011  0.021  0.042  0.064  0.014  0.028  0.057  0.085  0.018  0.035  0.071  0.106  0.005  0.010 
+    6  0.007  0.013  0.026  0.039  0.010  0.020  0.040  0.060  0.014  0.027  0.054  0.081  0.017  0.034  0.068  0.102  0.004  0.009 
+    7  0.006  0.012  0.024  0.036  0.010  0.019  0.038  0.058  0.013  0.026  0.052  0.079  0.017  0.033  0.067  0.100  0.004  0.007 
+    8  0.006  0.012  0.023  0.035  0.009  0.019  0.037  0.056  0.013  0.026  0.051  0.077  0.016  0.033  0.065  0.098  0.003  0.006 
+    9  0.006  0.011  0.022  0.033  0.009  0.018  0.036  0.054  0.013  0.025  0.050  0.075  0.016  0.032  0.064  0.096  0.003  0.006 
+  Inf  0.004  0.007  0.014  0.021  0.007  0.014  0.028  0.042  0.011  0.021  0.042  0.063  0.014  0.028  0.056  0.084  0.000  0.000 
+----------------------------------------------------------------------------------------------------------------------------------------------------- 
+
+Cobb-Douglas table:
+
+
+===================================================================================== 
+  Optimal Critical Values (Cobb-Douglas model)
+  Viviano, Wuthrich, and Niehaus (2026)
+===================================================================================== 
+
+      n/m=50%         n/m=100%        n/m=150%        n/m=200%        Sidak           
+------------------------------------------------------------------------------------- 
+  |J| a=0.025 a=0.050 a=0.025 a=0.050 a=0.025 a=0.050 a=0.025 a=0.050 a=0.025 a=0.050 
+------------------------------------------------------------------------------------- 
+    1  0.024  0.047  0.025  0.050  0.026  0.052  0.026  0.053  0.025  0.050 
+    2  0.013  0.026  0.014  0.027  0.014  0.028  0.014  0.029  0.013  0.025 
+    3  0.009  0.018  0.010  0.019  0.010  0.020  0.010  0.020  0.008  0.017 
+    4  0.007  0.014  0.007  0.015  0.008  0.015  0.008  0.016  0.006  0.013 
+    5  0.006  0.012  0.006  0.012  0.006  0.013  0.006  0.013  0.005  0.010 
+    6  0.005  0.010  0.005  0.011  0.005  0.011  0.006  0.011  0.004  0.009 
+    7  0.004  0.009  0.005  0.009  0.005  0.009  0.005  0.010  0.004  0.007 
+    8  0.004  0.008  0.004  0.008  0.004  0.008  0.004  0.009  0.003  0.006 
+    9  0.004  0.007  0.004  0.007  0.004  0.008  0.004  0.008  0.003  0.006 
+  Inf  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000  0.000 
+------------------------------------------------------------------------------------- 
+
+--- 5. mht_cost_estimate ---
+
+Estimating Cobb-Douglas cost function from 300 simulated projects:
+
+
+----------------------------------------------------------------- 
+  Cost Function Estimation (Cobb-Douglas)
+  log(C) = const + beta*log(|J|) + iota*log(n)
+----------------------------------------------------------------- 
+
+  Observations:     300
+  Robust SE:        Yes (HC1)
+
+  Parameter            Estimate  Robust SE
+--------------------------------------------- 
+  beta (log arms)        0.1820     0.0364
+  iota (log size)        0.1477     0.0382
+--------------------------------------------- 
+
+  Hypothesis Tests:
+    H0: beta = 0 (Bonferroni):       p = 0.0000
+    H0: beta = 1 (no adjustment):    p = 0.0000
+    H0: iota = 0 (cost ~ n):         p = 0.0001
+    H0: iota = 1 (cost prop. to n):  p = 0.0000
+----------------------------------------------------------------- 
+
+Using estimated parameters for critical values (J=5):
+
+------------------------------------------------------------ 
+  Optimal MHT Critical Values
+  Viviano, Wuthrich, and Niehaus (2026)
+------------------------------------------------------------ 
+
+  Cost model:          Cobb-Douglas (Appendix A)
+  Number of hypotheses: 5
+  Benchmark alpha:      0.0500
+  Sample size ratio:    1.00
+
+------------------------------------------------------------ 
+  Optimal test size:    0.013404
+  Optimal z-threshold:  2.2143
+
+  Bonferroni size:      0.010000
+  Bonferroni z-thresh:  2.3263
+  Sidak size:           0.010206
+  Sidak z-threshold:    2.3187
+  Unadjusted size:      0.050000
+------------------------------------------------------------ 
+
+====================================================================== 
+  Example complete.
+====================================================================== 

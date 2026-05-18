@@ -1,0 +1,561 @@
+
+  PART A: Household regressions
+
+(Household Table)
+
+(10,508 missing values generated)
+(925 real changes made)
+(2,600 real changes made)
+(2,373 real changes made)
+(978 real changes made)
+(1,280 real changes made)
+(2,161 real changes made)
+(10,508 missing values generated)
+(0 real changes made)
+(2,599 real changes made)
+(2,375 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2,157 real changes made)
+(10,508 missing values generated)
+(0 real changes made)
+(0 real changes made)
+(2,375 real changes made)
+(978 real changes made)
+(1,260 real changes made)
+(2,157 real changes made)
+(174 missing values generated)
+(3 real changes made)
+(2,601 real changes made)
+(2,375 real changes made)
+(978 real changes made)
+(1,294 real changes made)
+(2,161 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,522 real changes made)
+(2,279 real changes made)
+(817 real changes made)
+(1,073 real changes made)
+(2,101 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,520 real changes made)
+(2,279 real changes made)
+(2,101 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,254 real changes made)
+(817 real changes made)
+(1,073 real changes made)
+(2,056 real changes made)
+(793 missing values generated)
+(915 real changes made)
+(2,525 real changes made)
+(2,280 real changes made)
+(817 real changes made)
+(1,075 real changes made)
+(2,103 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,437 real changes made)
+(2,224 real changes made)
+(879 real changes made)
+(1,011 real changes made)
+(2,016 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,435 real changes made)
+(2,221 real changes made)
+(2,017 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,220 real changes made)
+(879 real changes made)
+(1,016 real changes made)
+(2,017 real changes made)
+(1,026 missing values generated)
+(908 real changes made)
+(2,437 real changes made)
+(2,224 real changes made)
+(879 real changes made)
+(1,016 real changes made)
+(2,018 real changes made)
+
+(10,508 missing values generated)
+(925 real changes made)
+(0 real changes made)
+(2,376 real changes made)
+(0 real changes made)
+(1,289 real changes made)
+(2,138 real changes made)
+(10,508 missing values generated)
+(925 real changes made)
+(2,605 real changes made)
+(2,369 real changes made)
+(978 real changes made)
+(1,289 real changes made)
+(2,100 real changes made)
+(10,508 missing values generated)
+(0 real changes made)
+(2,603 real changes made)
+(2,372 real changes made)
+(975 real changes made)
+(0 real changes made)
+(2,105 real changes made)
+(10,508 missing values generated)
+(925 real changes made)
+(2,604 real changes made)
+(2,374 real changes made)
+(978 real changes made)
+(1,299 real changes made)
+(2,161 real changes made)
+(164 missing values generated)
+(925 real changes made)
+(2,605 real changes made)
+(2,376 real changes made)
+(978 real changes made)
+(1,299 real changes made)
+(2,161 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,519 real changes made)
+(2,285 real changes made)
+(815 real changes made)
+(1,074 real changes made)
+(2,104 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,531 real changes made)
+(2,258 real changes made)
+(817 real changes made)
+(1,083 real changes made)
+(2,061 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,522 real changes made)
+(2,281 real changes made)
+(798 real changes made)
+(1,068 real changes made)
+(2,103 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,525 real changes made)
+(2,277 real changes made)
+(817 real changes made)
+(2,103 real changes made)
+(723 missing values generated)
+(915 real changes made)
+(2,581 real changes made)
+(2,285 real changes made)
+(817 real changes made)
+(1,083 real changes made)
+(2,104 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,436 real changes made)
+(2,229 real changes made)
+(879 real changes made)
+(1,017 real changes made)
+(2,025 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,225 real changes made)
+(879 real changes made)
+(1,009 real changes made)
+(2,022 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,438 real changes made)
+(2,225 real changes made)
+(877 real changes made)
+(1,014 real changes made)
+(2,019 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,438 real changes made)
+(2,216 real changes made)
+(879 real changes made)
+(1,015 real changes made)
+(2,015 real changes made)
+(1,001 missing values generated)
+(908 real changes made)
+(2,438 real changes made)
+(2,229 real changes made)
+(879 real changes made)
+(1,027 real changes made)
+(2,026 real changes made)
+
+(10,508 missing values generated)
+(925 real changes made)
+(2,602 real changes made)
+(2,376 real changes made)
+(978 real changes made)
+(1,250 real changes made)
+(2,082 real changes made)
+(10,508 missing values generated)
+(915 real changes made)
+(2,525 real changes made)
+(2,287 real changes made)
+(816 real changes made)
+(1,041 real changes made)
+(2,104 real changes made)
+(10,508 missing values generated)
+(908 real changes made)
+(2,434 real changes made)
+(2,229 real changes made)
+(879 real changes made)
+(1,016 real changes made)
+(2,029 real changes made)
+
+(295 real changes made)
+(164 real changes made)
+(198 real changes made)
+(174 real changes made)
+
+  Pooled HH regressions:
+
+    index_ctotal_end  coeff= 0.122  p(2s)=0.000
+    index_ctotal_fup  coeff= 0.120  p(2s)=0.000
+    ind_increv_end  coeff= 0.383  p(2s)=0.000
+    ind_increv_fup  coeff= 0.273  p(2s)=0.000
+    asset_index_end  coeff= 0.258  p(2s)=0.000
+    asset_index_fup  coeff= 0.249  p(2s)=0.000
+    index_foodsecurity_end  coeff= 0.107  p(2s)=0.000
+    index_foodsecurity_fup  coeff= 0.113  p(2s)=0.000
+    ind_fin_end  coeff= 0.378  p(2s)=0.000
+    ind_fin_fup  coeff= 0.213  p(2s)=0.000
+
+  Country HH regressions...
+
+    Ethiopia HH done.
+    Ghana HH done.
+    Honduras HH done.
+    India HH done.
+    Pakistan HH done.
+    Peru HH done.
+
+  PART B: Member regressions
+
+(19,812 missing values generated)
+(1,317 real changes made)
+(0 real changes made)
+(4,746 real changes made)
+(1,729 real changes made)
+(3,078 real changes made)
+(3,113 real changes made)
+(19,812 missing values generated)
+(899 real changes made)
+(2,377 real changes made)
+(4,585 real changes made)
+(1,505 real changes made)
+(2,672 real changes made)
+(3,502 real changes made)
+(19,812 missing values generated)
+(902 real changes made)
+(2,279 real changes made)
+(4,363 real changes made)
+(1,759 real changes made)
+(2,309 real changes made)
+(3,108 real changes made)
+
+(2,617 real changes made)
+(5,829 real changes made)
+(5,829 real changes made)
+(2,821 real changes made)
+(2,821 real changes made)
+(4,181 real changes made)
+(7,253 real changes made)
+(7,253 real changes made)
+(3,820 real changes made)
+(3,820 real changes made)
+(8,890 real changes made)
+(8,890 real changes made)
+
+  Pooled MB regressions:
+
+    index_time_end  coeff= 0.090  p(2s)=0.000
+    index_time_fup  coeff= 0.054  p(2s)=0.003
+    index_health_end  coeff= 0.034  p(2s)=0.078
+    index_health_fup  coeff= 0.029  p(2s)=0.142
+    index_mental_end  coeff= 0.099  p(2s)=0.000
+    index_mental_fup  coeff= 0.071  p(2s)=0.000
+    index_political_end  coeff= 0.064  p(2s)=0.001
+    index_political_fup  coeff= 0.064  p(2s)=0.001
+    index_women_end  coeff= 0.046  p(2s)=0.044
+    index_women_fup  coeff= 0.022  p(2s)=0.385
+
+  Country MB regressions (PAK EL1 mental and IND EL2 women may be missing)...
+
+    Ethiopia MB done.
+    Ghana MB done.
+    Honduras MB done.
+    India MB done.
+    Pakistan MB done.
+    Peru MB done.
+
+  PART C: MHT analysis
+
+  pool_end: J=10  N10=10  FDR=10  VWN-CD= 8  VWN-Lin= 8
+  C1_end: J=10  N10= 6  FDR= 6  VWN-CD= 5  VWN-Lin= 6
+  C2_end: J=10  N10= 7  FDR= 7  VWN-CD= 5  VWN-Lin= 6
+  C3_end: J=10  N10= 6  FDR= 5  VWN-CD= 5  VWN-Lin= 5
+  C4_end: J=10  N10= 7  FDR= 6  VWN-CD= 5  VWN-Lin= 6
+  C5_end: J= 9  N10= 6  FDR= 6  VWN-CD= 4  VWN-Lin= 5
+  C6_end: J=10  N10= 3  FDR= 2  VWN-CD= 1  VWN-Lin= 2
+  pool_fup: J=10  N10= 8  FDR= 8  VWN-CD= 8  VWN-Lin= 8
+  C1_fup: J=10  N10= 7  FDR= 7  VWN-CD= 6  VWN-Lin= 7
+  C2_fup: J=10  N10= 6  FDR= 4  VWN-CD= 4  VWN-Lin= 4
+  C3_fup: J=10  N10= 4  FDR= 2  VWN-CD= 1  VWN-Lin= 2
+  C4_fup: J= 9  N10= 7  FDR= 7  VWN-CD= 7  VWN-Lin= 7
+  C5_fup: J=10  N10= 4  FDR= 2  VWN-CD= 2  VWN-Lin= 2
+  C6_fup: J=10  N10= 4  FDR= 1  VWN-CD= 1  VWN-Lin= 2
+
+  SUMMARY TABLE: MHT Exercise 1 -- One Treatment x J Outcomes
+
+  Banerjee et al. (2015)  |  Viviano, Wuthrich & Niehaus (2026)
+
+  All results shown at 10% significance level:
+
+  Naive  = two-sided p < 0.10
+
+  FDR    = BH q < 0.10 (two-sided p-values)
+
+  VWN-CD = Cobb-Douglas optimal (alpha_bar=0.05 one-sided)
+
+  VWN-Lin= Linear/FDA optimal   (alpha_bar=0.05 one-sided)
+
+  VWN Optimal alpha_opt thresholds (one-sided):
+
+    J=10  CD =0.006745  Lin =0.017656
+
+    J= 9  CD =0.007392  Lin =0.018056
+
+  (Two-sided equiv for J=10: CD=0.0135 Lin=0.0353)
+
+  ------------------------------------------------------------------------
+
+  Group           |   EL1 (endline)           |   EL2 (follow-up)         |
+
+                  |  J  Naive  FDR  VWN-CD Lin|  J  Naive  FDR  VWN-CD Lin|
+
+  ------------------------------------------------------------------------
+
+  Pooled          | 10   10   10    8   8 | 10   8   8    8   8 |
+  Ethiopia        | 10   6   6    5   6 | 10   7   7    6   7 |
+  Ghana           | 10   7   7    5   6 | 10   6   4    4   4 |
+  Honduras        | 10   6   5    5   5 | 10   4   2    1   2 |
+  India           | 10   7   6    5   6 | 9   7   7    7   7 |
+  Pakistan        | 9   6   6    4   5 | 10   4   2    2   2 |
+  Peru            | 10   3   2    1   2 | 10   4   1    1   2 |
+
+  ------------------------------------------------------------------------
+
+  PART E: Per-outcome detail
+
+  Significance at 10%: * = significant, . = not significant, - = not collected
+
+  Naive = two-sided p < 0.10 | FDR = BH q < 0.10 | VWN at alpha_bar=0.05 1-side
+
+  -- Pooled (all countries)  EL1 (endline)  J=10 --
+  Outcome          Coeff     (SE)    p(2s)  Naive  FDR   CD   Lin
+  --------------------------------------------------------------------
+  Consumption     0.1224 (0.0233) 0.0000    *     *    *    *
+  FoodSecurity    0.3826 (0.0357) 0.0000    *     *    *    *
+  Assets          0.2580 (0.0231) 0.0000    *     *    *    *
+  FinInclusion    0.1074 (0.0218) 0.0000    *     *    *    *
+  TimeUse         0.3782 (0.0298) 0.0000    *     *    *    *
+  Income          0.0905 (0.0178) 0.0000    *     *    *    *
+  PhysHealth      0.0343 (0.0195) 0.0778    *     *    .    .
+  MentalHealth    0.0989 (0.0224) 0.0000    *     *    *    *
+  PolInvolve      0.0637 (0.0184) 0.0006    *     *    *    *
+  WomensEmp       0.0463 (0.0230) 0.0440    *     *    .    .
+
+  -- Pooled (all countries)  EL2 (follow-up)  J=10 --
+  Outcome          Coeff     (SE)    p(2s)  Naive  FDR   CD   Lin
+  --------------------------------------------------------------------
+  Consumption     0.1197 (0.0241) 0.0000    *     *    *    *
+  FoodSecurity    0.2732 (0.0288) 0.0000    *     *    *    *
+  Assets          0.2487 (0.0244) 0.0000    *     *    *    *
+  FinInclusion    0.1126 (0.0216) 0.0000    *     *    *    *
+  TimeUse         0.2133 (0.0309) 0.0000    *     *    *    *
+  Income          0.0543 (0.0181) 0.0027    *     *    *    *
+  PhysHealth      0.0287 (0.0195) 0.1423    .     .    .    .
+  MentalHealth    0.0711 (0.0200) 0.0004    *     *    *    *
+  PolInvolve      0.0641 (0.0189) 0.0007    *     *    *    *
+  WomensEmp       0.0219 (0.0253) 0.3849    .     .    .    .
+
+  -- Ethiopia  EL1 (endline)  J=10 --
+  Outcome          Coeff     (SE)    p(2s)  Naive  FDR   CD   Lin
+  --------------------------------------------------------------------
+  Consumption     0.2393 (0.0676) 0.0004    *     *    *    *
+  FoodSecurity    1.4379 (0.1914) 0.0000    *     *    *    *
+  Assets          0.4989 (0.0594) 0.0000    *     *    *    *
+  FinInclusion    0.1391 (0.0606) 0.0219    *     *    .    *
+  TimeUse         1.9066 (0.1066) 0.0000    *     *    *    *
+  Income          0.3309 (0.0669) 0.0000    *     *    *    *
+  PhysHealth      -0.0338 (0.0540) 0.5322    .     .    .    .
+  MentalHealth    0.0468 (0.0534) 0.3809    .     .    .    .
+  PolInvolve      0.0703 (0.0482) 0.1452    .     .    .    .
+  WomensEmp       -0.0070 (0.0513) 0.8909    .     .    .    .
+
+  -- Ethiopia  EL2 (follow-up)  J=10 --
+  Outcome          Coeff     (SE)    p(2s)  Naive  FDR   CD   Lin
+  --------------------------------------------------------------------
+  Consumption     0.3475 (0.0744) 0.0000    *     *    *    *
+  FoodSecurity    0.2929 (0.0738) 0.0001    *     *    *    *
+  Assets          0.6036 (0.0653) 0.0000    *     *    *    *
+  FinInclusion    0.1855 (0.0607) 0.0023    *     *    *    *
+  TimeUse         0.7991 (0.1110) 0.0000    *     *    *    *
+  Income          0.2245 (0.0633) 0.0004    *     *    *    *
+  PhysHealth      0.0412 (0.0493) 0.4027    .     .    .    .
+  MentalHealth    -0.0370 (0.0578) 0.5221    .     .    .    .
+  PolInvolve      0.1109 (0.0520) 0.0333    *     *    .    *
+  WomensEmp       -0.0054 (0.0540) 0.9197    .     .    .    .
+
+  -- Ghana  EL1 (endline)  J=10 --
+  Outcome          Coeff     (SE)    p(2s)  Naive  FDR   CD   Lin
+  --------------------------------------------------------------------
+  Consumption     0.0970 (0.0488) 0.0470    *     *    .    .
+  FoodSecurity    0.1562 (0.0494) 0.0016    *     *    *    *
+  Assets          0.2472 (0.0490) 0.0000    *     *    *    *
+  FinInclusion    0.0652 (0.0435) 0.1340    .     .    .    .
+  TimeUse         0.2614 (0.0600) 0.0000    *     *    *    *
+  Income          0.0264 (0.0560) 0.6377    .     .    .    .
+  PhysHealth      0.1139 (0.0528) 0.0313    *     *    .    *
+  MentalHealth    0.1769 (0.0524) 0.0008    *     *    *    *
+  PolInvolve      0.1787 (0.0539) 0.0009    *     *    *    *
+  WomensEmp       0.0452 (0.0530) 0.3942    .     .    .    .
+
+  -- Ghana  EL2 (follow-up)  J=10 --
+  Outcome          Coeff     (SE)    p(2s)  Naive  FDR   CD   Lin
+  --------------------------------------------------------------------
+  Consumption     0.1357 (0.0501) 0.0068    *     *    *    *
+  FoodSecurity    0.3295 (0.0628) 0.0000    *     *    *    *
+  Assets          0.3422 (0.0569) 0.0000    *     *    *    *
+  FinInclusion    0.0772 (0.0449) 0.0862    *     .    .    .
+  TimeUse         0.3412 (0.0801) 0.0000    *     *    *    *
+  Income          0.0423 (0.0492) 0.3905    .     .    .    .
+  PhysHealth      -0.0107 (0.0551) 0.8464    .     .    .    .
+  MentalHealth    0.0354 (0.0566) 0.5312    .     .    .    .
+  PolInvolve      0.0985 (0.0555) 0.0761    *     .    .    .
+  WomensEmp       0.0287 (0.0544) 0.5981    .     .    .    .
+
+  -- Honduras  EL1 (endline)  J=10 --
+  Outcome          Coeff     (SE)    p(2s)  Naive  FDR   CD   Lin
+  --------------------------------------------------------------------
+  Consumption     0.0111 (0.0490) 0.8205    .     .    .    .
+  FoodSecurity    0.2367 (0.0511) 0.0000    *     *    *    *
+  Assets          0.0104 (0.0511) 0.8386    .     .    .    .
+  FinInclusion    0.1360 (0.0474) 0.0042    *     *    *    *
+  TimeUse         0.1987 (0.0552) 0.0003    *     *    *    *
+  Income          0.0862 (0.0334) 0.0100    *     *    *    *
+  PhysHealth      0.0667 (0.0374) 0.0744    *     .    .    .
+  MentalHealth    0.1377 (0.0410) 0.0008    *     *    *    *
+  PolInvolve      -0.0238 (0.0372) 0.5222    .     .    .    .
+  WomensEmp       0.0334 (0.0492) 0.4964    .     .    .    .
+
+  -- Honduras  EL2 (follow-up)  J=10 --
+  Outcome          Coeff     (SE)    p(2s)  Naive  FDR   CD   Lin
+  --------------------------------------------------------------------
+  Consumption     -0.0700 (0.0489) 0.1528    .     .    .    .
+  FoodSecurity    0.2300 (0.0597) 0.0001    *     *    *    *
+  Assets          -0.0956 (0.0476) 0.0447    *     .    .    .
+  FinInclusion    0.0883 (0.0506) 0.0811    *     .    .    .
+  TimeUse         0.0627 (0.0605) 0.2999    .     .    .    .
+  Income          0.0381 (0.0362) 0.2924    .     .    .    .
+  PhysHealth      0.0359 (0.0396) 0.3641    .     .    .    .
+  MentalHealth    0.0994 (0.0420) 0.0181    *     *    .    *
+  PolInvolve      -0.0132 (0.0394) 0.7375    .     .    .    .
+  WomensEmp       0.0032 (0.0534) 0.9518    .     .    .    .
+
+  -- India  EL1 (endline)  J=10 --
+  Outcome          Coeff     (SE)    p(2s)  Naive  FDR   CD   Lin
+  --------------------------------------------------------------------
+  Consumption     0.2959 (0.0798) 0.0002    *     *    *    *
+  FoodSecurity    0.6080 (0.1140) 0.0000    *     *    *    *
+  Assets          0.6500 (0.0893) 0.0000    *     *    *    *
+  FinInclusion    0.2381 (0.0684) 0.0005    *     *    *    *
+  TimeUse         0.2140 (0.1292) 0.0981    *     .    .    .
+  Income          0.2792 (0.0489) 0.0000    *     *    *    *
+  PhysHealth      0.1599 (0.0653) 0.0145    *     *    .    *
+  MentalHealth    0.0769 (0.0597) 0.1978    .     .    .    .
+  PolInvolve      -0.0070 (0.0496) 0.8871    .     .    .    .
+  WomensEmp       0.0865 (0.0628) 0.1687    .     .    .    .
+
+  -- India  EL2 (follow-up)  J=9 --
+  Outcome          Coeff     (SE)    p(2s)  Naive  FDR   CD   Lin
+  --------------------------------------------------------------------
+  Consumption     0.2280 (0.0656) 0.0005    *     *    *    *
+  FoodSecurity    0.6656 (0.0992) 0.0000    *     *    *    *
+  Assets          0.7123 (0.0958) 0.0000    *     *    *    *
+  FinInclusion    0.2781 (0.0635) 0.0000    *     *    *    *
+  TimeUse         0.2218 (0.0774) 0.0043    *     *    *    *
+  Income          0.1194 (0.0444) 0.0073    *     *    *    *
+  PhysHealth      -0.0166 (0.0511) 0.7453    .     .    .    .
+  MentalHealth    0.0584 (0.0530) 0.2710    .     .    .    .
+  PolInvolve      0.1411 (0.0457) 0.0021    *     *    *    *
+  WomensEmp         -         -       -      -      -    -    -
+
+  -- Pakistan  EL1 (endline)  J=9 --
+  Outcome          Coeff     (SE)    p(2s)  Naive  FDR   CD   Lin
+  --------------------------------------------------------------------
+  Consumption     0.1709 (0.0639) 0.0076    *     *    *    *
+  FoodSecurity    0.1005 (0.0693) 0.1473    .     .    .    .
+  Assets          0.3254 (0.0635) 0.0000    *     *    *    *
+  FinInclusion    0.1166 (0.0555) 0.0361    *     *    .    *
+  TimeUse         0.0113 (0.0577) 0.8454    .     .    .    .
+  Income          0.0167 (0.0376) 0.6582    .     .    .    .
+  PhysHealth      -0.0953 (0.0429) 0.0264    *     *    .    .
+  MentalHealth      -         -       -      -      -    -    -
+  PolInvolve      0.1719 (0.0433) 0.0001    *     *    *    *
+  WomensEmp       0.1680 (0.0520) 0.0013    *     *    *    *
+
+  -- Pakistan  EL2 (follow-up)  J=10 --
+  Outcome          Coeff     (SE)    p(2s)  Naive  FDR   CD   Lin
+  --------------------------------------------------------------------
+  Consumption     0.1175 (0.0669) 0.0791    *     .    .    .
+  FoodSecurity    0.1278 (0.0757) 0.0919    *     .    .    .
+  Assets          0.1697 (0.0667) 0.0112    *     *    *    *
+  FinInclusion    0.0583 (0.0589) 0.3225    .     .    .    .
+  TimeUse         -0.0524 (0.0677) 0.4392    .     .    .    .
+  Income          0.0422 (0.0385) 0.2726    .     .    .    .
+  PhysHealth      -0.0025 (0.0471) 0.9581    .     .    .    .
+  MentalHealth    0.0539 (0.0438) 0.2194    .     .    .    .
+  PolInvolve      0.1198 (0.0437) 0.0063    *     *    *    *
+  WomensEmp       0.0769 (0.0515) 0.1353    .     .    .    .
+
+  -- Peru  EL1 (endline)  J=10 --
+  Outcome          Coeff     (SE)    p(2s)  Naive  FDR   CD   Lin
+  --------------------------------------------------------------------
+  Consumption     0.0482 (0.0478) 0.3134    .     .    .    .
+  FoodSecurity    0.1224 (0.0469) 0.0091    *     *    *    *
+  Assets          0.1023 (0.0425) 0.0162    *     *    .    *
+  FinInclusion    0.0195 (0.0516) 0.7055    .     .    .    .
+  TimeUse         0.0162 (0.0481) 0.7368    .     .    .    .
+  Income          0.0122 (0.0394) 0.7558    .     .    .    .
+  PhysHealth      0.0853 (0.0428) 0.0465    *     .    .    .
+  MentalHealth    0.0592 (0.0479) 0.2163    .     .    .    .
+  PolInvolve      0.0206 (0.0417) 0.6210    .     .    .    .
+  WomensEmp       -0.0256 (0.0587) 0.6631    .     .    .    .
+
+  -- Peru  EL2 (follow-up)  J=10 --
+  Outcome          Coeff     (SE)    p(2s)  Naive  FDR   CD   Lin
+  --------------------------------------------------------------------
+  Consumption     0.0959 (0.0557) 0.0856    *     .    .    .
+  FoodSecurity    0.1081 (0.0614) 0.0785    *     .    .    .
+  Assets          0.0595 (0.0422) 0.1588    .     .    .    .
+  FinInclusion    0.0635 (0.0450) 0.1582    .     .    .    .
+  TimeUse         0.0505 (0.0615) 0.4112    .     .    .    .
+  Income          -0.0288 (0.0453) 0.5250    .     .    .    .
+  PhysHealth      0.1003 (0.0469) 0.0329    *     .    .    *
+  MentalHealth    0.1744 (0.0465) 0.0002    *     *    *    *
+  PolInvolve      -0.0063 (0.0457) 0.8907    .     .    .    .
+  WomensEmp       0.0576 (0.0619) 0.3521    .     .    .    .
+
+  EXERCISE 1 COMPLETE
+
+  Results verified against paper's Table 3 and Tables S4a-f.
+
+  Max coefficient difference: <1e-7. Max p-value difference: <1e-7.
+

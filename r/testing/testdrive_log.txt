@@ -1,0 +1,532 @@
+
+====================================================================== 
+  MHT Test Drive: Banerjee et al. (Science 2015)
+  Viviano, Wuthrich, and Niehaus (2026)
+====================================================================== 
+
+--- Reference table ---
+
+
+============================================= 
+  Optimal Critical Values (Linear (Eq. 27) model)
+  Viviano, Wuthrich, and Niehaus (2026)
+============================================= 
+
+      n/m=50% n/m=100% n/m=200% Sidak           
+--------------------------------------------- 
+  |J| a=0.050 a=0.050 a=0.050 a=0.025 a=0.050 
+--------------------------------------------- 
+    1  0.043  0.050  0.064  0.025  0.050 
+    2  0.025  0.032  0.046  0.013  0.025 
+    3  0.019  0.026  0.040  0.008  0.017 
+    5  0.014  0.021  0.035  0.005  0.010 
+    6  0.013  0.020  0.034  0.004  0.009 
+   10  0.011  0.018  0.032  0.003  0.005 
+--------------------------------------------- 
+
+
+================================================== 
+  VERSION A: 10 Outcomes, India
+  Reference: Table 3, Banerjee et al. (2015)
+================================================== 
+
+Regression summary (India, treatment coefficient, one-sided p):
+       label       coef         se    t_stat      p_value
+ Consumption 0.30887739 0.07714771 4.0037145 3.117781e-05
+      Income 0.67613464 0.11331026 5.9671085 1.207474e-09
+      Assets 0.66913575 0.08811987 7.5934715 1.554312e-14
+     FoodSec 0.28872173 0.06919315 4.1726924 1.505106e-05
+     Finance 0.26614849 0.15161025 1.7554782 3.958878e-02
+     TimeUse 0.29493856 0.04966724 5.9382913 1.440039e-09
+  PhysHealth 0.18491129 0.05581741 3.3127891 4.618530e-04
+  MentHealth 0.09172096 0.05404623 1.6970835 4.484044e-02
+   Political 0.01887341 0.04851959 0.3889854 3.486435e-01
+    WomenEmp 0.06086305 0.05347070 1.1382506 1.275079e-01
+
+--- mht_test: Linear model (cf_share=0.46), alpha_bar=0.05 ---
+
+
+----------------------------------------------------------------- 
+  Multiple Hypothesis Testing Results
+  Viviano, Wuthrich, and Niehaus (2026)
+----------------------------------------------------------------- 
+
+  Hypotheses tested:    10
+  Benchmark alpha:      0.0500
+  Cost model:           Linear
+
+------------------------------------------------------- 
+  Procedure                 Test size   Rejections
+------------------------------------------------------- 
+  Optimal (model-based)      0.017656            6
+  Bonferroni                 0.005000            6
+  Holm (step-down)           0.0500 *            6
+  BH (FDR control)           0.0500 *            6
+  Unadjusted                 0.050000            8
+------------------------------------------------------- 
+  * Step-wise; effective threshold varies by rank
+
+  Detailed results:
+      p_value reject_optimal reject_bonferroni reject_holm reject_bh
+ 3.117781e-05           TRUE              TRUE        TRUE      TRUE
+ 1.207474e-09           TRUE              TRUE        TRUE      TRUE
+ 1.554312e-14           TRUE              TRUE        TRUE      TRUE
+ 1.505106e-05           TRUE              TRUE        TRUE      TRUE
+ 3.958878e-02          FALSE             FALSE       FALSE     FALSE
+ 1.440039e-09           TRUE              TRUE        TRUE      TRUE
+ 4.618530e-04           TRUE              TRUE        TRUE      TRUE
+ 4.484044e-02          FALSE             FALSE       FALSE     FALSE
+ 3.486435e-01          FALSE             FALSE       FALSE     FALSE
+ 1.275079e-01          FALSE             FALSE       FALSE     FALSE
+ reject_unadjusted
+              TRUE
+              TRUE
+              TRUE
+              TRUE
+              TRUE
+              TRUE
+              TRUE
+              TRUE
+             FALSE
+             FALSE
+
+
+--- mht_test: Cobb-Douglas (beta=0.13, iota=0.075) ---
+
+
+----------------------------------------------------------------- 
+  Multiple Hypothesis Testing Results
+  Viviano, Wuthrich, and Niehaus (2026)
+----------------------------------------------------------------- 
+
+  Hypotheses tested:    10
+  Benchmark alpha:      0.0500
+  Cost model:           Cobb-Douglas
+
+------------------------------------------------------- 
+  Procedure                 Test size   Rejections
+------------------------------------------------------- 
+  Optimal (model-based)      0.006745            6
+  Bonferroni                 0.005000            6
+  Holm (step-down)           0.0500 *            6
+  BH (FDR control)           0.0500 *            6
+  Unadjusted                 0.050000            8
+------------------------------------------------------- 
+  * Step-wise; effective threshold varies by rank
+
+  Detailed results:
+      p_value reject_optimal reject_bonferroni reject_holm reject_bh
+ 3.117781e-05           TRUE              TRUE        TRUE      TRUE
+ 1.207474e-09           TRUE              TRUE        TRUE      TRUE
+ 1.554312e-14           TRUE              TRUE        TRUE      TRUE
+ 1.505106e-05           TRUE              TRUE        TRUE      TRUE
+ 3.958878e-02          FALSE             FALSE       FALSE     FALSE
+ 1.440039e-09           TRUE              TRUE        TRUE      TRUE
+ 4.618530e-04           TRUE              TRUE        TRUE      TRUE
+ 4.484044e-02          FALSE             FALSE       FALSE     FALSE
+ 3.486435e-01          FALSE             FALSE       FALSE     FALSE
+ 1.275079e-01          FALSE             FALSE       FALSE     FALSE
+ reject_unadjusted
+              TRUE
+              TRUE
+              TRUE
+              TRUE
+              TRUE
+              TRUE
+              TRUE
+              TRUE
+             FALSE
+             FALSE
+
+
+--- Comparison with Banerjee et al. Table 3 ---
+  Paper uses BH q-values (FDR control) on pooled 6-country sample.
+  Our analysis: India only, with cost-based optimal correction.
+
+  Paper Table 3 q-values (endline 1, pooled):
+    Most indices: q = 0.001  => significant under BH
+    Physical health: q = 0.078 => NOT significant at 5% under BH
+    Women's empowerment: q = 0.049 => borderline under BH
+
+
+--- Study-specific calibration (Table 4 cost data) ---
+  From Table 4 (India): program+overhead ~$1,268, survey ~$100-150
+  => cf_share_outcomes ~ 0.80-0.90 (most costs fixed w.r.t. outcomes)
+
+  cf_share=0.46: alpha* = 0.01766
+  cf_share=0.75: alpha* = 0.00950
+  cf_share=0.82: alpha* = 0.00807
+  cf_share=0.90: alpha* = 0.00661
+  Bonferroni:     alpha* = 0.00500
+
+
+================================================== 
+  VERSION B: 6 Countries as 6 Treatments
+  Reference: Figure 3, Table 4, Banerjee et al. (2015)
+================================================== 
+
+
+--- Consumption: 6 country-specific treatments ---
+    (1=Ethiopia, 2=Ghana, 3=Honduras, 4=India, 5=Pakistan, 6=Peru)
+
+  FDA default (cf_share=0.46):
+
+------------------------------------------------------------------------ 
+  MHT Postestimation Results
+  Viviano, Wuthrich, and Niehaus (2026)
+------------------------------------------------------------------------ 
+
+  Hypotheses tested:    6
+  Benchmark alpha:      0.0500
+  Cost model:           Linear
+  P-values:             one-sided (positive direction)
+
+---------------------------------------------------------- 
+  Procedure                 Test size   Rejections
+---------------------------------------------------------- 
+  Optimal (model-based)      0.020052            3
+  Bonferroni                 0.008333            3
+  Holm (step-down)          step-wise            3
+  BH (FDR control)          step-wise            4
+  Unadjusted                 0.050000            4
+---------------------------------------------------------- 
+
+  Detailed results (* = reject at threshold):
+
+     term estimate     se t_stat p_value optimal  bonf  holm    bh unadj
+ treat_c1   0.2410 0.0648  3.720  0.0001     *     *     *     *     *  
+ treat_c2   0.0845 0.0449  1.881  0.0300     .     .     .     *     *  
+ treat_c3  -0.0067 0.0440 -0.153  0.5607     .     .     .     .     .  
+ treat_c4   0.3071 0.0687  4.471  0.0000     *     *     *     *     *  
+ treat_c5   0.1846 0.0608  3.036  0.0012     *     *     *     *     *  
+ treat_c6  -0.0428 0.0453 -0.945  0.8276     .     .     .     .     .  
+
+
+  Study-specific (cf_share=0.10, countries are expensive):
+
+------------------------------------------------------------------------ 
+  MHT Postestimation Results
+  Viviano, Wuthrich, and Niehaus (2026)
+------------------------------------------------------------------------ 
+
+  Hypotheses tested:    6
+  Benchmark alpha:      0.0500
+  Cost model:           Linear
+  P-values:             one-sided (positive direction)
+
+---------------------------------------------------------- 
+  Procedure                 Test size   Rejections
+---------------------------------------------------------- 
+  Optimal (model-based)      0.039583            4
+  Bonferroni                 0.008333            3
+  Holm (step-down)          step-wise            3
+  BH (FDR control)          step-wise            4
+  Unadjusted                 0.050000            4
+---------------------------------------------------------- 
+
+  Detailed results (* = reject at threshold):
+
+     term estimate     se t_stat p_value optimal  bonf  holm    bh unadj
+ treat_c1   0.2410 0.0648  3.720  0.0001     *     *     *     *     *  
+ treat_c2   0.0845 0.0449  1.881  0.0300     *     .     .     *     *  
+ treat_c3  -0.0067 0.0440 -0.153  0.5607     .     .     .     .     .  
+ treat_c4   0.3071 0.0687  4.471  0.0000     *     *     *     *     *  
+ treat_c5   0.1846 0.0608  3.036  0.0012     *     *     *     *     *  
+ treat_c6  -0.0428 0.0453 -0.945  0.8276     .     .     .     .     .  
+
+
+--- Income & revenues: 6 country-specific treatments ---
+    (1=Ethiopia, 2=Ghana, 3=Honduras, 4=India, 5=Pakistan, 6=Peru)
+
+  FDA default (cf_share=0.46):
+
+------------------------------------------------------------------------ 
+  MHT Postestimation Results
+  Viviano, Wuthrich, and Niehaus (2026)
+------------------------------------------------------------------------ 
+
+  Hypotheses tested:    6
+  Benchmark alpha:      0.0500
+  Cost model:           Linear
+  P-values:             one-sided (positive direction)
+
+---------------------------------------------------------- 
+  Procedure                 Test size   Rejections
+---------------------------------------------------------- 
+  Optimal (model-based)      0.020052            3
+  Bonferroni                 0.008333            3
+  Holm (step-down)          step-wise            3
+  BH (FDR control)          step-wise            3
+  Unadjusted                 0.050000            3
+---------------------------------------------------------- 
+
+  Detailed results (* = reject at threshold):
+
+     term estimate     se t_stat p_value optimal  bonf  holm    bh unadj
+ treat_c1   1.4516 0.0901 16.117  0.0000     *     *     *     *     *  
+ treat_c2   0.0915 0.0618  1.481  0.0693     .     .     .     .     .  
+ treat_c3   0.3211 0.0612  5.250  0.0000     *     *     *     *     *  
+ treat_c4   0.6733 0.0955  7.054  0.0000     *     *     *     *     *  
+ treat_c5   0.1089 0.0828  1.314  0.0945     .     .     .     .     .  
+ treat_c6  -0.0300 0.0630 -0.477  0.6833     .     .     .     .     .  
+
+
+  Study-specific (cf_share=0.10, countries are expensive):
+
+------------------------------------------------------------------------ 
+  MHT Postestimation Results
+  Viviano, Wuthrich, and Niehaus (2026)
+------------------------------------------------------------------------ 
+
+  Hypotheses tested:    6
+  Benchmark alpha:      0.0500
+  Cost model:           Linear
+  P-values:             one-sided (positive direction)
+
+---------------------------------------------------------- 
+  Procedure                 Test size   Rejections
+---------------------------------------------------------- 
+  Optimal (model-based)      0.039583            3
+  Bonferroni                 0.008333            3
+  Holm (step-down)          step-wise            3
+  BH (FDR control)          step-wise            3
+  Unadjusted                 0.050000            3
+---------------------------------------------------------- 
+
+  Detailed results (* = reject at threshold):
+
+     term estimate     se t_stat p_value optimal  bonf  holm    bh unadj
+ treat_c1   1.4516 0.0901 16.117  0.0000     *     *     *     *     *  
+ treat_c2   0.0915 0.0618  1.481  0.0693     .     .     .     .     .  
+ treat_c3   0.3211 0.0612  5.250  0.0000     *     *     *     *     *  
+ treat_c4   0.6733 0.0955  7.054  0.0000     *     *     *     *     *  
+ treat_c5   0.1089 0.0828  1.314  0.0945     .     .     .     .     .  
+ treat_c6  -0.0300 0.0630 -0.477  0.6833     .     .     .     .     .  
+
+
+--- Assets: 6 country-specific treatments ---
+    (1=Ethiopia, 2=Ghana, 3=Honduras, 4=India, 5=Pakistan, 6=Peru)
+
+  FDA default (cf_share=0.46):
+
+------------------------------------------------------------------------ 
+  MHT Postestimation Results
+  Viviano, Wuthrich, and Niehaus (2026)
+------------------------------------------------------------------------ 
+
+  Hypotheses tested:    6
+  Benchmark alpha:      0.0500
+  Cost model:           Linear
+  P-values:             one-sided (positive direction)
+
+---------------------------------------------------------- 
+  Procedure                 Test size   Rejections
+---------------------------------------------------------- 
+  Optimal (model-based)      0.020052            5
+  Bonferroni                 0.008333            4
+  Holm (step-down)          step-wise            5
+  BH (FDR control)          step-wise            5
+  Unadjusted                 0.050000            5
+---------------------------------------------------------- 
+
+  Detailed results (* = reject at threshold):
+
+     term estimate     se t_stat p_value optimal  bonf  holm    bh unadj
+ treat_c1   0.5003 0.0644  7.774  0.0000     *     *     *     *     *  
+ treat_c2   0.1990 0.0441  4.514  0.0000     *     *     *     *     *  
+ treat_c3   0.0304 0.0440  0.692  0.2444     .     .     .     .     .  
+ treat_c4   0.6708 0.0682  9.841  0.0000     *     *     *     *     *  
+ treat_c5   0.3004 0.0592  5.075  0.0000     *     *     *     *     *  
+ treat_c6   0.1012 0.0456  2.221  0.0132     *     .     *     *     *  
+
+
+  Study-specific (cf_share=0.10, countries are expensive):
+
+------------------------------------------------------------------------ 
+  MHT Postestimation Results
+  Viviano, Wuthrich, and Niehaus (2026)
+------------------------------------------------------------------------ 
+
+  Hypotheses tested:    6
+  Benchmark alpha:      0.0500
+  Cost model:           Linear
+  P-values:             one-sided (positive direction)
+
+---------------------------------------------------------- 
+  Procedure                 Test size   Rejections
+---------------------------------------------------------- 
+  Optimal (model-based)      0.039583            5
+  Bonferroni                 0.008333            4
+  Holm (step-down)          step-wise            5
+  BH (FDR control)          step-wise            5
+  Unadjusted                 0.050000            5
+---------------------------------------------------------- 
+
+  Detailed results (* = reject at threshold):
+
+     term estimate     se t_stat p_value optimal  bonf  holm    bh unadj
+ treat_c1   0.5003 0.0644  7.774  0.0000     *     *     *     *     *  
+ treat_c2   0.1990 0.0441  4.514  0.0000     *     *     *     *     *  
+ treat_c3   0.0304 0.0440  0.692  0.2444     .     .     .     .     .  
+ treat_c4   0.6708 0.0682  9.841  0.0000     *     *     *     *     *  
+ treat_c5   0.3004 0.0592  5.075  0.0000     *     *     *     *     *  
+ treat_c6   0.1012 0.0456  2.221  0.0132     *     .     *     *     *  
+
+
+--- Food security: 6 country-specific treatments ---
+    (1=Ethiopia, 2=Ghana, 3=Honduras, 4=India, 5=Pakistan, 6=Peru)
+
+  FDA default (cf_share=0.46):
+
+------------------------------------------------------------------------ 
+  MHT Postestimation Results
+  Viviano, Wuthrich, and Niehaus (2026)
+------------------------------------------------------------------------ 
+
+  Hypotheses tested:    6
+  Benchmark alpha:      0.0500
+  Cost model:           Linear
+  P-values:             one-sided (positive direction)
+
+---------------------------------------------------------- 
+  Procedure                 Test size   Rejections
+---------------------------------------------------------- 
+  Optimal (model-based)      0.020052            3
+  Bonferroni                 0.008333            2
+  Holm (step-down)          step-wise            3
+  BH (FDR control)          step-wise            3
+  Unadjusted                 0.050000            3
+---------------------------------------------------------- 
+
+  Detailed results (* = reject at threshold):
+
+     term estimate     se t_stat p_value optimal  bonf  holm    bh unadj
+ treat_c1   0.1427 0.0628  2.273  0.0115     *     .     *     *     *  
+ treat_c2   0.0024 0.0437  0.056  0.4778     .     .     .     .     .  
+ treat_c3   0.1099 0.0430  2.556  0.0053     *     *     *     *     *  
+ treat_c4   0.2886 0.0666  4.332  0.0000     *     *     *     *     *  
+ treat_c5   0.0946 0.0582  1.627  0.0519     .     .     .     .     .  
+ treat_c6   0.0085 0.0445  0.191  0.4241     .     .     .     .     .  
+
+
+  Study-specific (cf_share=0.10, countries are expensive):
+
+------------------------------------------------------------------------ 
+  MHT Postestimation Results
+  Viviano, Wuthrich, and Niehaus (2026)
+------------------------------------------------------------------------ 
+
+  Hypotheses tested:    6
+  Benchmark alpha:      0.0500
+  Cost model:           Linear
+  P-values:             one-sided (positive direction)
+
+---------------------------------------------------------- 
+  Procedure                 Test size   Rejections
+---------------------------------------------------------- 
+  Optimal (model-based)      0.039583            3
+  Bonferroni                 0.008333            2
+  Holm (step-down)          step-wise            3
+  BH (FDR control)          step-wise            3
+  Unadjusted                 0.050000            3
+---------------------------------------------------------- 
+
+  Detailed results (* = reject at threshold):
+
+     term estimate     se t_stat p_value optimal  bonf  holm    bh unadj
+ treat_c1   0.1427 0.0628  2.273  0.0115     *     .     *     *     *  
+ treat_c2   0.0024 0.0437  0.056  0.4778     .     .     .     .     .  
+ treat_c3   0.1099 0.0430  2.556  0.0053     *     *     *     *     *  
+ treat_c4   0.2886 0.0666  4.332  0.0000     *     *     *     *     *  
+ treat_c5   0.0946 0.0582  1.627  0.0519     .     .     .     .     .  
+ treat_c6   0.0085 0.0445  0.191  0.4241     .     .     .     .     .  
+
+
+--- Financial inclusion: 6 country-specific treatments ---
+    (1=Ethiopia, 2=Ghana, 3=Honduras, 4=India, 5=Pakistan, 6=Peru)
+
+  FDA default (cf_share=0.46):
+
+------------------------------------------------------------------------ 
+  MHT Postestimation Results
+  Viviano, Wuthrich, and Niehaus (2026)
+------------------------------------------------------------------------ 
+
+  Hypotheses tested:    6
+  Benchmark alpha:      0.0500
+  Cost model:           Linear
+  P-values:             one-sided (positive direction)
+
+---------------------------------------------------------- 
+  Procedure                 Test size   Rejections
+---------------------------------------------------------- 
+  Optimal (model-based)      0.020052            4
+  Bonferroni                 0.008333            4
+  Holm (step-down)          step-wise            4
+  BH (FDR control)          step-wise            4
+  Unadjusted                 0.050000            4
+---------------------------------------------------------- 
+
+  Detailed results (* = reject at threshold):
+
+     term estimate     se t_stat p_value optimal  bonf  holm    bh unadj
+ treat_c1   1.9236 0.0807 23.838  0.0000     *     *     *     *     *  
+ treat_c2   0.2711 0.0559  4.847  0.0000     *     *     *     *     *  
+ treat_c3   0.1893 0.0549  3.448  0.0003     *     *     *     *     *  
+ treat_c4   0.2688 0.0855  3.144  0.0008     *     *     *     *     *  
+ treat_c5   0.0115 0.0745  0.154  0.4388     .     .     .     .     .  
+ treat_c6  -0.0426 0.0564 -0.755  0.7748     .     .     .     .     .  
+
+
+  Study-specific (cf_share=0.10, countries are expensive):
+
+------------------------------------------------------------------------ 
+  MHT Postestimation Results
+  Viviano, Wuthrich, and Niehaus (2026)
+------------------------------------------------------------------------ 
+
+  Hypotheses tested:    6
+  Benchmark alpha:      0.0500
+  Cost model:           Linear
+  P-values:             one-sided (positive direction)
+
+---------------------------------------------------------- 
+  Procedure                 Test size   Rejections
+---------------------------------------------------------- 
+  Optimal (model-based)      0.039583            4
+  Bonferroni                 0.008333            4
+  Holm (step-down)          step-wise            4
+  BH (FDR control)          step-wise            4
+  Unadjusted                 0.050000            4
+---------------------------------------------------------- 
+
+  Detailed results (* = reject at threshold):
+
+     term estimate     se t_stat p_value optimal  bonf  holm    bh unadj
+ treat_c1   1.9236 0.0807 23.838  0.0000     *     *     *     *     *  
+ treat_c2   0.2711 0.0559  4.847  0.0000     *     *     *     *     *  
+ treat_c3   0.1893 0.0549  3.448  0.0003     *     *     *     *     *  
+ treat_c4   0.2688 0.0855  3.144  0.0008     *     *     *     *     *  
+ treat_c5   0.0115 0.0745  0.154  0.4388     .     .     .     .     .  
+ treat_c6  -0.0426 0.0564 -0.755  0.7748     .     .     .     .     .  
+
+
+
+================================================== 
+  SUMMARY: Version A vs Version B
+================================================== 
+
+  Version A (10 outcomes, India):
+    Cost structure: adding outcomes is CHEAP (cf_share ~ 0.82)
+    => Strict correction needed (alpha* ~ 0.008, near Bonferroni)
+    => Confirms 5 core results; physical health is borderline
+
+  Version B (6 countries, pooled):
+    Cost structure: adding a country is EXPENSIVE (cf_share ~ 0.10)
+    => Minimal correction needed (alpha* ~ 0.040, near unadjusted)
+    => Retains effects that Bonferroni would discard
+
+  Same data, two framings, opposite corrections.
+  This is the core insight of VWN (2026).
+
+Done.
