@@ -1,133 +1,101 @@
-# MHT Package for Stata -- User Testing
+# mhtopt (Stata)
 
-**Viviano, Wuthrich, and Niehaus (2026)**
-*"A Model of Multiple Hypothesis Testing"* -- arXiv:2104.13367v10
+**Optimal Multiple Hypothesis Testing Corrections — Stata port**
 
-Please use the package and give us your feedback!
+Stata implementation of the optimal MHT correction from:
 
+> Viviano, D., Wüthrich, K., and Niehaus, P. (2026). *A Model of Multiple Hypothesis Testing.* arXiv:[2104.13367](https://arxiv.org/abs/2104.13367).
 
-## What The Package Does
-Standard MHT corrections (Bonferroni, Holm, BH) are ad hoc. This package derives the optimal correction from the economic incentives of research production: how costs scale with the number of  hypotheses determines how much to adjust. The result is a per-test significance level alpha* that lies between Bonferroni (too conservative) and unadjusted (too permissive),  with the exact position pinned down by the cost structure of the study.
+Standard MHT corrections (Bonferroni, Holm, BH) are ad hoc. `mhtopt` derives the optimal per-test significance level α\* from the economic incentives of research production. The result sits between Bonferroni (too conservative) and unadjusted (too permissive), with the exact position determined by the study's cost structure.
 
-Two cost models are supported, both calibrated to real data:
+Two cost models, both calibrated to real data:
 
-- Linear (default): fixed-cost share = 0.46 (Sertkaya et al. 2016)
-- Cobb-Douglas (J-PAL data, Table 2 of paper): 
-    - beta = 0.13 —how cost scales with treatment arms, 
-    - iota = 0.075 —how it scales with surveys per arm 
+- **Linear** (default): fixed-cost share 0.46 (Sertkaya et al. 2016)
+- **Cobb-Douglas** (J-PAL, Table 2 of paper): β = 0.13, ι = 0.075
 
-
-### Key Features
-- Works after any standard Stata estimation command
-- Reports optimal, Bonferroni, Holm, BH, and unadjusted results side by side
-- One-sided tests by default (grounded in Remark 6); two-sided option available
-- mbar() option benchmarks the study's sample size against a reference, making alpha* more or less conservative accordingly
-- mht_cost_estimate estimates beta and iota from project-level cost data, allowing context-specific calibration
-- mht_table reproduces Tables 1 and 3 of the paper for any parameter values
-- Full Stata help files (.sthlp) for all commands
-
----
-
-## Quick Start
+## Installation
 
 ```stata
-cd "path/to/package_to_publish"
-adopath + "`c(pwd)'/stata"
-
-* Run the full example (self-contained, no external data needed)
-do "examples/mht_example.do"
+ssc install mhtopt
 ```
 
----
+Requires Stata 14 or later. No SSC dependencies.
 
-## What to Try
-
-Below are four options to give a try to the statistical package. We would apprciate if you did at least one of them. More than that will be incredibly thoughtful for us.  
-
-### 1. Run the full simulated workflow
-
-The example script demonstrates all five commands using built-in and simulated data. You can run it in Stata or just read the pre-generated log file to see the output:
+Development install (latest unreleased version from GitHub):
 
 ```stata
-* Run it yourself (works from package_to_publish/ or examples/):
-do "examples/mht_example.do"
-
-* Or just open the clean log to see the output:
-* examples/mht_example_log.txt
+net install mhtopt, from("https://raw.githubusercontent.com/OWNER/mhtopt/main/stata/")
 ```
 
-This covers: `mht_est`, `mht_test`, `mht_table`, `mht_critical`, and `mht_cost_estimate`.
-
-### 2. Use your own data
-
-Do you have a project that uses multiple hypothesis testing? Try applying the package to it:
+## Quick start
 
 ```stata
-* After running a regression with multiple treatment arms:
-regress outcome treat1 treat2 treat3 controls, cluster(cluster_id)
-mht_est, vars(treat1 treat2 treat3) alphabar(0.05)
+* Optimal critical value for 5 hypotheses
+mht_critical, jhypotheses(5) alphabar(0.05)
 
-* Or with a variable of p-values:
+* Apply MHT adjustment to a variable of p-values
 mht_test pval_variable, alphabar(0.05)
+
+* Postestimation: test J treatment coefficients
+regress y treat1 treat2 treat3 controls, cluster(cluster_id)
+mht_est, vars(treat1 treat2 treat3) alphabar(0.05)
 ```
 
-### 3. Try with published data
-
-If you don't have your own data, these papers have public replication data and rich multiple-testing structures:
-
-- **Finkelstein et al. (2012, QJE)** -- *The Oregon Health Insurance Experiment: Evidence from the First Year*. Tests effects of Medicaid access across three outcome domains (utilization, financial strain, health), with the authors' own Westfall-Young adjustments available for benchmarking. Data: https://www.nber.org/research/data/oregon-health-insurance-experiment-data (free; public-use files in Stata format)
-
-- **Casey, Glennerster, and Miguel (2012, QJE)** -- *Reshaping Institutions: Evidence on Aid Impacts Using a Preanalysis Plan*. The canonical paper on pre-analysis plans, with 12 hypotheses in 2 families where hardware outcomes show strong effects but software outcomes are precisely estimated nulls -- ideal for exploring how cost structures interact with MHT. Data: https://emiguel.econ.berkeley.edu/research/reshaping-institutions-evidence-on-aid-impacts-using-a-preanalysis-plan/ (free download)
-
-- **Banerjee, Duflo, Glennerster, and Kinnan (2015, AEJ:Applied)** -- *The Miracle of Microfinance?* Tests microcredit effects across 5-6 outcome families where some show significant effects (business, durables) and others show nulls (health, education), and notably does not apply formal MHT corrections — outcomes are only grouped and standardized. Data: https://www.openicpsr.org/openicpsr/project/113599 (free ICPSR account required)
-
-### 4. Explore our worked example
-
-We applied the package to Banerjee et al. (2015, Science) -- a 6-country graduation program RCT with 10 outcome families. The data included in `testing/data/` are processed versions of the original replication files (standardized outcome indices, z-scored within country to the control group), generated by the authors' own analysis scripts. The original data is available at https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/NHIXNT.
+A full self-contained example (uses `sysuse auto` and simulated data — no external files):
 
 ```stata
-* Run it yourself (works from package_to_publish/ or testing/):
-do "testing/test_mht_stata_testdrive.do"
-
-* Or just open the clean log to see the output:
-* testing/testdrive_log.txt
+do "examples/mht_example.do"
 ```
 
-Both options produce or contain a clean log with only the package output and commentary -- no echoed Stata code.
+## Five commands
 
-The full analysis (4 parts) is a separate, deeper exercise in `testing/full_analysis_case/`. You can run them in Stata or just read the pre-generated log files:
+| Command | Purpose |
+|---|---|
+| `mht_critical` | Compute optimal critical value α\* |
+| `mht_test` | Apply MHT adjustment to a variable of p-values |
+| `mht_est` | Postestimation: test J coefficients from any Stata regression |
+| `mht_cost_estimate` | Estimate cost-function parameters (β, ι) from project-level data |
+| `mht_table` | Generate reference tables (reproduces Tables 1 & 3 of the paper) |
 
-| Part | Script | Clean log |
-|------|--------|-----------|
-| 1. One treatment x 10 outcomes | `analysis_part1_outcomes.do` | `part1_outcomes_log.txt` |
-| 2. 6 country treatments x 10 outcomes | `analysis_part2_treatments.do` | `part2_treatments_log.txt` |
-| 3. Cost calibration from Table 4 | `analysis_part3_calibration.do` | `part3_calibration_log.txt` |
-| 4. Sensitivity to fixed cost share | `analysis_part4_gradient.do` | `part4_gradient_log.txt` |
+Each command reports optimal, Bonferroni, Holm, BH, and unadjusted results side by side. Per-command help: `help mht_critical`, `help mht_est`, etc.
 
-Run all four parts at once with `do "testing/full_analysis_case/run_all.do"`, or run each part independently. All scripts auto-detect the package root, so they work from `package_to_publish/` or from the `full_analysis_case/` folder directly. Results summary: `testing/full_analysis_case/results_note.md`
+## Worked example with real data
 
----
+A walkthrough applying the package to Banerjee et al. (2015, *Science*) — a 6-country graduation-program RCT with 10 outcome families — is in [`testing/`](testing/):
 
-## Package Commands
+```stata
+do "testing/test_mht_stata_testdrive.do"
+```
 
-| Command | Purpose | Example |
+The full 4-part analysis lives in `testing/full_analysis_case/`:
+
+| Part | Script | Pre-generated log |
 |---|---|---|
-| `mht_critical` | Compute optimal critical value | `mht_critical, jhypotheses(5) alphabar(0.05)` |
-| `mht_test` | Test a variable of p-values | `mht_test pval, alphabar(0.05)` |
-| `mht_est` | Postestimation: test J coefficients | `mht_est, vars(x1 x2 x3) alphabar(0.05)` |
-| `mht_cost_estimate` | Estimate cost parameters from data | `mht_cost_estimate cost arms n, alphabar(0.05)` |
-| `mht_table` | Generate reference tables | `mht_table, alphabar(0.05)` |
+| 1. One treatment × 10 outcomes | `analysis_part1_outcomes.do` | `part1_outcomes_log.txt` |
+| 2. 6 country treatments × 10 outcomes | `analysis_part2_treatments.do` | `part2_treatments_log.txt` |
+| 3. Cost calibration from Table 4 | `analysis_part3_calibration.do` | `part3_calibration_log.txt` |
+| 4. Sensitivity to fixed-cost share | `analysis_part4_gradient.do` | `part4_gradient_log.txt` |
 
-Two cost models: `linear` (default, FDA calibration) and `cobbdouglas` (J-PAL calibration). See `docs/documentation_stata.pdf` for full documentation and `help mht_est` etc. for Stata help files.
+Run all four with `do "testing/full_analysis_case/run_all.do"`.
 
----
+## Documentation
 
-## Feedback
+- Per-command: `help mht_critical`, `help mht_test`, etc.
+- Full reference: [`docs/documentation_stata.pdf`](docs/documentation_stata.pdf)
+- Paper: [arXiv:2104.13367](https://arxiv.org/abs/2104.13367)
 
-We would appreciate your feedback on:
-- **Usability:** Was anything confusing? Did the commands work as expected?
-- **Documentation:** Was the help sufficient? What was missing?
-- **Features:** What would make the package more useful for your work?
-- **Bugs:** Did anything break? Please share the error message and what you were trying to do.
+## Citation
 
-Thank you!
+A formatted reference appears in `help mht_critical` (References section) and at the bottom of every `.sthlp` file.
+
+## Other language ports
+
+The same five commands are available in R (`install.packages("mhtopt")`) and Python (`pip install mhtopt`). See the [project repository](https://github.com/OWNER/mhtopt) for cross-language documentation.
+
+## Reporting bugs
+
+Open a [GitHub issue](https://github.com/OWNER/mhtopt/issues) and include the output of `which mht_critical` (package version) and `version` (Stata version).
+
+## License
+
+MIT — see [LICENSE](../LICENSE).

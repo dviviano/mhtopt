@@ -1,24 +1,32 @@
 # ============================================================================
-# MHT Package for R -- Complete Example
-# Viviano, Wuthrich, and Niehaus (2026)
+# mhtopt -- Complete Example (R)
+# Viviano, Wüthrich, and Niehaus (2026)
 # ============================================================================
-# This script demonstrates all five package functions using built-in and
-# simulated data. No external data files needed.
+# Demonstrates all five package functions using built-in and simulated data.
+# No external data files needed.
 #
-# To run: source this file from the package root (mht_package_R_042826/).
-# It auto-detects the package location and sources the R files.
+# To run: install.packages("mhtopt") then source this file. For development
+# use, the script will fall back to sourcing R/ from a sibling mhtopt/
+# directory if the installed package is not available.
 # ============================================================================
 
-# --- Auto-source package functions ---
-if (file.exists("mht/R/mht_critical.R")) {
-  pkg_root <- getwd()
-} else if (file.exists("../mht/R/mht_critical.R")) {
-  pkg_root <- normalizePath("..")
+# --- Load the package (with dev fallback) ---
+if (requireNamespace("mhtopt", quietly = TRUE)) {
+  library(mhtopt)
 } else {
-  stop("Please run from mht_package_R_042826/ or mht_package_R_042826/examples/")
-}
-for (f in list.files(file.path(pkg_root, "mht/R"), full.names = TRUE, pattern = "[.]R$")) {
-  source(f)
+  # Development fallback: source from r/mhtopt/R/
+  candidates <- c("mhtopt/R", "../mhtopt/R", "../../r/mhtopt/R", "r/mhtopt/R")
+  src_dir <- NULL
+  for (p in candidates) {
+    if (dir.exists(p) && file.exists(file.path(p, "mht_critical.R"))) {
+      src_dir <- p; break
+    }
+  }
+  if (is.null(src_dir)) {
+    stop("mhtopt not installed. Run install.packages('mhtopt') ",
+         "or run this script from the package root.")
+  }
+  for (f in list.files(src_dir, pattern = "[.]R$", full.names = TRUE)) source(f)
 }
 
 cat("\n")

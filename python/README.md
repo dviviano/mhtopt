@@ -1,140 +1,106 @@
-# MHT Package for Python -- User Testing
+# mhtopt
 
-**Viviano, Wuthrich, and Niehaus (2026)**
-*"A Model of Multiple Hypothesis Testing"* -- arXiv:2104.13367v10
+**Optimal Multiple Hypothesis Testing Corrections (Python port)**
 
-Please use the package and give us your feedback!
+Python implementation of the optimal MHT correction from:
 
+> Viviano, D., Wüthrich, K., and Niehaus, P. (2026). *A Model of Multiple Hypothesis Testing.* arXiv:[2104.13367](https://arxiv.org/abs/2104.13367).
 
-## What The Package Does
-Standard MHT corrections (Bonferroni, Holm, BH) are ad hoc. This package derives the optimal correction from the economic incentives of research production: how costs scale with the number of hypotheses determines how much to adjust. The result is a per-test significance level alpha* that lies between Bonferroni (too conservative) and unadjusted (too permissive), with the exact position pinned down by the cost structure of the study.
+Standard MHT corrections (Bonferroni, Holm, BH) are ad hoc. `mhtopt` derives the optimal per-test significance level α\* from the economic incentives of research production: how costs scale with the number of hypotheses determines how much to adjust. The result sits between Bonferroni (too conservative) and unadjusted (too permissive), with the exact position pinned down by the study's cost structure.
 
-Two cost models are supported, both calibrated to real data:
+Two cost models, both calibrated to real data:
 
-- Linear (default): fixed-cost share = 0.46 (Sertkaya et al. 2016)
-- Cobb-Douglas (J-PAL data, Table 2 of paper):
-    - beta = 0.13 -- how cost scales with treatment arms
-    - iota = 0.075 -- how it scales with surveys per arm
+- **Linear** (default): fixed-cost share 0.46 (Sertkaya et al. 2016)
+- **Cobb-Douglas** (J-PAL, Table 2 of paper): β = 0.13, ι = 0.075
 
-
-### Key Features
-- Works with statsmodels, linearmodels, or any dict of regression results
-- Reports optimal, Bonferroni, Holm, BH, and unadjusted results side by side
-- One-sided tests by default (grounded in Remark 6); two-sided option available
-- mbar option benchmarks the study's sample size against a reference
-- mht_cost_estimate estimates beta and iota from project-level cost data
-- mht_table reproduces Tables 1 and 3 of the paper for any parameter values
-- Full pytest test suite
-
----
-
-## Quick Start
+## Installation
 
 ```bash
-cd mht_package_python_042826
-pip install -e .
+pip install mhtopt
 ```
+
+Requires Python ≥ 3.9; depends on `numpy ≥ 1.20` and `scipy ≥ 1.7`.
+
+Development install:
+
+```bash
+pip install "git+https://github.com/OWNER/mhtopt.git#subdirectory=python"
+```
+
+## Quick start
 
 ```python
-from mht import mht_critical, mht_test, mht_est, mht_cost_estimate, mht_table
+from mhtopt import mht_critical, mht_test, mht_est, mht_cost_estimate, mht_table
 
-# Compute optimal alpha* for 5 hypotheses
+# Optimal critical value for 5 hypotheses
 r = mht_critical(J=5, alpha_bar=0.05)
-print(f"alpha* = {r['alpha_opt']:.4f}")
+print(f"alpha* = {r['alpha_opt']:.4f}")     # alpha* = 0.0212
 
-# Test a list of p-values
-result = mht_test(p=[0.003, 0.015, 0.048], alpha_bar=0.05)
+# Apply MHT adjustment to a list of p-values
+mht_test(p=[0.003, 0.015, 0.048], alpha_bar=0.05)
 
-# Run the full example
-# python examples/mht_example.py
+# Postestimation: test J coefficients from a fitted model
+import statsmodels.api as sm
+fit = sm.OLS(y, X).fit()
+mht_est(fit, vars=["treat1", "treat2", "treat3"], alpha_bar=0.05)
 ```
 
----
-
-## What to Try
-
-### 1. Run the full simulated workflow
+A full self-contained example:
 
 ```bash
+python -m mhtopt.examples  # if installed, or:
 python examples/mht_example.py
 ```
 
-This covers: `mht_est`, `mht_test`, `mht_table`, `mht_critical`, and `mht_cost_estimate`.
+## Five exported functions
 
-### 2. Use your own data
+| Function | Purpose |
+|---|---|
+| `mht_critical()` | Compute optimal critical value α\* |
+| `mht_test()` | Apply MHT adjustment to a list of p-values |
+| `mht_est()` | Postestimation: test J coefficients from a fitted model |
+| `mht_cost_estimate()` | Estimate cost-function parameters (β, ι) from project-level data |
+| `mht_table()` | Generate reference tables (reproduces Tables 1 & 3 of the paper) |
 
-```python
-import statsmodels.api as sm
-from mht import mht_est
+Each reports optimal, Bonferroni, Holm, Benjamini-Hochberg, and unadjusted results side by side.
 
-# After running a regression:
-fit = sm.OLS(y, X).fit()
-result = mht_est(fit, vars=["treat1", "treat2", "treat3"], alpha_bar=0.05)
+`mht_est` supports any fitted model exposing `.params` and `.pvalues` (e.g. `statsmodels`, `linearmodels`) or a dict of regression results.
 
-# Or with p-values directly:
-from mht import mht_test
-result = mht_test(p=my_pvalues, alpha_bar=0.05)
-```
+## Worked example with real data
 
-### 3. Explore our worked example
-
-We applied the package to Banerjee et al. (2015, Science):
+A walkthrough applying the package to Banerjee et al. (2015, *Science*) — a 6-country graduation-program RCT with 10 outcome families — is in [`testing/`](testing/):
 
 ```bash
 pip install pandas  # needed for .dta files
 python testing/test_mht_testdrive.py
 ```
 
----
+## Documentation
 
-## Package Functions
+- Function-level: docstrings on every public function
+- Full reference: [`docs/`](docs/)
+- Paper: [arXiv:2104.13367](https://arxiv.org/abs/2104.13367)
 
-| Function | Purpose | Example |
-|---|---|---|
-| `mht_critical` | Compute optimal critical value | `mht_critical(J=5, alpha_bar=0.05)` |
-| `mht_test` | Test a list of p-values | `mht_test(p=pvals, alpha_bar=0.05)` |
-| `mht_est` | Postestimation: test J coefficients | `mht_est(fit, vars=[...], alpha_bar=0.05)` |
-| `mht_cost_estimate` | Estimate cost parameters | `mht_cost_estimate(cost, arms, n, alpha_bar=0.05)` |
-| `mht_table` | Generate reference tables | `mht_table(alpha_bar=[0.05])` |
+## Citation
 
-Two cost models: `"linear"` (default, FDA calibration) and `"cobbdouglas"` (J-PAL calibration).
-
----
-
-## Installation
-
-```bash
-# From the package directory:
-pip install -e .
-
-# Or without installation, add src/ to your path:
-import sys; sys.path.insert(0, "src")
-from mht import mht_critical
+```bibtex
+@article{viviano2026mht,
+  title  = {A Model of Multiple Hypothesis Testing},
+  author = {Viviano, Davide and W\"uthrich, Kaspar and Niehaus, Paul},
+  year   = {2026},
+  journal = {arXiv preprint},
+  eprint = {2104.13367},
+}
 ```
 
-### Dependencies
+## Other language ports
 
-- **Required:** numpy (>= 1.20), scipy (>= 1.7)
-- **Optional:** pandas (for .dta files in examples), pytest (for tests), statsmodels (supported model class)
+The same five functions are available in Stata (`ssc install mhtopt`) and R (`install.packages("mhtopt")`). See the [project repository](https://github.com/OWNER/mhtopt) for cross-language documentation.
 
----
+## Reporting bugs
 
-## Running Tests
+Open a [GitHub issue](https://github.com/OWNER/mhtopt/issues) and indicate the package version (`mhtopt.__version__`) and Python version.
 
-```bash
-cd mht_package_python_042826
-pip install -e ".[dev]"
-pytest
-```
+## License
 
----
-
-## Feedback
-
-We would appreciate your feedback on:
-- **Usability:** Was anything confusing? Did the functions work as expected?
-- **Documentation:** Was the help sufficient? What was missing?
-- **Features:** What would make the package more useful for your work?
-- **Bugs:** Did anything break? Please share the error message and what you were trying to do.
-
-Thank you!
+MIT — see [LICENSE](LICENSE).
