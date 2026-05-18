@@ -41,3 +41,9 @@ dist/
 *.smcl
 *.aux
 *.dvi
+
+# Build artifacts
+stata/mhtopt-ssc-submit.zip
+r/mhtopt_*.tar.gz
+python/dist/
+python/build/
