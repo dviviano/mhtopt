@@ -1,6 +1,7 @@
-*! version 1.1.0  2026-03-24
+*! version 1.0.0 18may2026 Viviano, Wuthrich, Niehaus & Rosas Lopez
 *! mht_table -- Display table of optimal test sizes
 *! Based on Viviano, Wuthrich, and Niehaus (2026)
+version 14
 
 /*
     mht_table -- Reproduce Table 1 of Viviano, Wuthrich, and Niehaus (2026)

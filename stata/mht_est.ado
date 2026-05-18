@@ -1,7 +1,8 @@
-*! version 1.0.0  2026-03-15
+*! version 1.0.0 18may2026 Viviano, Wuthrich, Niehaus & Rosas Lopez
 *! mht_est -- MHT adjustment postestimation command
 *! Based on Viviano, Wuthrich, and Niehaus (2026)
 *! "A Model of Multiple Hypothesis Testing"
+version 14
 
 /*
     mht_est -- Optimal MHT correction applied to postestimation results

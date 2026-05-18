@@ -40,6 +40,10 @@
 #' # Custom range, single alpha
 #' mht_table(alpha_bar = 0.05, J_range = 1:20, nm_ratios = 1.0, sidak_bars = NULL)
 #'
+#' @references
+#' Viviano, D., Wuthrich, K., and Niehaus, P. (2026). "A Model of Multiple
+#' Hypothesis Testing." arXiv:2104.13367v10. \url{https://arxiv.org/abs/2104.13367}
+#'
 #' @export
 mht_table <- function(alpha_bar  = c(0.025, 0.05, 0.1, 0.15),
                       J_range    = c(1:9, Inf),

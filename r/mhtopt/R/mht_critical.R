@@ -50,9 +50,10 @@
 #' mht_critical(J = 3, alpha_bar = 0.025, nm_ratio = 1.5)
 #'
 #' @references
-#' Viviano, D., K. Wuthrich, and P. Niehaus (2026). A model of multiple
-#' hypothesis testing. \emph{arXiv:2104.13367v10}.
+#' Viviano, D., Wuthrich, K., and Niehaus, P. (2026). "A Model of Multiple
+#' Hypothesis Testing." arXiv:2104.13367v10. \url{https://arxiv.org/abs/2104.13367}
 #'
+#' @importFrom stats qnorm
 #' @export
 mht_critical <- function(J, alpha_bar,
                          model = c("linear", "cobbdouglas"),

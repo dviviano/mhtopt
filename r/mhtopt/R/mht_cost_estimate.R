@@ -48,9 +48,10 @@
 #'              beta = est$beta, iota = est$iota)
 #'
 #' @references
-#' Viviano, D., K. Wuthrich, and P. Niehaus (2026). A model of multiple
-#' hypothesis testing. \emph{arXiv:2104.13367v10}.
+#' Viviano, D., Wuthrich, K., and Niehaus, P. (2026). "A Model of Multiple
+#' Hypothesis Testing." arXiv:2104.13367v10. \url{https://arxiv.org/abs/2104.13367}
 #'
+#' @importFrom stats lm as.formula coef nobs residuals model.matrix pt
 #' @export
 mht_cost_estimate <- function(cost, arms, sample_size,
                               alpha_bar,

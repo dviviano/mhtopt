@@ -1,6 +1,7 @@
-*! version 1.0.0  2026-03-15
+*! version 1.0.0 18may2026 Viviano, Wuthrich, Niehaus & Rosas Lopez
 *! Estimate cost function parameters for MHT adjustment
 *! Based on Viviano, Wuthrich, and Niehaus (2026)
+version 14
 
 /*
     mht_cost_estimate - Estimate cost function parameters from data on research costs

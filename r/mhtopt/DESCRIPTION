@@ -8,7 +8,7 @@ Authors@R: c(
     person("Erick", "Rosas Lopez", email = "erosasl@ucsd.edu", role = c("cre", "ctb"))
     )
 Description: Implements the optimal multiple hypothesis testing correction from
-    Viviano, Wuthrich, and Niehaus (2026, arXiv:2104.13367v10). Derives the
+    Viviano, Wuthrich, and Niehaus (2026) <arXiv:2104.13367>. Derives the
     optimal per-test significance level from the economic incentives of research
     production, providing a correction that lies between Bonferroni (too
     conservative) and unadjusted (too permissive). Supports two cost models:
@@ -16,6 +16,7 @@ Description: Implements the optimal multiple hypothesis testing correction from
     optimal, Bonferroni, Holm, BH, and unadjusted results side by side.
 License: MIT + file LICENSE
 Encoding: UTF-8
+Language: en-US
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Imports:

@@ -1,7 +1,8 @@
-*! version 1.1.0  2026-03-24
+*! version 1.0.0 18may2026 Viviano, Wuthrich, Niehaus & Rosas Lopez
 *! Compute optimal MHT critical values
 *! Based on Viviano, Wuthrich, and Niehaus (2026)
 *! "A Model of Multiple Hypothesis Testing"
+version 14
 
 /*
     mht_critical - Compute optimal critical values for multiple hypothesis testing

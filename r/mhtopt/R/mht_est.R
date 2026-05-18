@@ -107,9 +107,10 @@
 #'   \code{\link{mht_critical}} for computing critical values only.
 #'
 #' @references
-#' Viviano, D., K. Wuthrich, and P. Niehaus (2026). A model of multiple
-#' hypothesis testing. \emph{arXiv:2104.13367v10}.
+#' Viviano, D., Wuthrich, K., and Niehaus, P. (2026). "A Model of Multiple
+#' Hypothesis Testing." arXiv:2104.13367v10. \url{https://arxiv.org/abs/2104.13367}
 #'
+#' @importFrom stats nobs coef
 #' @export
 mht_est <- function(fit,
                             vars      = NULL,
@@ -276,6 +277,8 @@ print.mht_est <- function(x, digits = 4, ...) {
 # Internal helper: extract standardized coefficient table from model objects
 # ============================================================================
 
+#' @keywords internal
+#' @noRd
 .extract_coef_table <- function(fit) {
 
   # --- fixest (feols, fepois, feglm, etc.) ---
@@ -321,6 +324,8 @@ print.mht_est <- function(x, digits = 4, ...) {
 }
 
 
+#' @keywords internal
+#' @noRd
 .parse_coef_matrix <- function(s) {
   # Robustly identify columns regardless of exact naming conventions
   cols <- colnames(s)
