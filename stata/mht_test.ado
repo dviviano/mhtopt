@@ -1,7 +1,6 @@
 *! version 1.0.0 18may2026 Viviano, Wuthrich, Niehaus & Rosas Lopez
 *! Perform hypothesis tests with optimal MHT adjustment
 *! Based on Viviano, Wuthrich, and Niehaus (2026)
-version 14
 
 /*
     mht_test - Perform multiple hypothesis tests using the optimal protocol
@@ -193,6 +192,41 @@ program define mht_test, rclass
     display as text "  Unadjusted"            _col(28) as result %9.6f `alphabar'    _col(42) %5.0f `n_reject_unadj'
     display as text "  {hline 49}"
     display as text "  * Step-wise procedures; effective threshold varies by rank"
+    display ""
+
+    // ----- Per-hypothesis rejection table -----
+    display as text "  Per-hypothesis rejection decisions:"
+    display as text "  {hline 65}"
+    display as text "  Hyp.    p-value     Optimal   Bonf   Holm   BH    Unadj."
+    display as text "  {hline 65}"
+
+    // Build a sequential index across in-sample observations (handles if/in)
+    tempvar _row
+    qui gen long `_row' = sum(`touse')
+    qui replace `_row' = . if !`touse'
+
+    local k = 0
+    forvalues i = 1/`=_N' {
+        if `touse'[`i'] == 0 continue
+        local k = `k' + 1
+
+        local p_k     = `pval'[`i']
+        local r_opt   = cond(`generate'_reject_opt[`i']   == 1, "*", ".")
+        local r_bonf  = cond(`generate'_reject_bonf[`i']  == 1, "*", ".")
+        local r_holm  = cond(`generate'_reject_holm[`i']  == 1, "*", ".")
+        local r_bh    = cond(`generate'_reject_bh[`i']    == 1, "*", ".")
+        local r_unadj = cond(`generate'_reject_unadj[`i'] == 1, "*", ".")
+
+        display as text "  " %3.0f `k'  ///
+            "    " as result %8.4f `p_k' ///
+            as text "       " "`r_opt'" ///
+            "       " "`r_bonf'" ///
+            "      " "`r_holm'" ///
+            "    " "`r_bh'" ///
+            "     " "`r_unadj'"
+    }
+    display as text "  {hline 65}"
+    display as text "  * = reject;  . = fail to reject"
     display ""
     display as text "  Generated variables: `generate'_reject_opt, `generate'_reject_bonf,"
     display as text "    `generate'_reject_holm, `generate'_reject_bh, `generate'_reject_unadj,"

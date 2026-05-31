@@ -1,6 +1,7 @@
 {smcl}
 {* *! version 1.0.0  2026-03-15}{...}
 {viewerjumpto "Syntax" "mht_est##syntax"}{...}
+{viewerjumpto "Quick start" "mht_est##quick"}{...}
 {viewerjumpto "Description" "mht_est##description"}{...}
 {viewerjumpto "Options" "mht_est##options"}{...}
 {viewerjumpto "Remarks" "mht_est##remarks"}{...}
@@ -39,9 +40,35 @@
 {synopt:{opt cfs:hare(#)}}fixed cost share (Linear); default {bf:0.46}{p_end}
 {synopt:{opt jbar(#)}}average subgroups (Linear); default {bf:3}{p_end}
 {synopt:{opt nmr:atio(#)}}sample size ratio n_bar/m_bar; default {bf:1.0}{p_end}
+{synopt:{opt mbar(#)}}benchmark per-arm sample size; if given, nm_ratio is computed as (e(N)/J)/mbar (overrides {opt nmratio()}){p_end}
 {synopt:{opt beta(#)}}arms elasticity (Cobb-Douglas); default {bf:0.13}{p_end}
 {synopt:{opt iota(#)}}size elasticity (Cobb-Douglas); default {bf:0.075}{p_end}
 {synoptline}
+
+{pstd}
+{cmd:mht_est} reads coefficient estimates and standard errors directly from
+{cmd:e(b)} and {cmd:e(V)} of the {bf:most recently fitted estimation results}.
+This means it works after {cmd:regress}, {cmd:logit}, {cmd:probit}, {cmd:areg},
+{cmd:xtreg}, {cmd:ivregress}, {cmd:poisson}, and any other Stata estimation
+command -- no need to re-run the model.
+
+
+{marker quick}{...}
+{title:Quick start}
+
+{pstd}Apply the optimal MHT correction to three coefficients of the most recent regression:{p_end}
+{phang2}{cmd:. regress price mpg weight foreign, robust}{p_end}
+{phang2}{cmd:. mht_est, vars(mpg weight foreign) alphabar(0.05)}{p_end}
+
+{pstd}Same regression, Cobb-Douglas (J-PAL) calibration:{p_end}
+{phang2}{cmd:. mht_est, vars(mpg weight foreign) alphabar(0.05) model(cobbdouglas)}{p_end}
+
+{pstd}After a clustered field experiment with multiple treatment arms:{p_end}
+{phang2}{cmd:. areg y treat1 treat2 treat3, absorb(strata) cluster(hh_id)}{p_end}
+{phang2}{cmd:. mht_est, vars(treat1 treat2 treat3) alphabar(0.05)}{p_end}
+
+{pstd}Two-sided tests (e.g., when there is no a priori sign of the effect):{p_end}
+{phang2}{cmd:. mht_est, vars(treat1 treat2) alphabar(0.05) twosided}{p_end}
 
 
 {marker description}{...}
@@ -104,7 +131,7 @@ if your application does not have a directional hypothesis.
 Optimal alpha = alpha_bar * [(1 + r/J)/(1 + r) + (nm_ratio - 1)/(1 + r)],
 where r = cfshare*jbar/(1-cfshare). Calibrated to Sertkaya et al. (2016).{p_end}
 
-{p2col 8 26 30 2:{cmd:cobbdouglas}}Cobb-Douglas model (Equation 28).
+{p2col 8 26 30 2:{cmd:cobbdouglas}}Cobb-Douglas model (Appendix A).
 Optimal alpha = alpha_bar * J^(beta-1) * nm_ratio^iota. Calibrated to J-PAL
 data (Table 2 of the paper).{p_end}
 
@@ -120,6 +147,22 @@ the linear calibration. Default 3 (Pocock et al. 2002).
 {opt nmratio(#)} is the ratio of the study's per-arm sample size to the
 benchmark ({it:n_bar/m_bar}). Default 1.0. A value greater than 1 indicates
 a larger-than-benchmark study, warranting a less conservative threshold.
+
+{phang}
+{opt mbar(#)} is the benchmark per-arm sample size {it:m_bar}. When provided,
+{cmd:mht_est} computes {cmd:nm_ratio} automatically as
+{cmd:(e(N) / J) / mbar}, where {cmd:e(N)} is the total sample size from the
+preceding regression and {it:J} is the number of variables in {opt vars()}.
+This option overrides {opt nmratio()}.
+
+{phang2}
+{bf:Caveat for clustered/non-RCT designs.} {cmd:e(N)/J} is a rough proxy
+for "per-arm sample size" that treats the regression's full sample as if
+it were evenly distributed across {it:J} arms. In a clustered RCT or any
+design where treatment-arm sample sizes are unequal, the proxy may differ
+from the true per-arm size. If you know the per-arm size externally
+(e.g., from study design), set {opt nmratio()} = (true per-arm) / mbar
+directly and skip {opt mbar()}.
 
 {phang}
 {opt beta(#)} is the elasticity of cost with respect to the number of

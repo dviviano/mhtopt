@@ -2,7 +2,6 @@
 *! mht_est -- MHT adjustment postestimation command
 *! Based on Viviano, Wuthrich, and Niehaus (2026)
 *! "A Model of Multiple Hypothesis Testing"
-version 14
 
 /*
     mht_est -- Optimal MHT correction applied to postestimation results
@@ -297,7 +296,7 @@ program define mht_est, rclass
     // 7. Display results
     // ------------------------------------------------------------------
 
-    local model_str = cond("`model'" == "linear", "Linear (Eq. 26)", "Cobb-Douglas (Eq. 28)")
+    local model_str = cond("`model'" == "linear", "Linear (Eq. 26)", "Cobb-Douglas (App. A)")
     local side_str  = cond("`side'" == "one", "one-sided (positive direction)", "two-sided")
     local est_cmd   = "`e(cmd)'"
 

@@ -2,7 +2,6 @@
 *! Compute optimal MHT critical values
 *! Based on Viviano, Wuthrich, and Niehaus (2026)
 *! "A Model of Multiple Hypothesis Testing"
-version 14
 
 /*
     mht_critical - Compute optimal critical values for multiple hypothesis testing
@@ -100,7 +99,7 @@ program define mht_critical, rclass
     display ""
 
     if "`model'" == "linear" {
-        display as text "  Cost model:          " as result "Linear (Eq. 27)"
+        display as text "  Cost model:          " as result "Linear (Eq. 26)"
         display as text "  Fixed cost share:    " as result %6.3f `cfshare'
         display as text "  Avg subgroups (J):   " as result %6.1f `jbar'
     }

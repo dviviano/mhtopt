@@ -1,105 +1,165 @@
 {smcl}
-{* version 1.0.0  2026-03-15}{...}
-{viewerjumpmarks Top Options Results References}{...}
-{title:mht_table}
+{* *! version 1.2.0  2026-04-27}{...}
+{viewerjumpto "Syntax" "mht_table##syntax"}{...}
+{viewerjumpto "Quick start" "mht_table##quick"}{...}
+{viewerjumpto "Description" "mht_table##description"}{...}
+{viewerjumpto "Options" "mht_table##options"}{...}
+{viewerjumpto "Examples" "mht_table##examples"}{...}
+{viewerjumpto "Stored results" "mht_table##stored"}{...}
+{viewerjumpto "References" "mht_table##refs"}{...}
 
-{pstd}
-{bf:mht_table} — Display table of optimal MHT test sizes
+{title:Title}
 
+{phang}
+{bf:mht_table} {hline 2} Table of optimal MHT critical values; reproduces Table 1 of the paper
+
+
+{marker syntax}{...}
 {title:Syntax}
 
 {p 8 16 2}
 {cmd:mht_table} [{cmd:,} {it:options}]
 
-{synoptset 24 tabbed}{...}
-{synopthdr}
-{synoptline}
-{synopt:{opt alpha:bar(#)}}benchmark single-hypothesis significance level; default 0.05{p_end}
-{synopt:{opt jr:ange(numlist)}}J values for table rows; default 1 2 3 4 5 6 7 8 9{p_end}
-{synopt:{opt nmr:atios(numlist)}}n/m ratio values for columns; default 0.5 1.0 1.5 2.0{p_end}
-{synopt:{opt mo:del(string)}}{cmd:linear} (default) or {cmd:cobbdouglas}{p_end}
-{synopt:{opt cfs:hare(#)}}fixed cost share, Linear model; default 0.46{p_end}
-{synopt:{opt jb:ar(#)}}average number of subgroups, Linear model; default 3{p_end}
-{synopt:{opt beta(#)}}arms elasticity, Cobb-Douglas; default 0.13{p_end}
-{synopt:{opt iota(#)}}size elasticity, Cobb-Douglas; default 0.075{p_end}
-{synoptline}
 
+{marker quick}{...}
+{title:Quick start}
+
+{pstd}{bf:With no arguments, mht_table reproduces Table 1 of the paper EXACTLY}
+(Linear/FDA calibration; |J|=1..9 plus infinity; four alphabar values at n/m=100%;
+single alphabar=0.025 at n/m=50/150/200%; two Sidak benchmark columns):{p_end}
+{phang2}{cmd:. mht_table}{p_end}
+
+{pstd}Same structure under the Cobb-Douglas (J-PAL) calibration:{p_end}
+{phang2}{cmd:. mht_table, model(cobbdouglas)}{p_end}
+
+{pstd}Custom: smaller table, single alphabar across user-specified n/m ratios:{p_end}
+{phang2}{cmd:. mht_table, alphabar(0.05) jrange(1 2 3 5 9) nmratios(0.5 1.0 2.0)}{p_end}
+
+
+{marker description}{...}
 {title:Description}
 
 {pstd}
-{cmd:mht_table} displays a grid of optimal test sizes alpha*(J, n/m) as defined
-in Proposition 4.1 of Viviano, Wuthrich, and Niehaus (2026), varying the number
-of hypotheses J (rows) and the sample-size ratio n/m (columns).  This reproduces
-the layout of Tables 1 and 3 in the paper.
+{cmd:mht_table} displays a table of optimal critical values alpha*(|J|, n/m) under
+the model in Viviano, Wuthrich, and Niehaus (2026). When called {bf:with no
+arguments}, it reproduces {bf:Table 1 of the paper exactly} -- compound headers,
+ten rows (|J|=1..9 and infinity), four alphabar values at n_bar/m_bar=100%, a
+single alphabar=0.025 at n_bar/m_bar in {0.5, 1.5, 2.0}, and two Sidak benchmark
+columns at alphabar in {0.025, 0.05}.
 
 {pstd}
-For each cell, the command calls {helpb mht_critical} internally and collects the
-result.  The displayed table and all cell values are also stored in r().
+With one or more of {opt alphabar()}, {opt jrange()}, {opt nmratios()} specified,
+the command switches to a {bf:custom layout} with a single alphabar across the
+chosen n/m ratios -- useful for quick exploration.
 
+{pstd}
+For every cell the command internally calls {helpb mht_critical}; all displayed
+values are also stored in {cmd:r()}.
+
+
+{marker options}{...}
 {title:Options}
 
-{phang}
-{opt alphabar(#)} sets the benchmark single-hypothesis significance level.
-Must be in (0,1).  Default is 0.05.
+{dlgtab:Default-mode behavior}
 
 {phang}
-{opt jrange(numlist)} specifies the J values used as table rows.
-Default is {cmd:1 2 3 4 5 6 7 8 9}.
+With {bf:no arguments}, {cmd:mht_table} reproduces paper Table 1 under the Linear
+calibration. Pass {opt model(cobbdouglas)} to switch the calibration while keeping
+the Table-1 layout. Pass {opt noinf} to suppress the |J|=Inf row.
+
+{dlgtab:Custom-mode options}
 
 {phang}
-{opt nmratios(numlist)} specifies the n/m ratios used as table columns.
-Default is {cmd:0.5 1.0 1.5 2.0}.
+{opt alpha:bar(#)} benchmark single-hypothesis significance level. Triggers custom mode.
 
 {phang}
-{opt model(string)} selects the cost model.  {cmd:linear} (default) uses the Linear
-linear cost structure (Equation 26); {cmd:cobbdouglas} uses the Cobb-Douglas
-structure (Equation 28) calibrated on J-PAL data.
+{opt jr:ange(numlist)} J values used as table rows.
 
 {phang}
-{opt cfshare(#)}, {opt jbar(#)} control the Linear model.
-Defaults 0.46 and 3 replicate the paper's Table 1.
+{opt nmr:atios(numlist)} n/m ratios used as table columns.
 
 {phang}
-{opt beta(#)}, {opt iota(#)} control the Cobb-Douglas model.
-Defaults 0.13 and 0.075 replicate the paper's Table 3.
+{opt sidakbars(numlist)} alpha_bar values for Sidak benchmark columns.
+Default {bf:0.025 0.05}.
 
+{phang}
+{opt nosidak} suppress Sidak columns.
+
+{phang}
+{opt noinf} suppress the |J|=Inf row.
+
+{dlgtab:Cost model}
+
+{phang}
+{opt mod:el(string)} {bf:linear} (default) or {bf:cobbdouglas}.
+
+{phang}
+{opt cfs:hare(#)} fixed cost share (Linear). Default {bf:0.46}.
+
+{phang}
+{opt jbar(#)} average number of subgroups (Linear). Default {bf:3}.
+
+{phang}
+{opt beta(#)} elasticity wrt |J| (Cobb-Douglas). Default {bf:0.13}.
+
+{phang}
+{opt iota(#)} elasticity wrt sample size (Cobb-Douglas). Default {bf:0.075}.
+
+
+{marker examples}{...}
 {title:Examples}
 
-{pstd}Reproduce Table 1 from the paper (Linear model, alpha_bar=0.05):
+{pstd}{bf:Reproduce paper Table 1 exactly (default mode)}{p_end}
+{phang2}{cmd:. mht_table}{p_end}
 
-{phang2}{cmd:. mht_table}
+{pstd}{bf:Same structure, Cobb-Douglas calibration}{p_end}
+{phang2}{cmd:. mht_table, model(cobbdouglas)}{p_end}
 
-{pstd}Custom J range with Cobb-Douglas model:
+{pstd}{bf:Custom J range, single alphabar, multiple n/m}{p_end}
+{phang2}{cmd:. mht_table, alphabar(0.05) jrange(1 2 3 5 9) nmratios(0.5 1.0 2.0)}{p_end}
 
-{phang2}{cmd:. mht_table, model(cobbdouglas) jrange(1 3 5 9) nmratios(0.5 1.0 2.0)}
+{pstd}{bf:Higher benchmark alpha}{p_end}
+{phang2}{cmd:. mht_table, alphabar(0.10) jrange(1 2 3 4 5)}{p_end}
 
-{pstd}Different benchmark alpha:
+{pstd}{bf:Suppress Sidak and infinity row}{p_end}
+{phang2}{cmd:. mht_table, alphabar(0.05) nosidak noinf}{p_end}
 
-{phang2}{cmd:. mht_table, alphabar(0.10) jrange(1 2 3 4 5)}
 
+{marker stored}{...}
 {title:Stored results}
 
 {pstd}
 {cmd:mht_table} stores the following in {cmd:r()}:
 
-{synoptset 20 tabbed}{...}
-{p2col 5 20 24 2: Scalars}{p_end}
-{synopt:{cmd:r(alpha_bar)}}benchmark alpha{p_end}
-{synopt:{cmd:r(alpha_{it:j}_{it:nm})}}optimal alpha for J={it:j} and nm_ratio={it:nm}
-(decimal point replaced by {cmd:p}; e.g. {cmd:r(alpha_3_1p0)} for J=3, nm=1.0){p_end}
+{synoptset 28 tabbed}{...}
+{p2col 5 28 32 2: Default mode (paper Table 1)}{p_end}
+{synopt:{cmd:r(alpha_}{it:j}{cmd:_100_}{it:ab}{cmd:)}}optimal alpha at |J|={it:j}, n/m=100%, alphabar={it:ab}{p_end}
+{synopt:{cmd:r(alpha_}{it:j}{cmd:_}{it:nm}{cmd:_0p025)}}optimal alpha at |J|={it:j}, n/m={it:nm}, alphabar=0.025{p_end}
+{synopt:{cmd:r(sidak_}{it:ab}{cmd:_}{it:j}{cmd:)}}Sidak level at |J|={it:j}, alphabar={it:ab}{p_end}
 
-{synoptset 20 tabbed}{...}
-{p2col 5 20 24 2: Macros}{p_end}
-{synopt:{cmd:r(model)}}cost model used ({cmd:linear} or {cmd:cobbdouglas}){p_end}
+{p2col 5 28 32 2: Custom mode}{p_end}
+{synopt:{cmd:r(alpha_}{it:j}{cmd:_}{it:nm}{cmd:)}}optimal alpha for |J|={it:j}, nm_ratio={it:nm}{p_end}
+{synopt:{cmd:r(alpha_bar)}}benchmark alpha used{p_end}
 
-{title:References}
+{p2col 5 28 32 2: Macros}{p_end}
+{synopt:{cmd:r(model)}}cost model used (linear or cobbdouglas){p_end}
 
 {pstd}
-Viviano, D., K. Wuthrich, and P. Niehaus (2026).  A model of multiple hypothesis
-testing.  {it:arXiv:2104.13367v10}.
+Decimal points in {it:nm} and {it:ab} keys are replaced by 'p' (e.g.
+{cmd:r(alpha_3_100_0p025)} for |J|=3, n/m=100%, alphabar=0.025).
+
+
+{marker refs}{...}
+{title:References}
+
+{phang}
+Viviano, D., K. Wuthrich, and P. Niehaus (2026).
+{it:A model of multiple hypothesis testing}. arXiv:2104.13367v10.
+{p_end}
+
 
 {title:Also see}
 
 {psee}
-{helpb mht_critical}, {helpb mht_est}, {helpb mht_test}
+Online: {help mht_critical}, {help mht_test}, {help mht_est}, {help mht_cost_estimate}
 {p_end}
