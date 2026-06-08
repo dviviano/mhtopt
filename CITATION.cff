@@ -15,8 +15,8 @@ authors:
     affiliation: UC San Diego
 repository-code: "https://github.com/dviviano/mhtopt"
 license: MIT
-version: 0.1.0
-date-released: 2026-05-18
+version: 1.0.0
+date-released: 2026-06-08
 preferred-citation:
   type: article
   title: "A Model of Multiple Hypothesis Testing"

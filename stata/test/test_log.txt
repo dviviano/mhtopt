@@ -1,0 +1,217 @@
+
+==================================================
+
+  Unit tests for the mht package
+
+  Viviano, Wuthrich, and Niehaus (2026)
+
+==================================================
+
+--- mht_est tests ---
+
+(1978 automobile data)
+
+--- TEST 1: Basic run after regress ---
+
+  PASS [TEST 1: runs without error after regress]
+
+--- TEST 2: r(J) equals number of vars ---
+
+  PASS [TEST 2: r(J) = 3]
+
+--- TEST 3: alpha_opt between Bonferroni and unadjusted ---
+
+  PASS [TEST 3: alpha_bonf < alpha_opt < alpha_bar]
+
+--- TEST 4: alpha_bonf = alpha_bar / J ---
+
+  PASS [TEST 4: alpha_bonf = 0.05/3]
+
+--- TEST 5: r(alpha_bar) stored correctly ---
+
+  PASS [TEST 5: r(alpha_bar) = 0.10]
+
+--- TEST 6: Per-variable r() scalars exist ---
+
+  PASS [TEST 6: r(coef_mpg), r(se_mpg), r(t_mpg), r(p_mpg) exist]
+
+--- TEST 7: rejection ordering (unadj >= opt >= bonf) ---
+
+  PASS [TEST 7: n_unadj >= n_opt >= n_bonf]
+
+--- TEST 8: Cobb-Douglas model ---
+
+  PASS [TEST 8: Cobb-Douglas runs and gives different alpha]
+
+--- TEST 9: Works after logit ---
+
+  PASS [TEST 9: works after logit]
+
+--- TEST 10: Fails without prior estimation ---
+
+  PASS [TEST 10: correct error 301 when no e() results]
+
+--- TEST 11: Fails for variable not in e(b) ---
+
+  PASS [TEST 11: correct error 198 for bad varname]
+
+--- TEST 12: Fails for alphabar outside (0,1) ---
+
+  PASS [TEST 12: correct error 198 for alphabar=1.5]
+
+--- TEST 13: nmratio=2 gives larger alpha_opt than nmratio=1 ---
+
+  PASS [TEST 13: nmratio=2 -> larger alpha_opt]
+
+--- TEST 14: J=1 single hypothesis ---
+
+  PASS [TEST 14: J=1 alpha_opt = alpha_bar]
+
+--- TEST 15: r(model) and r(vars) macros ---
+
+  PASS [TEST 15: r(model) and r(vars) correct]
+
+--- TEST 16: alpha_opt matches mht_critical ---
+
+  PASS [TEST 16: alpha_opt matches mht_critical for J=3]
+
+--- TEST 17: onesided vs twosided differ when coefficients mixed sign ---
+
+  PASS [TEST 17: onesided and twosided give different p-values]
+
+--- TEST 18: Works after areg ---
+
+  PASS [TEST 18: works after areg]
+
+--- TEST 19: mbar changes alpha_opt in mht_est ---
+
+(1978 automobile data)
+
+  PASS [TEST 19: mbar makes alpha_opt more conservative; nm_ratio=.24666667]
+
+--- TEST 20: smaller mbar => larger alpha_opt ---
+
+  PASS [TEST 20: mbar=5 gives larger alpha_opt than mbar=500]
+
+--- mht_critical tests ---
+
+  PASS [C1: J=1 returns alpha_bar]
+
+  PASS [C2: Linear J>1 alpha_opt < alpha_bar]
+
+  PASS [C3: Linear alpha_opt > alpha_bonf]
+
+  PASS [C4: alpha decreases (weakly) in J for J=1..9]
+
+  PASS [C5: CD beta=0 gives alpha_bar/J = 0.01]
+
+  PASS [C6: CD beta=1 gives alpha_bar = 0.05]
+
+  PASS [C7: nm_ratio=2.0 gives larger alpha than nm=0.5]
+
+Benchmark alpha must be in (0, 1)
+
+  PASS [C8: alphabar=0 raises error (rc=198)]
+
+--- mht_test tests ---
+
+Number of observations (_N) was 0, now 6.
+
+(6 missing values generated)
+
+(1 real change made)
+
+(1 real change made)
+
+(1 real change made)
+
+(1 real change made)
+
+(1 real change made)
+
+(1 real change made)
+
+  PASS [T1: J = 6]
+
+  PASS [T2: all 5 rejection variables generated]
+
+  PASS [T3: n_reject_opt >= n_reject_bonf]
+
+  PASS [T4: n_reject_opt <= n_reject_unadj]
+
+  PASS [T5: n_reject_holm >= n_reject_bonf]
+
+Number of observations (_N) was 0, now 3.
+
+  PASS [T6: all 3 tiny p-values rejected by all methods]
+
+Number of observations (_N) was 0, now 3.
+
+  PASS [T7: no rejections for p=0.5 across the board]
+
+Number of observations (_N) was 0, now 6.
+
+(6 missing values generated)
+
+(1 real change made)
+
+(1 real change made)
+
+(1 real change made)
+
+(1 real change made)
+
+(1 real change made)
+
+(1 real change made)
+
+  PASS [T8: z-stat and p-value inputs give same n_reject_opt]
+
+--- mht_table tests ---
+
+  PASS [B1: default mode runs, r(model) = linear]
+
+  PASS [B2: r(alpha_5_100_0p05) =   0.0213 matches paper Table 1]
+
+  PASS [B3: model(cobbdouglas) runs and stores model]
+
+  PASS [B4: custom mode runs, r(alpha_bar) = 0.10]
+
+--- mht_cost_estimate tests ---
+
+Number of observations (_N) was 0, now 300.
+
+  PASS [E1: estimated beta =  0.232 (true 0.20)]
+
+  PASS [E2: estimated iota =  0.110 (true 0.15)]
+
+  PASS [E3: p-value beta=0 is < 0.05 (got 0.0000)]
+
+  PASS [E4: linear_share cf_share =  0.794 in (0,1)]
+
+--- Numeric verification: paper Table 1 spot-checks ---
+
+  PASS [N: J=1, alphabar=0.05: alpha_opt = 0.050000]
+  PASS [N: J=3, alphabar=0.05: alpha_opt = 0.026042]
+  PASS [N: J=5, alphabar=0.05: alpha_opt = 0.021250]
+  PASS [N: J=9, alphabar=0.05: alpha_opt = 0.018056]
+
+  PASS [N5: J=2, alphabar=0.025 -> 0.0160 ~= paper 0.016]
+
+  PASS [N6: J=Inf, alphabar=0.025 -> 0.0070 ~= paper 0.007]
+
+==================================================
+
+  TEST SUMMARY
+
+==================================================
+
+  PASSED: 50
+
+  FAILED: 0
+  All tests passed.
+
+==================================================
+
+end of do-file
+

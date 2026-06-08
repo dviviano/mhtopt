@@ -61,22 +61,27 @@ Each command reports optimal, Bonferroni, Holm, BH, and unadjusted results side 
 
 ## Worked example with real data
 
-A walkthrough applying the package to Banerjee et al. (2015, *Science*) — a 6-country graduation-program RCT with 10 outcome families — is in [`testing/`](testing/):
+A walkthrough applying the package to Banerjee et al. (2015, *Science*) — a
+6-country graduation-program RCT, framed as one outcome tested across J=6
+country-specific treatment arms — is in this folder's `testing/` and the repo's
+top-level [`testing/`](../testing/). Run the Stata testdrive (from the repo root):
 
 ```stata
-do "testing/test_mht_stata_testdrive.do"
+do "stata/testing/test_mht_stata_testdrive.do"
 ```
 
-The full 4-part analysis lives in `testing/full_analysis_case/`:
+The full analysis — reproducing `testing/full_analysis_case/results_note.pdf` —
+lives in the repo's **top-level** `testing/full_analysis_case/`:
 
 | Part | Script | Pre-generated log |
 |---|---|---|
-| 1. One treatment × 10 outcomes | `analysis_part1_outcomes.do` | `part1_outcomes_log.txt` |
-| 2. 6 country treatments × 10 outcomes | `analysis_part2_treatments.do` | `part2_treatments_log.txt` |
-| 3. Cost calibration from Table 4 | `analysis_part3_calibration.do` | `part3_calibration_log.txt` |
+| 2. One outcome × 6 country arms (J=6) | `analysis_part2_treatments.do` | `part2_treatments_log.txt` |
+| 3. Cost calibration from Table 4 (cf=0.23) | `analysis_part3_calibration.do` | `part3_calibration_log.txt` |
 | 4. Sensitivity to fixed-cost share | `analysis_part4_gradient.do` | `part4_gradient_log.txt` |
 
-Run all four with `do "testing/full_analysis_case/run_all.do"`.
+Run all three with `do "testing/full_analysis_case/run_all.do"`. The Banerjee data
+is **not** bundled — see [`testing/README.md`](../testing/README.md) for the
+one-time Harvard Dataverse download (DOI 10.7910/DVN/NHIXNT).
 
 ## Documentation
 

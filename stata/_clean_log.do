@@ -33,8 +33,10 @@ while r(eof) == 0 {
     * --- Continuation lines: "> ..." ---
     if substr(`"`macval(line)'"', 1, 2) == "> " local skip = 1
 
-    * --- Numbered loop lines: " N. " with varying indentation ---
-    if regexm(`"`macval(line)'"', "^ +[0-9]+\.") local skip = 1
+    * --- Numbered loop lines: " N. command" with varying indentation ---
+    * Require the period to be followed by a space or end-of-line so that
+    * output rows beginning with a decimal (e.g. "  0.23  ...") are NOT stripped.
+    if regexm(`"`macval(line)'"', "^ +[0-9]+\.( |$)") local skip = 1
 
     * --- Lines that are only dashes (log separators) ---
     if regexm(`"`macval(line)'"', "^-+$") local skip = 1

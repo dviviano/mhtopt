@@ -18,5 +18,5 @@ from mhtopt.est import mht_est
 from mhtopt.cost_estimate import mht_cost_estimate
 from mhtopt.table import mht_table
 
-__version__ = "0.1.0"
+__version__ = "1.0.0"
 __all__ = ["mht_critical", "mht_test", "mht_est", "mht_cost_estimate", "mht_table"]

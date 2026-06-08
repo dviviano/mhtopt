@@ -15,10 +15,10 @@
                                 project-level cost data (simulated here)
 
     HOW TO RUN (either works):
-        cd "path/to/package_to_publish"
+        cd "path/to/mhtopt"
         do "examples/mht_example.do"
       or:
-        cd "path/to/package_to_publish/examples"
+        cd "path/to/mhtopt/examples"
         do "mht_example.do"
 
     OUTPUT:
@@ -30,7 +30,7 @@ clear all
 set more off
 
 * --- Auto-detect package root ---
-* Works whether you run from package_to_publish/ or examples/
+* Works whether you run from mhtopt/ or examples/
 local root "`c(pwd)'"
 capture confirm file "`root'/stata/mht_critical.ado"
 if _rc {
@@ -38,7 +38,7 @@ if _rc {
     capture confirm file "`root'/stata/mht_critical.ado"
     if _rc {
         display as error "Cannot find the stata/ folder."
-        display as error "Please cd to package_to_publish/ or package_to_publish/examples/"
+        display as error "Please cd to mhtopt/ or mhtopt/examples/"
         exit 601
     }
 }

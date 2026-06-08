@@ -1,8 +1,8 @@
 * HOW TO RUN (either works):
-*   cd "path/to/package_to_publish"
+*   cd "path/to/mhtopt"
 *   do "testing/full_analysis_case/analysis_part4_gradient.do"
 * or:
-*   cd "path/to/package_to_publish/testing/full_analysis_case"
+*   cd "path/to/mhtopt/testing/full_analysis_case"
 *   do "analysis_part4_gradient.do"
 
 clear all
@@ -20,7 +20,7 @@ if _rc {
         capture confirm file "`root'/stata/mht_critical.ado"
         if _rc {
             display as error "Cannot find the stata/ folder."
-            display as error "Please cd to package_to_publish/ or its testing/full_analysis_case/ subfolder."
+            display as error "Please cd to mhtopt/ or its testing/full_analysis_case/ subfolder."
             exit 601
         }
     }
@@ -307,8 +307,7 @@ foreach cfs in 0.00 0.05 0.10 0.15 0.20 0.23 0.25 0.30 0.35 0.40 0.45 0.50 {
     qui mht_critical, jhypotheses(5) alphabar(0.05) model(linear) cfshare(`cfs') jbar(6) nmratio(1)
     local a5 = r(alpha_opt)
     local tag ""
-    if `cfs' == 0.10 local tag " <-- Part 3 calibration"
-    if `cfs' == 0.23 local tag " <-- ambiguous items as fixed"
+    if `cfs' == 0.23 local tag " <-- Part 3 calibration (ambiguous items as fixed)"
     if `cfs' == 0.46 local tag " <-- FDA default (not shown in grid)"
     display as result "  " %5.2f `cfs' "     " %9.6f `a6' "     " %9.6f `a5' "     " %9.6f 2*`a6' as text "`tag'"
 }
@@ -365,8 +364,7 @@ foreach cfs in 0.00 0.05 0.10 0.15 0.20 0.23 0.25 0.30 0.35 0.40 0.45 0.50 {
     }
 
     local tag ""
-    if `cfs' == 0.10 local tag "  *"
-    if `cfs' == 0.23 local tag "  **"
+    if `cfs' == 0.23 local tag "  <-- calibrated (Part 3)"
     display as result "  " %5.2f `cfs' "   " %7.5f `aopt6' "  " ///
         %3.0f `total_lcal' "    " %3.0f `total_bh' "      " ///
         %2.0f `n_lcal_gt_bh' "        " %2.0f `n_bh_gt_lcal' "        " ///
@@ -374,7 +372,7 @@ foreach cfs in 0.00 0.05 0.10 0.15 0.20 0.23 0.25 0.30 0.35 0.40 0.45 0.50 {
 }
 
 display as text "  {hline 65}"
-display as text "  * = Part 3 calibration (10%)   ** = ambiguous as fixed (23%)"
+display as text "  cf_share = 0.23 is the Part 3 calibration (ambiguous items as fixed)"
 display as text "  TotL/TotBH = sum of country rejections across all 20 cells"
 display as text "  #(L>BH) = number of outcome-period cells where L_cal rejects more"
 display ""
@@ -447,8 +445,8 @@ foreach cfs in 0.00 0.05 0.10 0.15 0.20 0.23 0.25 0.30 0.35 0.40 0.45 0.50 {
 * ============================================================
 
 display as text "{hline 82}"
-display as result "  Full Table: cf_share = 0.10 vs 0.23"
-display as text "  (10% = Part 3 calibration; 23% = ambiguous items classified as fixed)"
+display as result "  Full Table: cf_share = 0.23 (calibrated) vs 0.10 (lower-bound sensitivity)"
+display as text "  (0.23 = Part 3 calibration, ambiguous items as fixed; 0.10 shown for sensitivity)"
 display as text "{hline 82}"
 display ""
 

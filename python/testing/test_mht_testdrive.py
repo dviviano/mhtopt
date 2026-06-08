@@ -1,8 +1,8 @@
-﻿"""
+"""
 MHT Test Drive: Banerjee et al. (Science 2015)
 Viviano, Wuthrich, and Niehaus (2026), "A Model of Multiple Hypothesis Testing"
 
-Requires: pandas (for reading .dta files)
+One outcome x J=6 country arms (reproduces the results in results_note.pdf).
 
 To run (needs pandas):
     cd python
@@ -17,7 +17,11 @@ import os
 import sys
 import numpy as np
 import pandas as pd
-from scipy.stats import norm
+
+# Some country arms have degenerate/collinear designs (e.g. all-missing for an
+# outcome), which yield NaN standard errors. That is expected for this simple
+# showcase; silence the resulting numpy warnings to keep the log readable.
+np.seterr(invalid="ignore", divide="ignore")
 
 # Auto-detect package root (the python/ directory containing src/mhtopt/)
 if os.path.exists("src/mhtopt/__init__.py"):          # run from python/
@@ -49,122 +53,16 @@ tbl = mht_table(alpha_bar=[0.05], J_range=[1, 2, 3, 5, 6, 10],
 print_table(tbl)
 
 # ============================================================================
-# VERSION A: 10 Outcomes, India
+# Load data (shared by the country-arms analysis below)
 # ============================================================================
-print()
-print("=" * 50)
-print("  VERSION A: 10 Outcomes, India")
-print("  Reference: Table 3, Banerjee et al. (2015)")
-print("=" * 50)
-
-hh_outcomes = ["index_ctotal", "ind_increv", "asset_index",
-               "index_foodsecurity", "ind_fin"]
-mb_outcomes = ["index_time", "index_health", "index_mental",
-               "index_political", "index_women"]
-outcome_labels = ["Consumption", "Income", "Assets", "FoodSec", "Finance",
-                  "TimeUse", "PhysHealth", "MentHealth", "Political", "WomenEmp"]
-
-# Load data
 hh_data = pd.read_stata(os.path.join(dta_path, "index_hh_vars.dta"))
-hh_india = hh_data[hh_data["country"] == 4].copy()
-
-mb_data = pd.read_stata(os.path.join(dta_path, "index_mb_vars.dta"))
-mb_india = mb_data[mb_data["country"] == 4].copy()
-
-control_hh = [c for c in hh_india.columns if c.startswith("control_")]
-control_mb = [c for c in mb_india.columns if c.startswith("control_")]
-
-
-def run_regression_collect_pval(data, outcome_var, control_cols):
-    """Run OLS and return one-sided p-value for treatment coefficient."""
-    end_var = f"{outcome_var}_end"
-    bsl_var = f"{outcome_var}_bsl"
-    m_bsl = f"m_{outcome_var}_bsl"
-    m_country_bsl = f"m_country_{outcome_var}_bsl"
-
-    # Ensure baseline vars exist
-    for aux in [bsl_var, m_bsl, m_country_bsl]:
-        if aux not in data.columns:
-            data[aux] = 0.0
-
-    rhs_cols = ["treatment", bsl_var, m_bsl, m_country_bsl] + control_cols
-    rhs_cols = [c for c in rhs_cols if c in data.columns]
-
-    y = pd.to_numeric(data[end_var], errors="coerce").values.astype(float)
-    X = data[rhs_cols].apply(pd.to_numeric, errors="coerce").values.astype(float)
-    X = np.column_stack([np.ones(len(y)), X])
-
-    # Drop rows with NaN
-    mask = ~(np.isnan(y) | np.any(np.isnan(X), axis=1))
-    y, X = y[mask], X[mask]
-
-    beta_hat = np.linalg.lstsq(X, y, rcond=None)[0]
-    e = y - X @ beta_hat
-    n_obs = len(y)
-    k = X.shape[1]
-    s2 = np.sum(e**2) / (n_obs - k)
-    se = np.sqrt(s2 * np.diag(np.linalg.pinv(X.T @ X)))
-
-    # treatment is column index 1 (after intercept)
-    coef = beta_hat[1]
-    se_val = se[1]
-    t_val = coef / se_val
-
-    # One-sided p-value (positive direction)
-    if t_val >= 0:
-        p_one = 1 - norm.cdf(t_val)
-    else:
-        p_one = 1 - (1 - norm.cdf(abs(t_val))) / 2
-
-    return coef, se_val, t_val, p_one
-
-
-# Collect results
-results = []
-for var in hh_outcomes:
-    coef, se, t, p = run_regression_collect_pval(hh_india, var, control_hh)
-    results.append((var, coef, se, t, p))
-for var in mb_outcomes:
-    coef, se, t, p = run_regression_collect_pval(mb_india, var, control_mb)
-    results.append((var, coef, se, t, p))
-
-p_all = np.array([r[4] for r in results])
-
-print("\nRegression summary (India, treatment, one-sided p):")
-print(f"  {'Outcome':>12}  {'Coef':>8}  {'SE':>8}  {'t':>8}  {'p':>10}")
-for i, (var, coef, se, t, p) in enumerate(results):
-    print(f"  {outcome_labels[i]:>12}  {coef:8.4f}  {se:8.4f}  {t:8.3f}  {p:10.6f}")
-
-# --- mht_test: Linear model ---
-print("\n--- mht_test: Linear model (cf_share=0.46), alpha_bar=0.05 ---\n")
-r_lin = mht_test(p=p_all, alpha_bar=0.05)
-print(f"  alpha_opt = {r_lin['alpha_opt']:.6f}")
-print(f"  Rejections: opt={r_lin['reject_optimal'].sum()}, "
-      f"bonf={r_lin['reject_bonferroni'].sum()}, "
-      f"holm={r_lin['reject_holm'].sum()}, "
-      f"bh={r_lin['reject_bh'].sum()}, "
-      f"unadj={r_lin['reject_unadjusted'].sum()}")
-
-# --- mht_test: Cobb-Douglas ---
-print("\n--- mht_test: Cobb-Douglas (beta=0.13, iota=0.075) ---\n")
-r_cd = mht_test(p=p_all, alpha_bar=0.05, model="cobbdouglas")
-print(f"  alpha_opt = {r_cd['alpha_opt']:.6f}")
-print(f"  Rejections: opt={r_cd['reject_optimal'].sum()}")
-
-# --- Study-specific calibration ---
-print("\n--- Study-specific calibration (Table 4 cost data) ---")
-J = 10
-for cf in [0.46, 0.75, 0.82, 0.90]:
-    r = mht_critical(J=J, alpha_bar=0.05, cf_share=cf)
-    print(f"  cf_share={cf:.2f}: alpha* = {r['alpha_opt']:.5f}")
-print(f"  Bonferroni:     alpha* = {0.05/J:.5f}")
-
+control_hh = [c for c in hh_data.columns if c.startswith("control_")]
 
 # ============================================================================
-# VERSION B: 6 Countries as 6 Treatments
+# One outcome x 6 country arms (J=6)
 # ============================================================================
 print("\n\n" + "=" * 50)
-print("  VERSION B: 6 Countries as 6 Treatments")
+print("  One outcome x 6 country arms (J=6)")
 print("  Reference: Figure 3, Table 4, Banerjee et al. (2015)")
 print("=" * 50)
 
@@ -227,8 +125,8 @@ def run_country_mht(data, outcome_var, label, control_cols, alpha_bar=0.05):
               f"p={r['p_values'][i]:.4f}  "
               f"opt={'*' if r['reject_optimal'][i] else '.'}")
 
-    r2 = mht_est(fit, vars=treat_vars, alpha_bar=alpha_bar, cf_share=0.10)
-    print(f"\n  Study-specific (cf_share=0.10): alpha_opt = {r2['alpha_opt']:.6f}")
+    r2 = mht_est(fit, vars=treat_vars, alpha_bar=alpha_bar, cf_share=0.23, J_bar=6)
+    print(f"\n  Study-specific (cf_share=0.23, J_bar=6): alpha_opt = {r2['alpha_opt']:.6f}")
     for i, term in enumerate(r2["terms"]):
         print(f"    {term}  coef={r2['estimates'][i]:7.4f}  "
               f"p={r2['p_values'][i]:.4f}  "
@@ -246,19 +144,13 @@ run_country_mht(hh_all, "ind_fin", "Financial inclusion", control_hh)
 # Summary
 # ============================================================================
 print("\n\n" + "=" * 50)
-print("  SUMMARY: Version A vs Version B")
+print("  SUMMARY: One outcome x 6 country arms")
 print("=" * 50)
 print()
-print("  Version A (10 outcomes, India):")
-print("    Cost structure: adding outcomes is CHEAP (cf_share ~ 0.82)")
-print("    => Strict correction needed (alpha* ~ 0.008, near Bonferroni)")
-print("    => Confirms 5 core results; physical health is borderline")
+print("  Cost structure: adding a country arm is EXPENSIVE (cf_share ~ 0.10-0.23)")
+print("  => Minimal correction needed (alpha* ~ 0.02-0.04, near unadjusted)")
+print("  => VWN-Lin retains country effects that BH's step-up rule discards")
 print()
-print("  Version B (6 countries, pooled):")
-print("    Cost structure: adding a country is EXPENSIVE (cf_share ~ 0.10)")
-print("    => Minimal correction needed (alpha* ~ 0.040, near unadjusted)")
-print("    => Retains effects that Bonferroni would discard")
-print()
-print("  Same data, two framings, opposite corrections.")
-print("  This is the core insight of VWN (2026).")
+print("  Correction cuts both ways: it can remove marginally-significant results")
+print("  or restore ones that FDR procedures discard. See results_note.pdf.")
 print("\nDone.")

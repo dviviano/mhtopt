@@ -1,8 +1,8 @@
 * HOW TO RUN (either works):
-*   cd "path/to/package_to_publish"
+*   cd "path/to/mhtopt"
 *   do "testing/full_analysis_case/analysis_part3_calibration.do"
 * or:
-*   cd "path/to/package_to_publish/testing/full_analysis_case"
+*   cd "path/to/mhtopt/testing/full_analysis_case"
 *   do "analysis_part3_calibration.do"
 
 clear all
@@ -20,7 +20,7 @@ if _rc {
         capture confirm file "`root'/stata/mht_critical.ado"
         if _rc {
             display as error "Cannot find the stata/ folder."
-            display as error "Please cd to package_to_publish/ or its testing/full_analysis_case/ subfolder."
+            display as error "Please cd to mhtopt/ or its testing/full_analysis_case/ subfolder."
             exit 601
         }
     }
@@ -189,43 +189,35 @@ display ""
 display as result "=== Cost Decomposition for cf_share Calibration ==="
 display ""
 
-* Transfer costs are CLEARLY per-participant (variable)
+* --- Cost categorization (Banerjee Table 4 Panel A line items) ---
+* Following results_note.pdf, classify Table 4 Panel A costs as:
+*   Variable with J (staff, assets, food, travel, materials)   ~ 66%
+*   Per-arm, scales with J (training & start-up)                ~  8%
+*   Ambiguous (indirect + other supervision) -- treated as      ~ 23%
+*     FIXED as a CONSERVATIVE upper bound on the fixed share
+*   Study-wide coordination (unobserved, small)                  J-fixed
+*
+* Conservative calibration: treat the ambiguous ~23% as fixed.
+local cf_cal = 0.23
+
+display as text "  Cost categorization (Table 4 Panel A; see results_note.pdf):"
+display as text "    Variable with J (staff/assets/food/travel/materials): ~66%"
+display as text "    Per-arm (training & start-up):                          ~8%"
+display as text "    Ambiguous (indirect + supervision) -> treated as FIXED: ~23%"
+display as text "    Study-wide coordination (unobserved):                   small"
+display ""
+display as text "  Conservative calibration (ambiguous items as fixed):"
+display as text "    cf_share = " as result %4.2f `cf_cal' as text "  (upper bound on the fixed share)"
+display ""
+
+* Context: direct transfers (assets + food) are unambiguously variable
 local transfer_share = `total_transfer' / `total_cost'
-display as text "  Direct transfer share of total cost: " as result %5.3f `transfer_share'
-display as text "    (Assets + food stipends: clearly per-participant)"
-
-* Non-transfer share (supervision + overhead + startup)
-local nontransfer_share = 1 - `transfer_share'
-display as text "  Non-transfer share of total cost:    " as result %5.3f `nontransfer_share'
-display as text "    (Supervision + overhead + startup)"
-
-* Key insight: in this multi-country setting, most costs are PER-ARM
-* Each country has its own implementation, so dropping a country saves
-* approximately 1/6 of total costs.
-* The only truly FIXED costs (shared across all arms) would be:
-*   - Study design and coordination
-*   - Data management infrastructure
-*   - Publication costs
-* These are NOT in Table 4 (which only reports per-participant costs)
-
-display ""
-display as text "  KEY INSIGHT:"
-display as text "  Table 4 reports per-participant costs for each country arm."
-display as text "  ALL reported costs scale with the number of treated participants."
-display as text "  Dropping a country arm saves ~1/6 of total cost."
-display as text "  => The study-wide fixed cost (shared across arms) is SMALL."
-display ""
+display as text "  (For reference, direct transfers alone = " as result %4.2f `transfer_share' ///
+    as text " of total cost; clearly variable.)"
 
 * Average cost per arm
 local avg_arm_cost = `total_cost' / 6
 display as text "  Average arm cost: $" as result %12.0f `avg_arm_cost'
-display as text "  Average per-participant cost: $" as result %8.0f (`total_cost'/`total_treated')
-
-* For the linear model C = c_f + c_v * J * n_bar:
-* Since Table 4 costs are entirely per-participant, the "within-study" cf_share
-* from the observable data is approximately 0.
-* But there ARE unobserved fixed costs (coordination, design).
-* We'll explore a range: cf_share = 0 (fully proportional) to 0.20 (generous estimate)
 
 display ""
 display as result "=== Calibrated alpha_opt under Linear Model ==="
@@ -246,7 +238,7 @@ display ""
 display as text "  cf_share   J_bar  alpha_opt(1s)  alpha_opt(2s)  Interpretation"
 display as text "  {hline 72}"
 
-foreach cfs in 0.00 0.05 0.10 0.15 0.20 0.30 0.46 {
+foreach cfs in 0.00 0.05 0.10 0.15 0.20 0.23 0.30 0.46 {
     * Use J_bar = 6 (this study's own arm count as reference)
     qui mht_critical, jhypotheses(6) alphabar(0.05) model(linear) ///
         cfshare(`cfs') jbar(6) nmratio(1)
@@ -258,6 +250,7 @@ foreach cfs in 0.00 0.05 0.10 0.15 0.20 0.30 0.46 {
     if `cfs' == 0.10 local interp "~10% fixed (moderate coordination)"
     if `cfs' == 0.15 local interp "~15% fixed (substantial coordination)"
     if `cfs' == 0.20 local interp "~20% fixed (generous upper bound)"
+    if `cfs' == 0.23 local interp "CALIBRATED: ambiguous items as fixed"
     if `cfs' == 0.46 local interp "FDA pharma default"
     display as result "  " %5.2f `cfs' "      6     " %9.6f `a1' ///
         "      " %9.6f `a2' as text "  `interp'"
@@ -287,16 +280,16 @@ display as text "  {hline 55}"
 
 display ""
 display as text "{hline 70}"
-display as result "  Exercise 2 with CALIBRATED Linear Model (cf_share=0.10, J_bar=6)"
+display as result "  Exercise 2 with CALIBRATED Linear Model (cf_share=0.23, J_bar=6)"
 display as text "{hline 70}"
 display ""
 
-* Our preferred calibration: cf_share = 0.10
-* Rationale: Table 4 costs are entirely per-participant, so the observed
-* variable cost share is ~100%. But there must be SOME fixed costs
-* (study design, coordination) not captured. 10% is a reasonable estimate.
+* Preferred calibration: cf_share = 0.23 (results_note.pdf).
+* Rationale: treat the ambiguous ~23% (indirect + supervision) as FIXED, a
+* conservative upper bound; the remaining ~74% (variable + per-arm training)
+* scales with J. At J=6 this gives alpha* ~ 0.023 one-sided (0.047 two-sided).
 
-local cal_cfs = 0.10
+local cal_cfs = `cf_cal'
 local cal_jbar = 6
 
 * --- Load HH data ---
@@ -614,7 +607,7 @@ display ""
 display as text "{hline 90}"
 display as result "  SUMMARY: Default vs Calibrated Linear Model"
 display as text "  Default: cf_share=0.46, J_bar=3 (FDA pharma)"
-display as text "  Calibrated: cf_share=0.10, J_bar=6 (Banerjee et al. costs)"
+display as text "  Calibrated: cf_share=0.23, J_bar=6 (Banerjee et al. costs)"
 display as text "{hline 90}"
 display ""
 
@@ -622,8 +615,8 @@ display ""
 display as text "  Thresholds (one-sided, alpha_bar=0.05, J=6):"
 qui mht_critical, jhypotheses(6) alphabar(0.05) model(linear) cfshare(0.46) jbar(3)
 display as text "    Default Lin (0.46/3):   " as result %9.6f r(alpha_opt)
-qui mht_critical, jhypotheses(6) alphabar(0.05) model(linear) cfshare(0.10) jbar(6)
-display as text "    Calibrated Lin (0.10/6):" as result %9.6f r(alpha_opt)
+qui mht_critical, jhypotheses(6) alphabar(0.05) model(linear) cfshare(0.23) jbar(6)
+display as text "    Calibrated Lin (0.23/6):" as result %9.6f r(alpha_opt)
 qui mht_critical, jhypotheses(6) alphabar(0.05) model(cobbdouglas)
 display as text "    Default CD:             " as result %9.6f r(alpha_opt)
 display as text "    Bonferroni:             " as result %9.6f 0.05/6
@@ -654,7 +647,7 @@ forvalues k = 1/`nout' {
 display as text "  {hline 82}"
 display ""
 display as text "  L_def = Linear default (cf_share=0.46, J_bar=3)"
-display as text "  L_cal = Linear calibrated (cf_share=0.10, J_bar=6)"
+display as text "  L_cal = Linear calibrated (cf_share=0.23, J_bar=6)"
 
 display ""
 display as text "{hline 68}"

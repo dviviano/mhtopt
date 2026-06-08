@@ -59,25 +59,28 @@ cd "path/to/mhtopt"
 do "testing/full_analysis_case/run_all.do"
 ```
 
-This runs all four parts and writes clean logs alongside the scripts:
+This runs the three parts and writes clean logs alongside the scripts:
 
 | Part | What | Log |
 |---|---|---|
-| 1 | One treatment × 10 outcomes | `part1_outcomes_log.txt` |
-| 2 | 6 country treatments × 10 outcomes | `part2_treatments_log.txt` |
-| 3 | Cost calibration from Table 4 | `part3_calibration_log.txt` |
-| 4 | Sensitivity to fixed-cost share | `part4_gradient_log.txt` |
+| 2 | One outcome × 6 country arms (J=6) | `part2_treatments_log.txt` |
+| 3 | Cost calibration from Table 4 (cf=0.23) | `part3_calibration_log.txt` |
+| 4 | Sensitivity to fixed-cost share (BH divergence) | `part4_gradient_log.txt` |
 
-The expected results and their interpretation are in
-[`full_analysis_case/results_note.md`](full_analysis_case/results_note.md).
+The note these results back is
+[`full_analysis_case/results_note.pdf`](full_analysis_case/results_note.pdf).
 
 ### Spot checks (so you know it reproduced)
 
 | Quantity | Expected |
 |---|---|
-| VWN threshold, J=10 (Cobb-Douglas / Linear) | 0.006745 / 0.017656 |
-| VWN threshold, J=6 (Cobb-Douglas / Linear) | 0.010519 / 0.020052 |
-| Coefficients vs the paper's stored `*_family_matrix.dta` | max diff < 1e-7 |
+| VWN threshold, J=6 (Cobb-Douglas / Linear, one-sided) | 0.010519 / 0.020052 |
+| Calibrated Linear threshold (cf=0.23, J_bar=6, one-sided) | 0.023256 (≈ 0.047 two-sided) |
+| Part 2 country-arm counts (Consumption EL1, Naive/BH/CD/Lin) | 4 / 4 / 3 / 4 |
+| Part 4 BH divergence at cf=0.23 (cells where L≠BH, out of 20) | 2 (Physical health EL2, Income EL2) |
+
+> The two per-language testdrives (`stata/testing/`, `r/testing/`, `python/testing/`)
+> are lighter showcases of the same J=6 country-arms framing.
 
 ## Reproducing the derived files from scratch (optional)
 

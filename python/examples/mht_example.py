@@ -5,7 +5,7 @@ Viviano, Wuthrich, and Niehaus (2026)
 Demonstrates all five package functions using built-in and simulated data.
 
 To run:
-    cd mht_package_python_042826
+    cd python
     pip install -e .
     python examples/mht_example.py
 """

@@ -35,10 +35,10 @@ version 14.0
 * --------------------------------------------------------------------------
 * Paths -- auto-detect package root
 * HOW TO RUN (either works):
-*   cd "path/to/package_to_publish"
+*   cd "path/to/mhtopt"
 *   do "testing/full_analysis_case/analysis_part2_treatments.do"
 * or:
-*   cd "path/to/package_to_publish/testing/full_analysis_case"
+*   cd "path/to/mhtopt/testing/full_analysis_case"
 *   do "analysis_part2_treatments.do"
 * --------------------------------------------------------------------------
 local root "`c(pwd)'"
@@ -51,7 +51,7 @@ if _rc {
         capture confirm file "`root'/stata/mht_critical.ado"
         if _rc {
             display as error "Cannot find the stata/ folder."
-            display as error "Please cd to package_to_publish/ or its testing/full_analysis_case/ subfolder."
+            display as error "Please cd to mhtopt/ or its testing/full_analysis_case/ subfolder."
             exit 601
         }
     }

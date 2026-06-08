@@ -1,6 +1,6 @@
 
-  Optimal Test Sizes  [Table 1, Viviano, Wuthrich & Niehaus 2026]
-  Model: Linear (Eq. 27)
+  Optimal Test Sizes  [Viviano, Wuthrich & Niehaus 2026]
+  Model: Linear (Eq. 26)
   Benchmark alpha: 0.0500
 
   |J|    n/m=50%    n/m=100%    n/m=200%  Sid(a=.025)  Sid(a=.05)
@@ -16,162 +16,7 @@
 
 ==================================================
 
-  VERSION A: Heterogeneous Audience -- 10 Outcomes, India
-
-  Reference: Table 3, Banerjee et al. (2015)
-
-==================================================
-
-Regression summary (India, treatment coefficient, one-sided p):
-
-  +-----------------------------------------------------------+
-  |     outcome        coef         se      t_stat    p_value |
-  |-----------------------------------------------------------|
-  | Consumption    .2959118   .0797936    3.708467   .0001043 |
-  |      Income    .6079886   .1140044    5.333027   4.83e-08 |
-  |      Assets    .6499598    .089301    7.278303   1.69e-13 |
-  |     FoodSec    .2381184   .0684156    3.480467   .0002503 |
-  |     Finance    .2140067   .1292454    1.655817   .0488795 |
-  |-----------------------------------------------------------|
-  |     TimeUse     .279227   .0488582    5.715048   5.48e-09 |
-  |  PhysHealth    .1598879   .0652879    2.448965   .0071634 |
-  |  MentHealth    .0769156   .0596785    1.288832   .0987282 |
-  |   Political   -.0070449   .0496091   -.1420077   .7782315 |
-  |    WomenEmp    .0865461   .0628163    1.377766   .0841378 |
-  +-----------------------------------------------------------+
-
---- mht_test: Linear model (cf_share=0.46), alpha_bar=0.05 ---
-
-  Multiple Hypothesis Testing Results
-  Viviano, Wuthrich, and Niehaus (2026)
-
-  Hypotheses tested:       10
-  Benchmark alpha:        0.0500
-  Cost model:          Linear
-
-  -------------------------------------------------
-  Procedure              Test size    Rejections
-  -------------------------------------------------
-  Optimal (model-based)     0.017656         6
-  Bonferroni                0.005000         5
-  Holm (step-down)          0.050000 *       6
-  BH (FDR control)          0.050000 *       6
-  Unadjusted                0.050000         7
-  -------------------------------------------------
-  * Step-wise procedures; effective threshold varies by rank
-
-  Generated variables: mht_reject_opt, mht_reject_bonf,
-    mht_reject_holm, mht_reject_bh, mht_reject_unadj,
-    mht_alpha_opt
-
-  +-------------------------------------------------------------------------------+
-  |     outcome    p_value   mht_re~t   mht_re~f   mht_re~m   mht_re~h   mht_re~j |
-  |-------------------------------------------------------------------------------|
-  | Consumption   .0001043          1          1          1          1          1 |
-  |      Income   4.83e-08          1          1          1          1          1 |
-  |      Assets   1.69e-13          1          1          1          1          1 |
-  |     FoodSec   .0002503          1          1          1          1          1 |
-  |     Finance   .0488795          0          0          0          0          1 |
-  |-------------------------------------------------------------------------------|
-  |     TimeUse   5.48e-09          1          1          1          1          1 |
-  |  PhysHealth   .0071634          1          0          1          1          1 |
-  |  MentHealth   .0987282          0          0          0          0          0 |
-  |   Political   .7782315          0          0          0          0          0 |
-  |    WomenEmp   .0841378          0          0          0          0          0 |
-  +-------------------------------------------------------------------------------+
-
---- mht_test: Cobb-Douglas (beta=0.13, iota=0.075) ---
-
-  Multiple Hypothesis Testing Results
-  Viviano, Wuthrich, and Niehaus (2026)
-
-  Hypotheses tested:       10
-  Benchmark alpha:        0.0500
-  Cost model:          Cobb-Douglas
-
-  -------------------------------------------------
-  Procedure              Test size    Rejections
-  -------------------------------------------------
-  Optimal (model-based)     0.006745         5
-  Bonferroni                0.005000         5
-  Holm (step-down)          0.050000 *       6
-  BH (FDR control)          0.050000 *       6
-  Unadjusted                0.050000         7
-  -------------------------------------------------
-  * Step-wise procedures; effective threshold varies by rank
-
-  Generated variables: cd_reject_opt, cd_reject_bonf,
-    cd_reject_holm, cd_reject_bh, cd_reject_unadj,
-    cd_alpha_opt
-
-  +----------------------------------------------+
-  |     outcome    p_value   cd_rej~t   cd_rej~f |
-  |----------------------------------------------|
-  | Consumption   .0001043          1          1 |
-  |      Income   4.83e-08          1          1 |
-  |      Assets   1.69e-13          1          1 |
-  |     FoodSec   .0002503          1          1 |
-  |     Finance   .0488795          0          0 |
-  |----------------------------------------------|
-  |     TimeUse   5.48e-09          1          1 |
-  |  PhysHealth   .0071634          0          0 |
-  |  MentHealth   .0987282          0          0 |
-  |   Political   .7782315          0          0 |
-  |    WomenEmp   .0841378          0          0 |
-  +----------------------------------------------+
-
---- Comparison with Banerjee et al. Table 3 ---
-
-  Paper uses BH q-values (FDR control) on pooled 6-country sample.
-
-  Our analysis: India only, with cost-based optimal correction.
-
-  Paper Table 3 q-values (endline 1, pooled):
-
-    Most indices: q = 0.001  => significant under BH
-
-    Physical health: q = 0.078 => NOT significant at 5% under BH
-
-    Women's empowerment: q = 0.049 => borderline under BH
-
-  Our findings (India only):
-
-    CONFIRMED: 5 core results (consumption, income, assets,
-
-      food security, time use) robust under ALL corrections.
-
-    CONTESTED: Financial inclusion (p~0.049) is rejected
-
-      unadjusted but NOT under any correction -- overstated.
-
-    DEPENDS ON COSTS: Physical health (p~0.007) survives
-
-      Linear optimal but not Cobb-Douglas or Bonferroni.
-
---- Study-specific calibration (Table 4 cost data) ---
-
-  From Table 4 (India): program+overhead ~$1,268, survey ~$100-150
-
-  => cf_share_outcomes ~ 0.80-0.90 (most costs fixed w.r.t. outcomes)
-
-  cf_share=0.46: alpha* = 0.01766
-  cf_share=0.75: alpha* = 0.00950
-  cf_share=0.82: alpha* = 0.00807
-  cf_share=0.90: alpha* = 0.00661
-
-  Bonferroni:     alpha* = 0.00500
-
-  Physical health (p~0.007) is the SWING outcome:
-
-    cf_share <= 0.80: rejected (significant)
-
-    cf_share >= 0.90: NOT rejected (insignificant)
-
-    This is the package's value: making cost-dependence explicit.
-
-==================================================
-
-  VERSION B: Multiple Treatments -- 6 Countries
+  One outcome x 6 country arms (J=6)
 
   Reference: Figure 3, Table 4, Banerjee et al. (2015)
 
@@ -205,15 +50,15 @@ Regression summary (India, treatment coefficient, one-sided p):
 
   Coefficient-level results:
 
-  Variable            Coef.     SE      t-stat  p-val   Opt  Bonf Holm BH   Unadj
-  --------------------------------------------------------------------------------
-  treat_c1            0.2408  0.0684   3.522  0.0002    *     *      *      *     *    
-  treat_c2            0.1059  0.0489   2.169  0.0151    *     .      *      *     *    
-  treat_c3           -0.0238  0.0482  -0.494  0.6893    .     .      .      .     .    
-  treat_c4            0.2924  0.0760   3.845  0.0001    *     *      *      *     *    
-  treat_c5            0.1703  0.0633   2.688  0.0036    *     *      *      *     *    
-  treat_c6           -0.0898  0.0522  -1.720  0.9573    .     .      .      .     .    
-  --------------------------------------------------------------------------------
+  Variable            Coef.     SE      t-stat  p-val   Opt  Bonf Holm BH   Una
+  -----------------------------------------------------------------------------
+  treat_c1            0.2408  0.0684   3.522  0.0002    *     *      *      *  
+  treat_c2            0.1059  0.0489   2.169  0.0151    *     .      *      *  
+  treat_c3           -0.0238  0.0482  -0.494  0.6893    .     .      .      .  
+  treat_c4            0.2924  0.0760   3.845  0.0001    *     *      *      *  
+  treat_c5            0.1703  0.0633   2.688  0.0036    *     *      *      *  
+  treat_c6           -0.0898  0.0522  -1.720  0.9573    .     .      .      .  
+  -----------------------------------------------------------------------------
   * = reject;  . = fail to reject
 
   Cobb-Douglas (beta=0.13):
@@ -224,7 +69,7 @@ Regression summary (India, treatment coefficient, one-sided p):
 
   Hypotheses tested:      6
   Benchmark alpha:     0.0500
-  Cost model:          Cobb-Douglas (Eq. 28)
+  Cost model:          Cobb-Douglas (App. A)
   P-values:            one-sided (positive direction)
   n/m ratio:           1.0000
 
@@ -240,18 +85,18 @@ Regression summary (India, treatment coefficient, one-sided p):
 
   Coefficient-level results:
 
-  Variable            Coef.     SE      t-stat  p-val   Opt  Bonf Holm BH   Unadj
-  --------------------------------------------------------------------------------
-  treat_c1            0.2408  0.0684   3.522  0.0002    *     *      *      *     *    
-  treat_c2            0.1059  0.0489   2.169  0.0151    .     .      *      *     *    
-  treat_c3           -0.0238  0.0482  -0.494  0.6893    .     .      .      .     .    
-  treat_c4            0.2924  0.0760   3.845  0.0001    *     *      *      *     *    
-  treat_c5            0.1703  0.0633   2.688  0.0036    *     *      *      *     *    
-  treat_c6           -0.0898  0.0522  -1.720  0.9573    .     .      .      .     .    
-  --------------------------------------------------------------------------------
+  Variable            Coef.     SE      t-stat  p-val   Opt  Bonf Holm BH   Una
+  -----------------------------------------------------------------------------
+  treat_c1            0.2408  0.0684   3.522  0.0002    *     *      *      *  
+  treat_c2            0.1059  0.0489   2.169  0.0151    .     .      *      *  
+  treat_c3           -0.0238  0.0482  -0.494  0.6893    .     .      .      .  
+  treat_c4            0.2924  0.0760   3.845  0.0001    *     *      *      *  
+  treat_c5            0.1703  0.0633   2.688  0.0036    *     *      *      *  
+  treat_c6           -0.0898  0.0522  -1.720  0.9573    .     .      .      .  
+  -----------------------------------------------------------------------------
   * = reject;  . = fail to reject
 
-  Study-specific (cf_share=0.10, countries are expensive):
+  Study-specific (cf_share=0.23, jbar=6, countries are expensive):
 
   MHT Postestimation Results
   Viviano, Wuthrich, and Niehaus (2026)
@@ -266,7 +111,7 @@ Regression summary (India, treatment coefficient, one-sided p):
   ----------------------------------------------------------
   Procedure              Test size    Rejections
   ----------------------------------------------------------
-  Optimal (model-based)       0.039583         4
+  Optimal (model-based)       0.023256         4
   Bonferroni                  0.008333         3
   Holm (step-down)             step-wise       4
   BH (FDR control)             step-wise       4
@@ -275,15 +120,15 @@ Regression summary (India, treatment coefficient, one-sided p):
 
   Coefficient-level results:
 
-  Variable            Coef.     SE      t-stat  p-val   Opt  Bonf Holm BH   Unadj
-  --------------------------------------------------------------------------------
-  treat_c1            0.2408  0.0684   3.522  0.0002    *     *      *      *     *    
-  treat_c2            0.1059  0.0489   2.169  0.0151    *     .      *      *     *    
-  treat_c3           -0.0238  0.0482  -0.494  0.6893    .     .      .      .     .    
-  treat_c4            0.2924  0.0760   3.845  0.0001    *     *      *      *     *    
-  treat_c5            0.1703  0.0633   2.688  0.0036    *     *      *      *     *    
-  treat_c6           -0.0898  0.0522  -1.720  0.9573    .     .      .      .     .    
-  --------------------------------------------------------------------------------
+  Variable            Coef.     SE      t-stat  p-val   Opt  Bonf Holm BH   Una
+  -----------------------------------------------------------------------------
+  treat_c1            0.2408  0.0684   3.522  0.0002    *     *      *      *  
+  treat_c2            0.1059  0.0489   2.169  0.0151    *     .      *      *  
+  treat_c3           -0.0238  0.0482  -0.494  0.6893    .     .      .      .  
+  treat_c4            0.2924  0.0760   3.845  0.0001    *     *      *      *  
+  treat_c5            0.1703  0.0633   2.688  0.0036    *     *      *      *  
+  treat_c6           -0.0898  0.0522  -1.720  0.9573    .     .      .      .  
+  -----------------------------------------------------------------------------
   * = reject;  . = fail to reject
 
 --- Income & revenues: 6 country-specific treatments ---
@@ -310,15 +155,15 @@ Regression summary (India, treatment coefficient, one-sided p):
 
   Coefficient-level results:
 
-  Variable            Coef.     SE      t-stat  p-val   Opt  Bonf Holm BH   Unadj
-  --------------------------------------------------------------------------------
-  treat_c1            1.4443  0.1953   7.397  0.0000    *     *      *      *     *    
-  treat_c2            0.1637  0.0496   3.300  0.0005    *     *      *      *     *    
-  treat_c3            0.3404  0.0523   6.506  0.0000    *     *      *      *     *    
-  treat_c4            0.6031  0.1073   5.621  0.0000    *     *      *      *     *    
-  treat_c5            0.1012  0.0686   1.476  0.0700    .     .      .      .     .    
-  treat_c6            0.0616  0.0471   1.307  0.0957    .     .      .      .     .    
-  --------------------------------------------------------------------------------
+  Variable            Coef.     SE      t-stat  p-val   Opt  Bonf Holm BH   Una
+  -----------------------------------------------------------------------------
+  treat_c1            1.4443  0.1953   7.397  0.0000    *     *      *      *  
+  treat_c2            0.1637  0.0496   3.300  0.0005    *     *      *      *  
+  treat_c3            0.3404  0.0523   6.506  0.0000    *     *      *      *  
+  treat_c4            0.6031  0.1073   5.621  0.0000    *     *      *      *  
+  treat_c5            0.1012  0.0686   1.476  0.0700    .     .      .      .  
+  treat_c6            0.0616  0.0471   1.307  0.0957    .     .      .      .  
+  -----------------------------------------------------------------------------
   * = reject;  . = fail to reject
 
 --- Assets: 6 country-specific treatments ---
@@ -345,15 +190,15 @@ Regression summary (India, treatment coefficient, one-sided p):
 
   Coefficient-level results:
 
-  Variable            Coef.     SE      t-stat  p-val   Opt  Bonf Holm BH   Unadj
-  --------------------------------------------------------------------------------
-  treat_c1            0.5023  0.0608   8.267  0.0000    *     *      *      *     *    
-  treat_c2            0.2473  0.0491   5.031  0.0000    *     *      *      *     *    
-  treat_c3            0.0139  0.0512   0.272  0.3927    .     .      .      .     .    
-  treat_c4            0.6494  0.0842   7.708  0.0000    *     *      *      *     *    
-  treat_c5            0.3096  0.0627   4.935  0.0000    *     *      *      *     *    
-  treat_c6            0.1125  0.0443   2.542  0.0055    *     *      *      *     *    
-  --------------------------------------------------------------------------------
+  Variable            Coef.     SE      t-stat  p-val   Opt  Bonf Holm BH   Una
+  -----------------------------------------------------------------------------
+  treat_c1            0.5023  0.0608   8.267  0.0000    *     *      *      *  
+  treat_c2            0.2473  0.0491   5.031  0.0000    *     *      *      *  
+  treat_c3            0.0139  0.0512   0.272  0.3927    .     .      .      .  
+  treat_c4            0.6494  0.0842   7.708  0.0000    *     *      *      *  
+  treat_c5            0.3096  0.0627   4.935  0.0000    *     *      *      *  
+  treat_c6            0.1125  0.0443   2.542  0.0055    *     *      *      *  
+  -----------------------------------------------------------------------------
   * = reject;  . = fail to reject
 
 --- Food security: 6 country-specific treatments ---
@@ -380,15 +225,15 @@ Regression summary (India, treatment coefficient, one-sided p):
 
   Coefficient-level results:
 
-  Variable            Coef.     SE      t-stat  p-val   Opt  Bonf Holm BH   Unadj
-  --------------------------------------------------------------------------------
-  treat_c1            0.1400  0.0616   2.272  0.0116    *     .      *      *     *    
-  treat_c2            0.0661  0.0438   1.510  0.0655    .     .      .      .     .    
-  treat_c3            0.1334  0.0480   2.780  0.0027    *     *      *      *     *    
-  treat_c4            0.2362  0.0646   3.656  0.0001    *     *      *      *     *    
-  treat_c5            0.1131  0.0549   2.062  0.0196    *     .      .      *     *    
-  treat_c6            0.0187  0.0520   0.358  0.3600    .     .      .      .     .    
-  --------------------------------------------------------------------------------
+  Variable            Coef.     SE      t-stat  p-val   Opt  Bonf Holm BH   Una
+  -----------------------------------------------------------------------------
+  treat_c1            0.1400  0.0616   2.272  0.0116    *     .      *      *  
+  treat_c2            0.0661  0.0438   1.510  0.0655    .     .      .      .  
+  treat_c3            0.1334  0.0480   2.780  0.0027    *     *      *      *  
+  treat_c4            0.2362  0.0646   3.656  0.0001    *     *      *      *  
+  treat_c5            0.1131  0.0549   2.062  0.0196    *     .      .      *  
+  treat_c6            0.0187  0.0520   0.358  0.3600    .     .      .      .  
+  -----------------------------------------------------------------------------
   * = reject;  . = fail to reject
 
 --- Financial inclusion: 6 country-specific treatments ---
@@ -415,46 +260,38 @@ Regression summary (India, treatment coefficient, one-sided p):
 
   Coefficient-level results:
 
-  Variable            Coef.     SE      t-stat  p-val   Opt  Bonf Holm BH   Unadj
-  --------------------------------------------------------------------------------
-  treat_c1            1.9163  0.1087  17.624  0.0000    *     *      *      *     *    
-  treat_c2            0.2600  0.0596   4.361  0.0000    *     *      *      *     *    
-  treat_c3            0.1639  0.0557   2.944  0.0016    *     *      *      *     *    
-  treat_c4            0.2139  0.1207   1.773  0.0382    .     .      .      .     *    
-  treat_c5            0.0106  0.0560   0.189  0.4252    .     .      .      .     .    
-  treat_c6           -0.0190  0.0486  -0.390  0.6518    .     .      .      .     .    
-  --------------------------------------------------------------------------------
+  Variable            Coef.     SE      t-stat  p-val   Opt  Bonf Holm BH   Una
+  -----------------------------------------------------------------------------
+  treat_c1            1.9163  0.1087  17.624  0.0000    *     *      *      *  
+  treat_c2            0.2600  0.0596   4.361  0.0000    *     *      *      *  
+  treat_c3            0.1639  0.0557   2.944  0.0016    *     *      *      *  
+  treat_c4            0.2139  0.1207   1.773  0.0382    .     .      .      .  
+  treat_c5            0.0106  0.0560   0.189  0.4252    .     .      .      .  
+  treat_c6           -0.0190  0.0486  -0.390  0.6518    .     .      .      .  
+  -----------------------------------------------------------------------------
   * = reject;  . = fail to reject
 
 ==================================================
 
-  SUMMARY: Version A vs Version B
+  SUMMARY: One outcome x 6 country arms
 
 ==================================================
 
-  Version A (10 outcomes, India):
+  Cost structure: adding a country arm is EXPENSIVE (cf_share ~ 0.10-0.23)
 
-    Cost structure: adding outcomes is CHEAP (cf_share ~ 0.82)
+    => Minimal correction needed (alpha* ~ 0.02-0.04, near unadjusted)
 
-    => Strict correction needed (alpha* ~ 0.008, near Bonferroni)
+    => VWN-Lin retains country effects that BH's step-up rule discards
 
-    => Confirms 5 core results; physical health is borderline
-
-  Version B (6 countries, pooled):
-
-    Cost structure: adding a country is EXPENSIVE (cf_share ~ 0.10)
-
-    => Minimal correction needed (alpha* ~ 0.040, near unadjusted)
-
-    => Retains effects that Bonferroni would discard
-
-    => Honduras and Peru show no effects under any procedure
+    => Honduras and Peru show weak/no effects under any procedure
 
        (cf. Table 4: Honduras has benefit/cost ratio = -198%)
 
-  Same data, two framings, opposite corrections.
+  Correction cuts both ways: it can remove marginally-significant
 
-  This is the core insight of VWN (2026).
+  results or restore ones that FDR procedures discard.
+
+  See results_note.pdf.
 
 Done.
 

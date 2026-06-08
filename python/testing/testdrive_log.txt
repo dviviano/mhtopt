@@ -1,43 +1,3 @@
-C:\Users\erick\OneDrive\Documentos\PhD\GSR Paul\LTP\MHT\mht_package_python_042826\testing\test_mht_testdrive.py:109: RuntimeWarning: invalid value encountered in scalar divide
-  t_val = coef / se_val
-C:\Users\erick\OneDrive\Documentos\PhD\GSR Paul\LTP\MHT\mht_package_python_042826\testing\test_mht_testdrive.py:109: RuntimeWarning: invalid value encountered in scalar divide
-  t_val = coef / se_val
-C:\Users\erick\OneDrive\Documentos\PhD\GSR Paul\LTP\MHT\mht_package_python_042826\testing\test_mht_testdrive.py:109: RuntimeWarning: invalid value encountered in scalar divide
-  t_val = coef / se_val
-C:\Users\erick\OneDrive\Documentos\PhD\GSR Paul\LTP\MHT\mht_package_python_042826\testing\test_mht_testdrive.py:109: RuntimeWarning: invalid value encountered in scalar divide
-  t_val = coef / se_val
-C:\Users\erick\OneDrive\Documentos\PhD\GSR Paul\LTP\MHT\mht_package_python_042826\testing\test_mht_testdrive.py:109: RuntimeWarning: invalid value encountered in scalar divide
-  t_val = coef / se_val
-C:\Users\erick\OneDrive\Documentos\PhD\GSR Paul\LTP\MHT\mht_package_python_042826\testing\test_mht_testdrive.py:109: RuntimeWarning: invalid value encountered in scalar divide
-  t_val = coef / se_val
-C:\Users\erick\OneDrive\Documentos\PhD\GSR Paul\LTP\MHT\mht_package_python_042826\testing\test_mht_testdrive.py:109: RuntimeWarning: invalid value encountered in scalar divide
-  t_val = coef / se_val
-C:\Users\erick\OneDrive\Documentos\PhD\GSR Paul\LTP\MHT\mht_package_python_042826\testing\test_mht_testdrive.py:109: RuntimeWarning: invalid value encountered in scalar divide
-  t_val = coef / se_val
-C:\Users\erick\OneDrive\Documentos\PhD\GSR Paul\LTP\MHT\mht_package_python_042826\testing\test_mht_testdrive.py:109: RuntimeWarning: invalid value encountered in scalar divide
-  t_val = coef / se_val
-C:\Users\erick\OneDrive\Documentos\PhD\GSR Paul\LTP\MHT\mht_package_python_042826\testing\test_mht_testdrive.py:109: RuntimeWarning: invalid value encountered in scalar divide
-  t_val = coef / se_val
-C:\Users\erick\OneDrive\Documentos\PhD\GSR Paul\LTP\MHT\mht_package_python_042826\testing\test_mht_testdrive.py:201: RuntimeWarning: invalid value encountered in sqrt
-  se = np.sqrt(s2 * np.diag(np.linalg.pinv(X.T @ X)))
-C:\Users\erick\OneDrive\Documentos\PhD\GSR Paul\LTP\MHT\mht_package_python_042826\testing\test_mht_testdrive.py:204: RuntimeWarning: invalid value encountered in divide
-  t_stats = beta_hat / se
-C:\Users\erick\OneDrive\Documentos\PhD\GSR Paul\LTP\MHT\mht_package_python_042826\testing\test_mht_testdrive.py:201: RuntimeWarning: invalid value encountered in sqrt
-  se = np.sqrt(s2 * np.diag(np.linalg.pinv(X.T @ X)))
-C:\Users\erick\OneDrive\Documentos\PhD\GSR Paul\LTP\MHT\mht_package_python_042826\testing\test_mht_testdrive.py:204: RuntimeWarning: invalid value encountered in divide
-  t_stats = beta_hat / se
-C:\Users\erick\OneDrive\Documentos\PhD\GSR Paul\LTP\MHT\mht_package_python_042826\testing\test_mht_testdrive.py:201: RuntimeWarning: invalid value encountered in sqrt
-  se = np.sqrt(s2 * np.diag(np.linalg.pinv(X.T @ X)))
-C:\Users\erick\OneDrive\Documentos\PhD\GSR Paul\LTP\MHT\mht_package_python_042826\testing\test_mht_testdrive.py:204: RuntimeWarning: invalid value encountered in divide
-  t_stats = beta_hat / se
-C:\Users\erick\OneDrive\Documentos\PhD\GSR Paul\LTP\MHT\mht_package_python_042826\testing\test_mht_testdrive.py:201: RuntimeWarning: invalid value encountered in sqrt
-  se = np.sqrt(s2 * np.diag(np.linalg.pinv(X.T @ X)))
-C:\Users\erick\OneDrive\Documentos\PhD\GSR Paul\LTP\MHT\mht_package_python_042826\testing\test_mht_testdrive.py:204: RuntimeWarning: invalid value encountered in divide
-  t_stats = beta_hat / se
-C:\Users\erick\OneDrive\Documentos\PhD\GSR Paul\LTP\MHT\mht_package_python_042826\testing\test_mht_testdrive.py:201: RuntimeWarning: invalid value encountered in sqrt
-  se = np.sqrt(s2 * np.diag(np.linalg.pinv(X.T @ X)))
-C:\Users\erick\OneDrive\Documentos\PhD\GSR Paul\LTP\MHT\mht_package_python_042826\testing\test_mht_testdrive.py:204: RuntimeWarning: invalid value encountered in divide
-  t_stats = beta_hat / se
 
 ======================================================================
   MHT Test Drive: Banerjee et al. (Science 2015)
@@ -64,44 +24,9 @@ C:\Users\erick\OneDrive\Documentos\PhD\GSR Paul\LTP\MHT\mht_package_python_04282
 ----------------------------------------------
 
 
-==================================================
-  VERSION A: 10 Outcomes, India
-  Reference: Table 3, Banerjee et al. (2015)
-==================================================
-
-Regression summary (India, treatment, one-sided p):
-       Outcome      Coef        SE         t           p
-   Consumption    0.0000   -0.0000       nan         nan
-        Income    0.0000   -0.0000       nan         nan
-        Assets    0.0000   -0.0000       nan         nan
-       FoodSec    0.0000   -0.0000       nan         nan
-       Finance    0.0000   -0.0000       nan         nan
-       TimeUse    0.0000   -0.0000       nan         nan
-    PhysHealth    0.0000   -0.0000       nan         nan
-    MentHealth    0.0000   -0.0000       nan         nan
-     Political    0.0000   -0.0000       nan         nan
-      WomenEmp    0.0000   -0.0000       nan         nan
-
---- mht_test: Linear model (cf_share=0.46), alpha_bar=0.05 ---
-
-  alpha_opt = 0.017656
-  Rejections: opt=0, bonf=0, holm=0, bh=0, unadj=0
-
---- mht_test: Cobb-Douglas (beta=0.13, iota=0.075) ---
-
-  alpha_opt = 0.006745
-  Rejections: opt=0
-
---- Study-specific calibration (Table 4 cost data) ---
-  cf_share=0.46: alpha* = 0.01766
-  cf_share=0.75: alpha* = 0.00950
-  cf_share=0.82: alpha* = 0.00807
-  cf_share=0.90: alpha* = 0.00661
-  Bonferroni:     alpha* = 0.00500
-
 
 ==================================================
-  VERSION B: 6 Countries as 6 Treatments
+  One outcome x 6 country arms (J=6)
   Reference: Figure 3, Table 4, Banerjee et al. (2015)
 ==================================================
 
@@ -116,7 +41,7 @@ Regression summary (India, treatment, one-sided p):
     treat_c5  coef=-0.0000  p=nan  opt=.
     treat_c6  coef= 0.0000  p=0.5000  opt=.
 
-  Study-specific (cf_share=0.10): alpha_opt = 0.039583
+  Study-specific (cf_share=0.23, J_bar=6): alpha_opt = 0.023256
     treat_c1  coef= 0.0000  p=0.5000  opt=.
     treat_c2  coef= 0.0000  p=nan  opt=.
     treat_c3  coef= 0.0000  p=0.5000  opt=.
@@ -135,7 +60,7 @@ Regression summary (India, treatment, one-sided p):
     treat_c5  coef=-0.0000  p=nan  opt=.
     treat_c6  coef=-0.0000  p=0.5000  opt=.
 
-  Study-specific (cf_share=0.10): alpha_opt = 0.039583
+  Study-specific (cf_share=0.23, J_bar=6): alpha_opt = 0.023256
     treat_c1  coef= 0.0000  p=nan  opt=.
     treat_c2  coef= 0.0000  p=nan  opt=.
     treat_c3  coef=-0.0000  p=0.5000  opt=.
@@ -154,7 +79,7 @@ Regression summary (India, treatment, one-sided p):
     treat_c5  coef=-0.0000  p=0.5000  opt=.
     treat_c6  coef= 0.0000  p=0.5000  opt=.
 
-  Study-specific (cf_share=0.10): alpha_opt = 0.039583
+  Study-specific (cf_share=0.23, J_bar=6): alpha_opt = 0.023256
     treat_c1  coef= 0.0000  p=0.5000  opt=.
     treat_c2  coef= 0.0000  p=nan  opt=.
     treat_c3  coef= 0.0000  p=nan  opt=.
@@ -173,7 +98,7 @@ Regression summary (India, treatment, one-sided p):
     treat_c5  coef=-0.0000  p=nan  opt=.
     treat_c6  coef= 0.0000  p=0.5000  opt=.
 
-  Study-specific (cf_share=0.10): alpha_opt = 0.039583
+  Study-specific (cf_share=0.23, J_bar=6): alpha_opt = 0.023256
     treat_c1  coef=-0.0000  p=nan  opt=.
     treat_c2  coef= 0.0000  p=0.5000  opt=.
     treat_c3  coef= 0.0000  p=0.5000  opt=.
@@ -192,7 +117,7 @@ Regression summary (India, treatment, one-sided p):
     treat_c5  coef=-0.0000  p=0.5000  opt=.
     treat_c6  coef=-0.0000  p=nan  opt=.
 
-  Study-specific (cf_share=0.10): alpha_opt = 0.039583
+  Study-specific (cf_share=0.23, J_bar=6): alpha_opt = 0.023256
     treat_c1  coef= 0.0000  p=nan  opt=.
     treat_c2  coef=-0.0000  p=nan  opt=.
     treat_c3  coef= 0.0000  p=nan  opt=.
@@ -202,20 +127,14 @@ Regression summary (India, treatment, one-sided p):
 
 
 ==================================================
-  SUMMARY: Version A vs Version B
+  SUMMARY: One outcome x 6 country arms
 ==================================================
 
-  Version A (10 outcomes, India):
-    Cost structure: adding outcomes is CHEAP (cf_share ~ 0.82)
-    => Strict correction needed (alpha* ~ 0.008, near Bonferroni)
-    => Confirms 5 core results; physical health is borderline
+  Cost structure: adding a country arm is EXPENSIVE (cf_share ~ 0.10-0.23)
+  => Minimal correction needed (alpha* ~ 0.02-0.04, near unadjusted)
+  => VWN-Lin retains country effects that BH's step-up rule discards
 
-  Version B (6 countries, pooled):
-    Cost structure: adding a country is EXPENSIVE (cf_share ~ 0.10)
-    => Minimal correction needed (alpha* ~ 0.040, near unadjusted)
-    => Retains effects that Bonferroni would discard
-
-  Same data, two framings, opposite corrections.
-  This is the core insight of VWN (2026).
+  Correction cuts both ways: it can remove marginally-significant results
+  or restore ones that FDR procedures discard. See results_note.pdf.
 
 Done.

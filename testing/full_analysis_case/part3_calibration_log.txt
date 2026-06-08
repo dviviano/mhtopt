@@ -57,27 +57,23 @@
 
 === Cost Decomposition for cf_share Calibration ===
 
-  Direct transfer share of total cost: 0.281
+  Cost categorization (Table 4 Panel A; see results_note.pdf):
 
-    (Assets + food stipends: clearly per-participant)
+    Variable with J (staff/assets/food/travel/materials): ~66%
 
-  Non-transfer share of total cost:    0.719
+    Per-arm (training & start-up):                          ~8%
 
-    (Supervision + overhead + startup)
+    Ambiguous (indirect + supervision) -> treated as FIXED: ~23%
 
-  KEY INSIGHT:
+    Study-wide coordination (unobserved):                   small
 
-  Table 4 reports per-participant costs for each country arm.
+  Conservative calibration (ambiguous items as fixed):
 
-  ALL reported costs scale with the number of treated participants.
+    cf_share = 0.23  (upper bound on the fixed share)
 
-  Dropping a country arm saves ~1/6 of total cost.
-
-  => The study-wide fixed cost (shared across arms) is SMALL.
+  (For reference, direct transfers alone = 0.28 of total cost; clearly variable
 
   Average arm cost: $     2472782
-
-  Average per-participant cost: $    3815
 
 === Calibrated alpha_opt under Linear Model ===
 
@@ -88,6 +84,15 @@
   cf_share   J_bar  alpha_opt(1s)  alpha_opt(2s)  Interpretation
 
   ------------------------------------------------------------------------
+
+   0.00      6      0.050000       0.100000  No fixed costs => no correction
+   0.05      6      0.040000       0.080000  ~5% fixed (minimal coordination)
+   0.10      6      0.033333       0.066667  ~10% fixed (moderate coordination)
+   0.15      6      0.028571       0.057143  ~15% fixed (substantial coordinati
+   0.20      6      0.025000       0.050000  ~20% fixed (generous upper bound)
+   0.23      6      0.023256       0.046512  CALIBRATED: ambiguous items as fix
+   0.30      6      0.020000       0.040000  
+   0.46      6      0.015152       0.030303  FDA pharma default
 
   ------------------------------------------------------------------------
 
@@ -101,9 +106,16 @@
 
   -------------------------------------------------------
 
+   0.00      3      0.050000       0.100000
+   0.05      3      0.044318       0.088636
+   0.10      3      0.039583       0.079167
+   0.15      3      0.035577       0.071154
+   0.20      3      0.032143       0.064286
+   0.46      3      0.020052       0.040104
+
   -------------------------------------------------------
 
-  Exercise 2 with CALIBRATED Linear Model (cf_share=0.10, J_bar=6)
+  Exercise 2 with CALIBRATED Linear Model (cf_share=0.23, J_bar=6)
 
 (Household Table)
 
@@ -322,7 +334,7 @@
     Consumption_end: J=6  N10=4  BH=4  CD=3  Lin_def=4  Lin_cal=4
     Consumption_fup: J=6  N10=5  BH=3  CD=3  Lin_def=3  Lin_cal=3
     Income_end: J=6  N10=5  BH=5  CD=5  Lin_def=5  Lin_cal=5
-    Income_fup: J=6  N10=6  BH=6  CD=4  Lin_def=4  Lin_cal=5
+    Income_fup: J=6  N10=6  BH=6  CD=4  Lin_def=4  Lin_cal=4
     Assets_end: J=6  N10=5  BH=5  CD=5  Lin_def=5  Lin_cal=5
     Assets_fup: J=6  N10=5  BH=4  CD=4  Lin_def=4  Lin_cal=4
     FoodSecurity_end: J=6  N10=4  BH=4  CD=2  Lin_def=4  Lin_cal=4
@@ -382,13 +394,13 @@
 
   Default: cf_share=0.46, J_bar=3 (FDA pharma)
 
-  Calibrated: cf_share=0.10, J_bar=6 (Banerjee et al. costs)
+  Calibrated: cf_share=0.23, J_bar=6 (Banerjee et al. costs)
 
   Thresholds (one-sided, alpha_bar=0.05, J=6):
 
     Default Lin (0.46/3):    0.020052
 
-    Calibrated Lin (0.10/6): 0.033333
+    Calibrated Lin (0.23/6): 0.023256
 
     Default CD:              0.010519
 
@@ -405,7 +417,7 @@
   -----------------------------------------------------------------------------
 
   Consumption     | 6   4   4   3   4   4 | 6   5   3   3   3   3 |
-  Income          | 6   5   5   5   5   5 | 6   6   6   4   4   5 |
+  Income          | 6   5   5   5   5   5 | 6   6   6   4   4   4 |
   Assets          | 6   5   5   5   5   5 | 6   5   4   4   4   4 |
   FoodSecurity    | 6   4   4   2   4   4 | 6   4   2   2   2   2 |
   FinInclusion    | 6   4   3   3   3   3 | 6   3   3   3   3   3 |
@@ -419,7 +431,7 @@
 
   L_def = Linear default (cf_share=0.46, J_bar=3)
 
-  L_cal = Linear calibrated (cf_share=0.10, J_bar=6)
+  L_cal = Linear calibrated (cf_share=0.23, J_bar=6)
 
   PART 3 COMPLETE
 

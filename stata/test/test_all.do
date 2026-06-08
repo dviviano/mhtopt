@@ -12,10 +12,10 @@
       6. Numeric verification (6 tests)  paper Table 1 spot checks vs Eq. 27
 
     To run:
-        adopath + "path/to/mht_package/stata"
-        do "path/to/mht_package/test/test_all.do"
+        adopath + "path/to/mhtopt/stata"
+        do "path/to/mhtopt/stata/test/test_all.do"
 
-    Or use the wrapper test/run_tests.do for clean log output.
+    Or use the wrapper stata/test/run_tests.do for clean log output.
 
     Output: each test prints PASS or FAIL; final summary at the end.
 *******************************************************************************/
