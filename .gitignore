@@ -30,6 +30,7 @@ __pycache__/
 .coverage
 .tox/
 .venv/
+.venv-ex/
 venv/
 build/
 dist/
@@ -41,6 +42,10 @@ dist/
 *.smcl
 *.aux
 *.dvi
+
+# Banerjee et al. (2015) validation data — not redistributed (see testing/README.md)
+testing/data/*.dta
+!testing/data/.gitkeep
 
 # Build artifacts
 stata/mhtopt-ssc-submit.zip

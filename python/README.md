@@ -24,7 +24,7 @@ Requires Python ≥ 3.9; depends on `numpy ≥ 1.20` and `scipy ≥ 1.7`.
 Development install:
 
 ```bash
-pip install "git+https://github.com/OWNER/mhtopt.git#subdirectory=python"
+pip install "git+https://github.com/dviviano/mhtopt.git#subdirectory=python"
 ```
 
 ## Quick start
@@ -95,11 +95,11 @@ python testing/test_mht_testdrive.py
 
 ## Other language ports
 
-The same five functions are available in Stata (`ssc install mhtopt`) and R (`install.packages("mhtopt")`). See the [project repository](https://github.com/OWNER/mhtopt) for cross-language documentation.
+The same five functions are available in Stata (`ssc install mhtopt`) and R (`install.packages("mhtopt")`). See the [project repository](https://github.com/dviviano/mhtopt) for cross-language documentation.
 
 ## Reporting bugs
 
-Open a [GitHub issue](https://github.com/OWNER/mhtopt/issues) and indicate the package version (`mhtopt.__version__`) and Python version.
+Open a [GitHub issue](https://github.com/dviviano/mhtopt/issues) and indicate the package version (`mhtopt.__version__`) and Python version.
 
 ## License
 

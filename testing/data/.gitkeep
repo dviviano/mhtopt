@@ -1,0 +1,9 @@
+# Place the Banerjee et al. (2015) data files here.
+# They are NOT committed to the repo — see ../README.md for download steps
+# (Harvard Dataverse DOI 10.7910/DVN/NHIXNT, file data_modified.zip).
+#
+# Required files (copy from the extracted data_modified/ folder):
+#   pooled_hh.dta
+#   pooled_mb.dta
+#   index_hh_vars.dta
+#   index_mb_vars.dta

@@ -21,7 +21,7 @@
 */
 
 program define mht_cost_estimate, eclass
-    version 14.0
+    version 15.0
     syntax varlist(min=3 max=3 numeric)  /// cost_var arms_var samplesize_var
            [if] [in],                    ///
            ALPHAbar(real)                /// Benchmark single-hypothesis size

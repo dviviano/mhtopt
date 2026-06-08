@@ -24,7 +24,7 @@ Requires Stata 14 or later. No SSC dependencies.
 Development install (latest unreleased version from GitHub):
 
 ```stata
-net install mhtopt, from("https://raw.githubusercontent.com/OWNER/mhtopt/main/stata/")
+net install mhtopt, from("https://raw.githubusercontent.com/dviviano/mhtopt/main/stata/")
 ```
 
 ## Quick start
@@ -90,11 +90,11 @@ A formatted reference appears in `help mht_critical` (References section) and at
 
 ## Other language ports
 
-The same five commands are available in R (`install.packages("mhtopt")`) and Python (`pip install mhtopt`). See the [project repository](https://github.com/OWNER/mhtopt) for cross-language documentation.
+The same five commands are available in R (`install.packages("mhtopt")`) and Python (`pip install mhtopt`). See the [project repository](https://github.com/dviviano/mhtopt) for cross-language documentation.
 
 ## Reporting bugs
 
-Open a [GitHub issue](https://github.com/OWNER/mhtopt/issues) and include the output of `which mht_critical` (package version) and `version` (Stata version).
+Open a [GitHub issue](https://github.com/dviviano/mhtopt/issues) and include the output of `which mht_critical` (package version) and `version` (Stata version).
 
 ## License
 

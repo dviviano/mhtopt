@@ -33,20 +33,20 @@ The five exposed commands/functions are identical across ports:
 
 ```stata
 * Stata
-net install mhtopt, from("https://raw.githubusercontent.com/OWNER/mhtopt/main/stata/")
+net install mhtopt, from("https://raw.githubusercontent.com/dviviano/mhtopt/main/stata/")
 ```
 
 ```r
 # R
-remotes::install_github("OWNER/mhtopt", subdir = "r")
+remotes::install_github("dviviano/mhtopt", subdir = "r")
 ```
 
 ```bash
 # Python
-pip install "git+https://github.com/OWNER/mhtopt.git#subdirectory=python"
+pip install "git+https://github.com/dviviano/mhtopt.git#subdirectory=python"
 ```
 
-> Replace `OWNER` with the GitHub owner once the repo is public. See [`DECISIONS.md`](DECISIONS.md).
+> Replace `dviviano` with the GitHub owner once the repo is public. See [`DECISIONS.md`](DECISIONS.md).
 
 ## Citation
 

@@ -14,7 +14,7 @@
 */
 
 program define mht_test, rclass
-    version 14.0
+    version 15.0
     syntax varname(numeric)        /// Variable with p-values or z-stats
            [if] [in],             ///
            ALPHAbar(real)          /// Benchmark single-hypothesis size

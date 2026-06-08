@@ -21,21 +21,22 @@
 # --- Setup ---
 library(haven)
 
-# Auto-detect package root
-if (file.exists("mht/R/mht_critical.R")) {
+# Auto-detect package root (the r/ directory containing mhtopt/R/)
+if (file.exists("mhtopt/R/mht_critical.R")) {          # run from r/
   root <- getwd()
-} else if (file.exists("../mht/R/mht_critical.R")) {
+} else if (file.exists("../mhtopt/R/mht_critical.R")) { # run from r/testing/
   root <- normalizePath("..")
 } else {
-  stop("Please run from mht_package_R_042826/ or mht_package_R_042826/testing/")
+  stop("Please run from the r/ directory or r/testing/")
 }
 
 # Source package functions
-for (f in list.files(file.path(root, "mht/R"), full.names = TRUE, pattern = "\\.R$")) {
+for (f in list.files(file.path(root, "mhtopt/R"), full.names = TRUE, pattern = "\\.R$")) {
   source(f)
 }
 
-dta_path <- file.path(root, "testing/data")
+# Shared validation data lives at the repo's top-level testing/data/
+dta_path <- file.path(root, "..", "testing/data")
 
 cat("\n")
 cat(strrep("=", 70), "\n")

@@ -4,11 +4,13 @@ Viviano, Wuthrich, and Niehaus (2026), "A Model of Multiple Hypothesis Testing"
 
 Requires: pandas (for reading .dta files)
 
-To run:
-    cd mht_package_python_042826
-    pip install -e .
-    pip install pandas
+To run (needs pandas):
+    cd python
+    pip install pandas        # plus numpy, scipy
     python testing/test_mht_testdrive.py
+
+Data: place the Banerjee files in the repo's top-level testing/data/
+(see testing/README.md; Harvard Dataverse DOI 10.7910/DVN/NHIXNT).
 """
 
 import os
@@ -17,20 +19,20 @@ import numpy as np
 import pandas as pd
 from scipy.stats import norm
 
-# Auto-detect package root
-if os.path.exists("src/mht/__init__.py"):
+# Auto-detect package root (the python/ directory containing src/mhtopt/)
+if os.path.exists("src/mhtopt/__init__.py"):          # run from python/
     root = os.getcwd()
-    sys.path.insert(0, os.path.join(root, "src"))
-elif os.path.exists("../src/mht/__init__.py"):
+elif os.path.exists("../src/mhtopt/__init__.py"):     # run from python/testing/
     root = os.path.abspath("..")
-    sys.path.insert(0, os.path.join(root, "src"))
 else:
-    raise RuntimeError("Please run from mht_package_python_042826/ or testing/")
+    raise RuntimeError("Please run from the python/ directory or python/testing/")
+sys.path.insert(0, os.path.join(root, "src"))
 
 from mhtopt import mht_critical, mht_test, mht_est, mht_table
 from mhtopt.table import print_table
 
-dta_path = os.path.join(root, "testing", "data")
+# Shared validation data lives at the repo's top-level testing/data/
+dta_path = os.path.join(root, "..", "testing", "data")
 
 print()
 print("=" * 70)

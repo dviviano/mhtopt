@@ -59,7 +59,7 @@
 */
 
 program define mht_est, rclass
-    version 14.0
+    version 15.0
     syntax , Vars(namelist)            ///
              ALPHAbar(real)             ///
              [                          ///

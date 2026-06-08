@@ -13,5 +13,5 @@ Per-language conventions: the R port also maintains `r/mhtopt/NEWS.md` (CRAN-rea
 
 Pre-release internal version copied from `all_packages_042826/` snapshots (R, Python, Stata).
 
-[Unreleased]: https://github.com/OWNER/mhtopt/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/OWNER/mhtopt/releases/tag/v0.1.0
+[Unreleased]: https://github.com/dviviano/mhtopt/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/dviviano/mhtopt/releases/tag/v0.1.0

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mhtopt"
-version = "0.1.0"
+version = "1.0.0"
 description = "Optimal Multiple Hypothesis Testing Corrections (Viviano, Wuthrich, and Niehaus 2026)"
 readme = "README.md"
 license = "MIT"
@@ -18,7 +18,7 @@ authors = [
 ]
 keywords = ["statistics", "hypothesis-testing", "multiple-comparisons", "econometrics", "experiment-design"]
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Science/Research",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
@@ -38,11 +38,11 @@ dependencies = [
 dev = ["pytest>=7.0", "pandas>=1.3"]
 
 [project.urls]
-Homepage      = "https://github.com/OWNER/mhtopt"
-Source        = "https://github.com/OWNER/mhtopt"
-Issues        = "https://github.com/OWNER/mhtopt/issues"
-Documentation = "https://github.com/OWNER/mhtopt#readme"
-Changelog     = "https://github.com/OWNER/mhtopt/blob/main/CHANGELOG.md"
+Homepage      = "https://github.com/dviviano/mhtopt"
+Source        = "https://github.com/dviviano/mhtopt"
+Issues        = "https://github.com/dviviano/mhtopt/issues"
+Documentation = "https://github.com/dviviano/mhtopt#readme"
+Changelog     = "https://github.com/dviviano/mhtopt/blob/main/CHANGELOG.md"
 
 [tool.setuptools.packages.find]
 where = ["src"]

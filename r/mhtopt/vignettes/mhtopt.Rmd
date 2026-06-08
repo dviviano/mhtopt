@@ -1,0 +1,408 @@
+---
+title: "Optimal Multiple Hypothesis Testing"
+author: "Davide Viviano, Kaspar Wuthrich, Paul Niehaus"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Optimal Multiple Hypothesis Testing}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+bibliography: references.bib
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Overview
+
+The `mhtopt` package implements the economically optimal multiple hypothesis testing (MHT) framework from Viviano, Wuthrich, and Niehaus (2026). Unlike ad hoc procedures (Bonferroni, Holm, Benjamini-Hochberg), this package derives the *correct* adjustment from the structure of research costs.
+
+**Key insight:** The optimal per-test significance level is (Proposition 4.1):
+
+$$
+\alpha^*(J) = \frac{C(J, n)}{b \cdot \bar{\omega}(J)}
+$$
+
+where $C(J, n)$ is the research cost function, $b$ is the researcher's benefit from a rejection, and $\bar{\omega}(J)$ is the sum of hypothesis weights. This simplifies to closed-form expressions depending on the cost structure.
+
+### Package functions
+
+| Function | Purpose |
+|----------|---------|
+| `mht_est()` | Main function: test J treatment coefficients from a regression |
+| `mht_critical()` | Compute optimal critical values for given J |
+| `mht_test()` | Apply adjustment to a vector of p-values |
+| `mht_cost_estimate()` | Estimate cost function parameters from data |
+| `mht_table()` | Generate reference tables of critical values |
+
+## Installation
+
+```{r eval=FALSE}
+# From CRAN (once published)
+install.packages("mhtopt")
+
+# Development version from GitHub
+# remotes::install_github("dviviano/mhtopt", subdir = "r/mhtopt")
+```
+
+```{r}
+library(mhtopt)
+```
+
+## Quick Start
+
+```{r eval=FALSE}
+# After running a regression with multiple treatments
+fit <- lm(outcome ~ treat1 + treat2 + treat3 + controls, data = mydata)
+
+# Test all treatment coefficients with optimal MHT adjustment
+result <- mht_est(fit,
+                  vars = c("treat1", "treat2", "treat3"),
+                  alpha_bar = 0.05)
+
+# View results: shows rejections under 5 procedures
+print(result)
+```
+
+The function returns rejection decisions under five procedures:
+- **Optimal** — derived from cost structure (default: FDA calibration)
+- **Bonferroni** — traditional FWER control
+- **Holm** — step-down Bonferroni
+- **Benjamini-Hochberg** — FDR control
+- **Unadjusted** — no MHT correction
+
+## When to Adjust?
+
+The paper's central insight: the need for MHT adjustment depends on the **research cost function** — specifically, whether costs exhibit returns to scale with respect to the number of hypotheses.
+
+### Cost structure determines the optimal correction
+
+- **Fixed costs dominate** (`cf_share` near 1, or `beta` near 0):
+  Adding more hypotheses barely increases costs → researchers have incentive to "test many and get lucky" → **optimal correction approaches Bonferroni**
+
+- **Variable costs dominate** (`cf_share` near 0, or `beta` near 1):
+  Each hypothesis costs proportionally more → cost itself deters excessive testing → **little/no adjustment needed**
+
+- **Intermediate** (empirically relevant):
+  Optimal threshold lies between Bonferroni and unadjusted, determined by cost parameters
+
+### Default calibrations
+
+**Linear model (FDA calibration):**
+```{r}
+# Default: cf_share = 0.46, J_bar = 3 (from Sertkaya et al. 2016)
+mht_critical(J = 5, alpha_bar = 0.05)
+```
+
+**Cobb-Douglas (J-PAL calibration):**
+```{r}
+# beta = 0.13, iota = 0.075 (from J-PAL data, Appendix A)
+mht_critical(J = 5, alpha_bar = 0.05, model = "cobbdouglas")
+```
+
+Notice: Cobb-Douglas is *more conservative* because beta ≈ 0 implies near-constant marginal cost (fixed-cost-like).
+
+## Main Function: `mht_est()`
+
+Tests J coefficients from a fitted regression model.
+
+### Basic usage
+
+```{r eval=FALSE}
+mht_est(fit,
+        vars = NULL,              # coefficient names (default: all non-intercept)
+        alpha_bar,                # benchmark significance level
+        onesided = TRUE,          # one-sided (positive) vs two-sided
+        model = "linear",         # "linear" or "cobbdouglas"
+        cf_share = 0.46,          # fixed cost share (linear model)
+        J_bar = 3,                # avg arms per trial (linear model)
+        nm_ratio = 1.0,           # sample size ratio n/m
+        mbar = NULL,              # benchmark arm size (overrides nm_ratio)
+        beta = 0.13,              # arms elasticity (Cobb-Douglas)
+        iota = 0.075)             # sample elasticity (Cobb-Douglas)
+```
+
+### Supported model classes
+
+- `lm` — base R linear models
+- `glm` — generalized linear models
+- `lm_robust`, `iv_robust` — from `estimatr` (cluster/HC standard errors)
+- `fixest` — from `fixest` (`feols`, `fepois`, etc.)
+- Any class with a `coef(summary(fit))` method
+
+### Return value
+
+A `data.frame` with columns:
+
+- `term` — coefficient name
+- `estimate`, `std_error`, `t_stat`, `p_value` — from the model
+- `reject_optimal`, `reject_bonferroni`, `reject_holm`, `reject_bh`, `reject_unadjusted` — rejection indicators
+
+Attributes: `alpha_opt`, `alpha_bonf`, `alpha_bar`, `J`, `model`, `onesided`, `nm_ratio`
+
+### Examples
+
+**Multiple treatment arms:**
+```{r eval=FALSE}
+library(estimatr)
+
+fit <- lm_robust(outcome ~ treat_A + treat_B + treat_C + controls,
+                 fixed_effects = ~village,
+                 clusters = ~hh_id,
+                 data = df)
+
+result <- mht_est(fit,
+                  vars = c("treat_A", "treat_B", "treat_C"),
+                  alpha_bar = 0.05)
+
+# Extract optimal alpha used
+attr(result, "alpha_opt")
+
+# How many hypotheses rejected under each procedure?
+colSums(result[, c("reject_optimal", "reject_bonferroni",
+                   "reject_holm", "reject_bh", "reject_unadjusted")])
+```
+
+**Two-sided test:**
+```{r eval=FALSE}
+fit_logit <- glm(uptake ~ treat1 + treat2 + controls,
+                 family = binomial,
+                 data = df)
+
+mht_est(fit_logit,
+        vars = c("treat1", "treat2"),
+        alpha_bar = 0.05,
+        onesided = FALSE)
+```
+
+**Using benchmark sample size (`mbar`):**
+```{r eval=FALSE}
+# If you know typical arm size is 500 observations
+# and your study has N = 1500 with J = 3 arms
+# then nm_ratio = (1500/3) / 500 = 1.0
+
+fit <- lm(outcome ~ treat1 + treat2 + treat3, data = df)
+
+mht_est(fit,
+        vars = c("treat1", "treat2", "treat3"),
+        alpha_bar = 0.05,
+        mbar = 500)  # automatically computes nm_ratio
+```
+
+**Custom cost parameters:**
+```{r eval=FALSE}
+# Suppose you estimated cost parameters from your data
+est <- mht_cost_estimate(cost, arms, sample_size, alpha_bar = 0.05)
+
+mht_est(fit,
+        vars = c("treat1", "treat2", "treat3"),
+        alpha_bar = 0.05,
+        model = "cobbdouglas",
+        beta = est$beta,
+        iota = est$iota)
+```
+
+## Supporting Functions
+
+### `mht_critical()` — Compute Optimal Critical Values
+
+The core formula. Computes $\alpha^*$ for given J and cost model.
+
+```{r}
+# Linear model (default)
+mht_critical(J = 5, alpha_bar = 0.05)
+
+# Cobb-Douglas
+mht_critical(J = 5, alpha_bar = 0.05, model = "cobbdouglas")
+
+# Larger sample size => less conservative
+mht_critical(J = 5, alpha_bar = 0.05, nm_ratio = 2.0)
+```
+
+**Cost model formulas:**
+
+Linear (Eq. 26 of the paper):
+$$
+\alpha^* = \alpha_{\text{bar}} \left[ \frac{1 + r/J}{1 + r} + \frac{n/m - 1}{1 + r} \right]
+$$
+where $r = \frac{c_f \cdot \bar{J}}{c_v \cdot m} = \frac{\text{cf\_share} \cdot J_{\text{bar}}}{1 - \text{cf\_share}}$
+
+Cobb-Douglas:
+$$
+\alpha^* = \alpha_{\text{bar}} \cdot J^{\beta - 1} \cdot (n/m)^\iota
+$$
+
+### `mht_test()` — Test a Vector of P-Values
+
+Use when you have pre-computed p-values (not from a regression).
+
+```{r}
+pvals <- c(0.003, 0.015, 0.030, 0.048, 0.120, 0.500)
+result <- mht_test(p = pvals, alpha_bar = 0.05)
+print(result)
+```
+
+Alternatively, pass z-statistics instead of p-values:
+```{r}
+zstats <- c(3.2, 2.1, 1.8, 1.3, 0.8, -0.2)
+mht_test(z = zstats, alpha_bar = 0.05)
+```
+
+### `mht_table()` — Generate Reference Tables
+
+Reproduces Table 1 from the paper (or custom tables).
+
+```{r}
+# Default: reproduces paper Table 1 exactly
+# (J = 1..9 plus infinity, multiple alpha_bar and nm_ratio values)
+mht_table()
+
+# Custom table
+mht_table(alpha_bar = 0.05,
+          J_range = 1:10,
+          nm_ratios = c(0.5, 1.0, 1.5, 2.0))
+```
+
+Returns a formatted table and stores all values in `attr(result, "values")`.
+
+## Estimating Cost Functions
+
+### `mht_cost_estimate()` — Estimate Parameters from Data
+
+If you have data on research project costs, you can estimate cost function parameters.
+
+**Cobb-Douglas model (default):**
+
+Estimates: $\log(C) = \text{const} + \beta \log(J) + \iota \log(n) + \text{controls}$
+
+Returns $\beta$ and $\iota$ with hypothesis tests:
+- $H_0: \beta = 0$ ⇒ Bonferroni is optimal
+- $H_0: \beta = 1$ ⇒ no adjustment needed
+
+```{r eval=FALSE}
+# Example data: cost, number of arms, sample size
+projects <- data.frame(
+  cost = c(500000, 750000, 1200000, 600000, 900000),
+  arms = c(2, 3, 5, 2, 4),
+  n    = c(1000, 1500, 2000, 800, 1200)
+)
+
+est <- mht_cost_estimate(
+  cost = projects$cost,
+  arms = projects$arms,
+  sample_size = projects$n,
+  alpha_bar = 0.05,
+  model = "cobbdouglas"
+)
+
+# View estimates
+print(est)
+
+# Use in mht_est()
+fit <- lm(outcome ~ treat1 + treat2 + treat3, data = mydata)
+mht_est(fit,
+        vars = c("treat1", "treat2", "treat3"),
+        alpha_bar = 0.05,
+        model = "cobbdouglas",
+        beta = est$beta,
+        iota = est$iota)
+```
+
+**Linear model:**
+
+```{r eval=FALSE}
+est_linear <- mht_cost_estimate(
+  cost = projects$cost,
+  arms = projects$arms,
+  sample_size = projects$n,
+  alpha_bar = 0.05,
+  model = "linear_share"
+)
+
+# Returns cf_share (fixed cost share)
+mht_est(fit,
+        vars = c("treat1", "treat2", "treat3"),
+        alpha_bar = 0.05,
+        cf_share = est_linear$cf_share)
+```
+
+## Worked Example
+
+```{r eval=FALSE}
+# Simulate a simple experiment
+set.seed(123)
+n <- 300
+df <- data.frame(
+  treat1 = rbinom(n, 1, 0.33),
+  treat2 = rbinom(n, 1, 0.33),
+  treat3 = rbinom(n, 1, 0.33)
+)
+df$outcome <- 0.3 * df$treat1 + 0.2 * df$treat2 + 0.05 * df$treat3 + rnorm(n)
+
+# Estimate effects
+fit <- lm(outcome ~ treat1 + treat2 + treat3, data = df)
+summary(fit)
+
+# Apply optimal MHT adjustment
+result <- mht_est(fit,
+                  vars = c("treat1", "treat2", "treat3"),
+                  alpha_bar = 0.05)
+
+print(result)
+
+# Compare: how many rejections under each procedure?
+colSums(result[, grep("^reject_", names(result))])
+```
+
+## One-Sided vs Two-Sided Tests
+
+Default behavior (`onesided = TRUE`): tests $H_0: \beta_j \leq 0$ vs $H_1: \beta_j > 0$.
+
+**Justification** (Remark 4.1, paper v10): When the status quo is "no intervention," a negative effect means the status quo holds (no social value lost by failing to reject). One-sided tests are appropriate.
+
+For two-sided tests (Appendix B.1):
+```{r eval=FALSE}
+mht_est(fit,
+        vars = c("treat1", "treat2", "treat3"),
+        alpha_bar = 0.05,
+        onesided = FALSE)
+```
+
+P-values are multiplied by 2 and compared against the same $\alpha^*$.
+
+## Sample Size Adjustment
+
+The `nm_ratio` parameter captures how your study's sample size compares to a benchmark:
+
+$$
+\text{nm\_ratio} = \frac{n/J}{m}
+$$
+
+where:
+- $n$ = total sample size in your study
+- $J$ = number of hypotheses/arms
+- $m$ = benchmark per-arm sample size
+
+**Larger studies are more expensive** → optimal $\alpha^*$ is *less* conservative (encourages research):
+
+```{r}
+# Small study (half the benchmark size)
+mht_critical(J = 3, alpha_bar = 0.05, nm_ratio = 0.5)
+
+# Benchmark size
+mht_critical(J = 3, alpha_bar = 0.05, nm_ratio = 1.0)
+
+# Large study (double the benchmark)
+mht_critical(J = 3, alpha_bar = 0.05, nm_ratio = 2.0)
+```
+
+The `mbar` argument automates this: if you know the typical per-arm sample size in your field, pass it via `mbar`, and the function computes `nm_ratio` automatically from the model's sample size.
+
+## References
+
+Viviano, D., Wuthrich, K., & Niehaus, P. (2026). A Model of Multiple Hypothesis Testing. *arXiv:2104.13367v10*.
+
+Sertkaya, A., Wong, H. H., Jessup, A., & Beleche, T. (2016). Key cost drivers of pharmaceutical clinical trials in the United States. *Clinical Trials*, 13(2), 117-126.

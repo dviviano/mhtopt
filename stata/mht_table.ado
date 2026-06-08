@@ -29,7 +29,7 @@
 */
 
 program define mht_table, rclass
-    version 14.0
+    version 15.0
     syntax [,                              ///
             ALPHAbar(real -1)              ///  benchmark alpha (-1 sentinel for default)
             Jrange(numlist integer >0)     ///  J values for rows

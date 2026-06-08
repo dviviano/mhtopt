@@ -25,7 +25,7 @@
 */
 
 program define mht_critical, rclass
-    version 14.0
+    version 15.0
     syntax , Jhypotheses(integer)      /// Number of hypotheses |J|
             ALPHAbar(real)             /// Benchmark single-hypothesis size
             [                          ///

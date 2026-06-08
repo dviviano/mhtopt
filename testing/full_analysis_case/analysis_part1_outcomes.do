@@ -4,7 +4,9 @@
   Banerjee et al. (2015) -- MHT Exercise 1: One Treatment x Multiple Outcomes
 
   Applies VWN MHT as if there is ONE treatment and J=10 outcome families.
-  Data source: testing\data\extracted\data_modified  (from dataverse_files zip)
+  Data source: testing/data/pooled_hh.dta, pooled_mb.dta
+               (from data_modified.zip; Harvard Dataverse DOI 10.7910/DVN/NHIXNT;
+                see testing/README.md for download steps)
   Analyses:
     (a) Pooled across all 6 countries (Table 3, Equation 1)
     (b) Separately by country (Tables S4a-f, Equation 1)

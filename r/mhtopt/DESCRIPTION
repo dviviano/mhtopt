@@ -1,6 +1,6 @@
 Package: mhtopt
 Title: Optimal Multiple Hypothesis Testing Corrections
-Version: 0.1.0
+Version: 1.0.0
 Authors@R: c(
     person("Davide", "Viviano", role = "aut"),
     person("Kaspar", "Wuthrich", role = "aut"),
@@ -15,6 +15,8 @@ Description: Implements the optimal multiple hypothesis testing correction from
     Linear (FDA calibration) and Cobb-Douglas (J-PAL calibration). Reports
     optimal, Bonferroni, Holm, BH, and unadjusted results side by side.
 License: MIT + file LICENSE
+URL: https://github.com/dviviano/mhtopt
+BugReports: https://github.com/dviviano/mhtopt/issues
 Encoding: UTF-8
 Language: en-US
 Roxygen: list(markdown = TRUE)
@@ -25,5 +27,8 @@ Suggests:
     testthat (>= 3.0.0),
     haven,
     fixest,
-    estimatr
+    estimatr,
+    knitr,
+    rmarkdown
 Config/testthat/edition: 3
+VignetteBuilder: knitr

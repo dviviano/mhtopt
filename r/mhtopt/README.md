@@ -18,7 +18,7 @@ Development version:
 
 ```r
 # install.packages("remotes")
-remotes::install_github("OWNER/mhtopt", subdir = "r")
+remotes::install_github("dviviano/mhtopt", subdir = "r")
 ```
 
 ## Quick start
@@ -57,7 +57,7 @@ citation("mhtopt")
 
 ## Other language ports
 
-The same five functions are available in Stata (`ssc install mhtopt`) and Python (`pip install mhtopt`). See the [project repository](https://github.com/OWNER/mhtopt) for cross-language documentation.
+The same five functions are available in Stata (`ssc install mhtopt`) and Python (`pip install mhtopt`). See the [project repository](https://github.com/dviviano/mhtopt) for cross-language documentation.
 
 ## License
 
