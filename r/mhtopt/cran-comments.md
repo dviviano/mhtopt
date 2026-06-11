@@ -1,6 +1,6 @@
 ## Submission type
 
-This is a new submission. mhtopt 0.1.0 is the first release of this package
+This is a new submission. mhtopt 1.0.0 is the first release of this package
 to CRAN.
 
 ## Test environments
@@ -12,19 +12,28 @@ to CRAN.
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+On a clean check the only finding is:
 
 * checking CRAN incoming feasibility ... NOTE
   Maintainer: 'Erick Rosas Lopez <erosasl@ucsd.edu>'
   New submission
 
-The "New submission" NOTE is expected for a first-time CRAN submission and
-is unavoidable.
+The "New submission" NOTE is expected for a first-time submission.
 
-(A second "unable to verify current time" NOTE may appear on Windows
-machines whose system clock cannot reach the network time service during
-the check. This is environmental and does not occur on CRAN's Linux
-build servers.)
+The following additional findings appear only in the local Windows check
+environment and do not occur on CRAN's build servers, so they are noted here
+for transparency:
+
+* WARNING: "'qpdf' is needed for checks on size reduction of PDFs" —
+  qpdf is not installed locally; it is present on CRAN's servers.
+* NOTE: "unable to verify current time" — the local clock could not reach a
+  network time service during the check.
+* NOTE: HTML manual validation skipped ("no command 'tidy' found") — tidy is
+  not installed locally.
+
+The package's URL and BugReports point to https://github.com/dviviano/mhtopt,
+which is public at submission time, so the incoming-feasibility URL check
+resolves with status 200.
 
 ## Downstream dependencies
 
