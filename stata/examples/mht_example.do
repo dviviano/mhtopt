@@ -14,39 +14,28 @@
         5. mht_cost_estimate  - Estimate cost function parameters from
                                 project-level cost data (simulated here)
 
-    HOW TO RUN (either works):
-        cd "path/to/mhtopt"
-        do "examples/mht_example.do"
-      or:
-        cd "path/to/mhtopt/examples"
-        do "mht_example.do"
-
-    OUTPUT:
-        The log file examples/mht_example_log.txt contains only the
-        package output and commentary (no echoed code).
+    HOW TO RUN:
+        After `ssc install mhtopt`, simply run this file:
+            do mht_example.do
+        From the source repository (uninstalled), run from the repo root:
+            cd "path/to/mhtopt"
+            do "stata/examples/mht_example.do"
 *******************************************************************************/
 
 clear all
 set more off
 
-* --- Auto-detect package root ---
-* Works whether you run from mhtopt/ or examples/
-local root "`c(pwd)'"
-capture confirm file "`root'/stata/mht_critical.ado"
-if _rc {
-    local root "`c(pwd)'/.."
-    capture confirm file "`root'/stata/mht_critical.ado"
-    if _rc {
-        display as error "Cannot find the stata/ folder."
-        display as error "Please cd to mhtopt/ or mhtopt/examples/"
-        exit 601
-    }
+* If running from the source repository (uninstalled), add the package folder to
+* the ado-path. After `ssc install mhtopt` the commands are already on the path,
+* so this block is a harmless no-op.
+capture confirm file "`c(pwd)'/stata/mht_critical.ado"
+if !_rc {
+    adopath + "`c(pwd)'/stata"
 }
-
-adopath + "`root'/stata"
-
-capture log close _mht_example
-log using "`root'/examples/mht_example_log.txt", replace text name(_mht_example)
+else {
+    capture confirm file "`c(pwd)'/../stata/mht_critical.ado"
+    if !_rc adopath + "`c(pwd)'/../stata"
+}
 
 
 /*******************************************************************************
@@ -302,10 +291,3 @@ list pval mht_reject_opt mht_reject_bonf mht_reject_unadj, noobs
 display _newline(2) as result "{hline 65}"
 display as result "  All examples completed successfully!"
 display as result "{hline 65}"
-
-log close _mht_example
-
-* Post-process: strip command echo from the log for readability
-global clean_log_path "`root'/examples/mht_example_log.txt"
-quietly run "`root'/stata/_clean_log.do"
-display _newline as text "Clean log saved to: `root'/examples/mht_example_log.txt"

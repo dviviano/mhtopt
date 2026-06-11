@@ -1,4 +1,12 @@
 
+  [1]  (BASE)      "C:\Program Files\Stata18\ado\base/"
+  [2]  (SITE)      "C:\Program Files\Stata18\ado\site/"
+  [3]              "."
+  [4]  (PERSONAL)  "C:\Users\erick\ado\personal/"
+  [5]  (PLUS)      "C:\Users\erick\ado\plus/"
+  [6]  (OLDPLACE)  "c:\ado/"
+  [7]              "C:\Users\erick\OneDrive\Documentos\PhD\GSR Paul\LTP\MHT\mht
+
   PART 1: Postestimation -- The Typical Workflow (mht_est)
 
 (1978 automobile data)
@@ -27,12 +35,12 @@ Testing mpg, weight, foreign jointly (Linear cost model, one-sided):
 
   Coefficient-level results:
 
-  Variable            Coef.     SE      t-stat  p-val   Opt  Bonf Holm BH   Unadj
-  --------------------------------------------------------------------------------
-  mpg                21.8536  80.7467   0.271  0.3937    .     .      .      .     .    
-  weight              3.4647  0.7776   4.456  0.0000    *     *      *      *     *    
-  foreign            3.7e+03  664.9361   5.524  0.0000    *     *      *      *     *    
-  --------------------------------------------------------------------------------
+  Variable            Coef.     SE      t-stat  p-val   Opt  Bonf Holm BH   Una
+  -----------------------------------------------------------------------------
+  mpg                21.8536  80.7467   0.271  0.3937    .     .      .      . 
+  weight              3.4647  0.7776   4.456  0.0000    *     *      *      *  
+  foreign            3.7e+03  664.9361   5.524  0.0000    *     *      *      *
+  -----------------------------------------------------------------------------
   * = reject;  . = fail to reject
 
 Same regression, Cobb-Douglas cost model:
@@ -43,7 +51,7 @@ Same regression, Cobb-Douglas cost model:
 
   Hypotheses tested:      3
   Benchmark alpha:     0.0500
-  Cost model:          Cobb-Douglas (Eq. 28)
+  Cost model:          Cobb-Douglas (App. A)
   P-values:            one-sided (positive direction)
   n/m ratio:           1.0000
 
@@ -59,12 +67,12 @@ Same regression, Cobb-Douglas cost model:
 
   Coefficient-level results:
 
-  Variable            Coef.     SE      t-stat  p-val   Opt  Bonf Holm BH   Unadj
-  --------------------------------------------------------------------------------
-  mpg                21.8536  80.7467   0.271  0.3937    .     .      .      .     .    
-  weight              3.4647  0.7776   4.456  0.0000    *     *      *      *     *    
-  foreign            3.7e+03  664.9361   5.524  0.0000    *     *      *      *     *    
-  --------------------------------------------------------------------------------
+  Variable            Coef.     SE      t-stat  p-val   Opt  Bonf Holm BH   Una
+  -----------------------------------------------------------------------------
+  mpg                21.8536  80.7467   0.271  0.3937    .     .      .      . 
+  weight              3.4647  0.7776   4.456  0.0000    *     *      *      *  
+  foreign            3.7e+03  664.9361   5.524  0.0000    *     *      *      *
+  -----------------------------------------------------------------------------
   * = reject;  . = fail to reject
 
 Stored scalars (from the last call):
@@ -109,6 +117,19 @@ Input: 6 one-sided p-values
   -------------------------------------------------
   * Step-wise procedures; effective threshold varies by rank
 
+  Per-hypothesis rejection decisions:
+  -----------------------------------------------------------------
+  Hyp.    p-value     Optimal   Bonf   Holm   BH    Unadj.
+  -----------------------------------------------------------------
+    1      0.0030       *       *      *    *     *
+    2      0.0150       *       .      .    *     *
+    3      0.0300       .       .      .    .     *
+    4      0.0480       .       .      .    .     *
+    5      0.1200       .       .      .    .     .
+    6      0.5000       .       .      .    .     .
+  -----------------------------------------------------------------
+  * = reject;  . = fail to reject
+
   Generated variables: mht_reject_opt, mht_reject_bonf,
     mht_reject_holm, mht_reject_bh, mht_reject_unadj,
     mht_alpha_opt
@@ -144,6 +165,19 @@ Side-by-side rejection decisions:
   Unadjusted                0.050000         4
   -------------------------------------------------
   * Step-wise procedures; effective threshold varies by rank
+
+  Per-hypothesis rejection decisions:
+  -----------------------------------------------------------------
+  Hyp.    p-value     Optimal   Bonf   Holm   BH    Unadj.
+  -----------------------------------------------------------------
+    1      0.0030       *       *      *    *     *
+    2      0.0150       *       .      .    *     *
+    3      0.0300       .       .      .    .     *
+    4      0.0480       .       .      .    .     *
+    5      0.1200       .       .      .    .     .
+    6      0.5000       .       .      .    .     .
+  -----------------------------------------------------------------
+  * = reject;  . = fail to reject
 
   Generated variables: z_reject_opt, z_reject_bonf,
     z_reject_holm, z_reject_bh, z_reject_unadj,
@@ -181,6 +215,19 @@ Same results from z-statistics:
   -------------------------------------------------
   * Step-wise procedures; effective threshold varies by rank
 
+  Per-hypothesis rejection decisions:
+  -----------------------------------------------------------------
+  Hyp.    p-value     Optimal   Bonf   Holm   BH    Unadj.
+  -----------------------------------------------------------------
+    1      0.0030       *       *      *    *     *
+    2      0.0150       .       .      .    *     *
+    3      0.0300       .       .      .    .     *
+    4      0.0480       .       .      .    .     *
+    5      0.1200       .       .      .    .     .
+    6      0.5000       .       .      .    .     .
+  -----------------------------------------------------------------
+  * = reject;  . = fail to reject
+
   Generated variables: mht_reject_opt, mht_reject_bonf,
     mht_reject_holm, mht_reject_bh, mht_reject_unadj,
     mht_alpha_opt
@@ -201,8 +248,8 @@ Cobb-Douglas with custom parameters (beta=0.22, iota=0.136):
 
   PART 3: Reference Table (mht_table)
 
-  Optimal Test Sizes  [Table 1, Viviano, Wuthrich & Niehaus 2026]
-  Model: Linear (Eq. 27)
+  Optimal Test Sizes  [Viviano, Wuthrich & Niehaus 2026]
+  Model: Linear (Eq. 26)
   Benchmark alpha: 0.0500
 
   |J|    n/m=50%    n/m=100%    n/m=200%  Sid(a=.025)  Sid(a=.05)
@@ -215,7 +262,7 @@ Cobb-Douglas with custom parameters (beta=0.22, iota=0.136):
   Inf    0.0070    0.0141    0.0281  0.0000  0.0000
   ----------------------------------------------------------
 
-  Optimal Test Sizes  [Table 1, Viviano, Wuthrich & Niehaus 2026]
+  Optimal Test Sizes  [Viviano, Wuthrich & Niehaus 2026]
   Model: Cobb-Douglas (App. A)
   Benchmark alpha: 0.0500
 
@@ -234,7 +281,7 @@ Cobb-Douglas with custom parameters (beta=0.22, iota=0.136):
   Optimal MHT Critical Values
   Viviano, Wuthrich, and Niehaus (2026)
 
-  Cost model:          Linear (Eq. 27)
+  Cost model:          Linear (Eq. 26)
   Fixed cost share:     0.460
   Avg subgroups (J):      3.0
   Number of hypotheses:     5
@@ -298,6 +345,9 @@ Varying sample size (|J|=5, alpha_bar=0.025):
 
     True parameters: beta=0.20, iota=0.15
 
+  Note: sample_size is assumed to be PER-ARM sample size.
+        If it is total (= arms x per-arm), pass option totalsize.
+
   Cost Function Estimation (Cobb-Douglas)
   log(cost) = const + beta*log(arms) + iota*log(sample_size)
 
@@ -308,10 +358,10 @@ Linear regression                               Number of obs     =        500
                                                 Root MSE          =     .43941
 
              |               Robust
-    __000001 | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+   _log_cost | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-    __000002 |   .2304478   .0332542     6.93   0.000     .1651115     .295784
-    __000003 |    .097924   .0352255     2.78   0.006     .0287147    .1671332
+   _log_arms |   .2304478   .0332542     6.93   0.000     .1651115     .295784
+_log_sampl~e |    .097924   .0352255     2.78   0.006     .0287147    .1671332
        _cons |   10.63519   .2774757    38.33   0.000     10.09002    11.18036
 
   Hypothesis Tests on Cost Parameters
@@ -340,6 +390,9 @@ Linear regression                               Number of obs     =        500
 
 --- Cobb-Douglas estimation (with project-type controls) ---
 
+  Note: sample_size is assumed to be PER-ARM sample size.
+        If it is total (= arms x per-arm), pass option totalsize.
+
   Cost Function Estimation (Cobb-Douglas)
   log(cost) = const + beta*log(arms) + iota*log(sample_size)
 
@@ -350,10 +403,10 @@ Linear regression                               Number of obs     =        500
                                                 Root MSE          =     .40048
 
              |               Robust
-    __000001 | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
+   _log_cost | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-    __000002 |   .2250539   .0311185     7.23   0.000     .1639132    .2861945
-    __000003 |   .1062639    .031403     3.38   0.001     .0445642    .1679635
+   _log_arms |   .2250539   .0311185     7.23   0.000     .1639132    .2861945
+_log_sampl~e |   .1062639    .031403     3.38   0.001     .0445642    .1679635
       ptype2 |   .3175344   .0432114     7.35   0.000     .2326339    .4024348
       ptype3 |   .4416082   .0447578     9.87   0.000     .3536696    .5295468
        _cons |    10.3205   .2476086    41.68   0.000      9.83401      10.807
@@ -384,8 +437,11 @@ Linear regression                               Number of obs     =        500
 
 --- Linear model estimation ---
 
+  Note: sample_size is assumed to be PER-ARM sample size.
+        If it is total (= arms x per-arm), pass option totalsize.
+
   Cost Function Estimation (Linear Model)
-  C = c_f + c_v * |J| * n
+  cost = c_f + c_v * arms * sample_size
 
 Linear regression                               Number of obs     =        500
                                                 F(1, 498)         =      33.04
@@ -396,7 +452,7 @@ Linear regression                               Number of obs     =        500
              |               Robust
         cost | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-    __000001 |   2.378442   .4137909     5.75   0.000     1.565451    3.191433
+_arms_x_sa~e |   2.378442   .4137909     5.75   0.000     1.565451    3.191433
        _cons |   102987.1   3962.917    25.99   0.000     95201.01    110773.2
 
   Estimated Parameters
@@ -440,6 +496,17 @@ Linear regression                               Number of obs     =        500
   -------------------------------------------------
   * Step-wise procedures; effective threshold varies by rank
 
+  Per-hypothesis rejection decisions:
+  -----------------------------------------------------------------
+  Hyp.    p-value     Optimal   Bonf   Holm   BH    Unadj.
+  -----------------------------------------------------------------
+    1      0.0100       *       *      *    *     *
+    2      0.0300       .       .      .    .     *
+    3      0.0600       .       .      .    .     .
+    4      0.1500       .       .      .    .     .
+  -----------------------------------------------------------------
+  * = reject;  . = fail to reject
+
   Generated variables: mht_reject_opt, mht_reject_bonf,
     mht_reject_holm, mht_reject_bh, mht_reject_unadj,
     mht_alpha_opt
@@ -456,4 +523,6 @@ Test results using study-specific cost parameters:
   +---------------------------------------+
 
   All examples completed successfully!
+
+end of do-file
 
