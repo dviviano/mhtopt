@@ -2,7 +2,7 @@
 
 Implementations in **Stata**, **R**, and **Python** of the optimal MHT correction from:
 
-> Viviano, D., Wüthrich, K., and Niehaus, P. (2026). *A Model of Multiple Hypothesis Testing.* arXiv:2104.13367v10.
+> Viviano, D., Wüthrich, K., and Niehaus, P. (2026). *A Model of Multiple Hypothesis Testing.* [arXiv:2104.13367](https://arxiv.org/abs/2104.13367).
 
 Standard MHT corrections (Bonferroni, Holm, BH) are ad hoc. This package derives the optimal correction from the economic incentives of research production: how costs scale with the number of hypotheses pins down how much to adjust. The result is a per-test significance level α\* that sits between Bonferroni (too conservative) and unadjusted (too permissive), with the exact position determined by the study's cost structure.
 
@@ -46,7 +46,7 @@ remotes::install_github("dviviano/mhtopt", subdir = "r")
 pip install "git+https://github.com/dviviano/mhtopt.git#subdirectory=python"
 ```
 
-> Replace `dviviano` with the GitHub owner once the repo is public. See [`DECISIONS.md`](DECISIONS.md).
+> These GitHub install lines work once the repository is public; until then, install from the published archives in the table above.
 
 ## Citation
 
