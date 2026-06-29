@@ -50,7 +50,13 @@ pip install "git+https://github.com/dviviano/mhtopt.git#subdirectory=python"
 
 ## Citation
 
-If you use this package, please cite:
+If you use this package, please cite the paper — copy whichever format you prefer:
+
+**APA**
+
+> Viviano, D., Wüthrich, K., & Niehaus, P. (2026). *A model of multiple hypothesis testing* (arXiv:2104.13367). arXiv. https://doi.org/10.48550/arXiv.2104.13367
+
+**BibTeX**
 
 ```bibtex
 @article{viviano2026mht,
