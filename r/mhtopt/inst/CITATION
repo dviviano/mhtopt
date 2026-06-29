@@ -1,0 +1,16 @@
+citHeader("To cite the mhtopt package in publications, please cite the paper it implements:")
+
+bibentry(
+  bibtype       = "Article",
+  key           = "viviano2026mht",
+  title         = "A Model of Multiple Hypothesis Testing",
+  author        = c(person("Davide", "Viviano"),
+                    person("Kaspar", "Wüthrich"),
+                    person("Paul", "Niehaus")),
+  year          = "2026",
+  journal       = "arXiv preprint",
+  eprint        = "2104.13367",
+  archivePrefix = "arXiv",
+  primaryClass  = "econ.EM",
+  url           = "https://arxiv.org/abs/2104.13367"
+)
