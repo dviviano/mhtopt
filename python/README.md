@@ -83,6 +83,14 @@ python testing/test_mht_testdrive.py
 
 ## Citation
 
+Please cite the paper — copy whichever format you prefer:
+
+**APA**
+
+> Viviano, D., Wüthrich, K., & Niehaus, P. (2026). *A model of multiple hypothesis testing* (arXiv:2104.13367). arXiv. https://doi.org/10.48550/arXiv.2104.13367
+
+**BibTeX**
+
 ```bibtex
 @article{viviano2026mht,
   title  = {A Model of Multiple Hypothesis Testing},
