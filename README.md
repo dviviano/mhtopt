@@ -19,6 +19,8 @@ Two cost models, both calibrated to real data:
 | **R** | `install.packages("mhtopt")` | `?mht_critical` | [`r/`](r/) |
 | **Python** | `pip install mhtopt` | docstrings + [docs](python/docs/) | [`python/`](python/) |
 
+> **Availability:** Python ([PyPI](https://pypi.org/project/mhtopt/)) and Stata (SSC) are published. The R package is on its way to CRAN — until it lands there, install it from GitHub (below).
+
 The five exposed commands/functions are identical across ports:
 
 | Name | Purpose |
@@ -29,16 +31,13 @@ The five exposed commands/functions are identical across ports:
 | `mht_cost_estimate` | Estimate cost-function parameters (β, ι) from project-level data |
 | `mht_table` | Generate reference tables (reproduces Tables 1 & 3 of the paper) |
 
-## Pre-release installs (from GitHub)
+## Install from GitHub (development version)
 
-```stata
-* Stata
-net install mhtopt, from("https://raw.githubusercontent.com/dviviano/mhtopt/main/stata/")
-```
+For the latest development version — and, until the R package is on CRAN, the way to install it:
 
 ```r
 # R
-remotes::install_github("dviviano/mhtopt", subdir = "r")
+remotes::install_github("dviviano/mhtopt", subdir = "r/mhtopt")
 ```
 
 ```bash
@@ -46,7 +45,7 @@ remotes::install_github("dviviano/mhtopt", subdir = "r")
 pip install "git+https://github.com/dviviano/mhtopt.git#subdirectory=python"
 ```
 
-> These GitHub install lines work once the repository is public; until then, install from the published archives in the table above.
+For Stata, use `ssc install mhtopt` (above).
 
 ## Citation
 
