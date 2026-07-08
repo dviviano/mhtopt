@@ -15,7 +15,7 @@ to CRAN.
 On a clean check the only finding is:
 
 * checking CRAN incoming feasibility ... NOTE
-  Maintainer: 'Erick Rosas Lopez <erosasl@ucsd.edu>'
+  Maintainer: 'Erick Rosas Lopez <erosaslpez@ucsd.edu>'
   New submission
 
 The "New submission" NOTE is expected for a first-time submission.

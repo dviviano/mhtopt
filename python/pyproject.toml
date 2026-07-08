@@ -14,7 +14,7 @@ authors = [
     {name = "Davide Viviano"},
     {name = "Kaspar Wuthrich"},
     {name = "Paul Niehaus"},
-    {name = "Erick Rosas Lopez", email = "erosasl@ucsd.edu"},
+    {name = "Erick Rosas Lopez", email = "erosaslpez@ucsd.edu"},
 ]
 keywords = ["statistics", "hypothesis-testing", "multiple-comparisons", "econometrics", "experiment-design"]
 classifiers = [

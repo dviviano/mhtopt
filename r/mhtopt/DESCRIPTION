@@ -5,7 +5,7 @@ Authors@R: c(
     person("Davide", "Viviano", role = "aut"),
     person("Kaspar", "Wuthrich", role = "aut"),
     person("Paul", "Niehaus", role = "aut"),
-    person("Erick", "Rosas Lopez", email = "erosasl@ucsd.edu", role = c("cre", "ctb"))
+    person("Erick", "Rosas Lopez", email = "erosaslpez@ucsd.edu", role = c("cre", "ctb"))
     )
 Description: Implements the optimal multiple hypothesis testing correction from
     Viviano, Wuthrich, and Niehaus (2026) <arXiv:2104.13367>. Derives the
