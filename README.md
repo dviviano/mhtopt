@@ -19,8 +19,6 @@ Two cost models, both calibrated to real data:
 | **R** | `install.packages("mhtopt")` | `?mht_critical` | [`r/`](r/) |
 | **Python** | `pip install mhtopt` | docstrings + [docs](python/docs/) | [`python/`](python/) |
 
-> **Availability:** Python ([PyPI](https://pypi.org/project/mhtopt/)) and Stata (SSC) are published. The R package is on its way to CRAN — until it lands there, install it from GitHub (below).
-
 The five exposed commands/functions are identical across ports:
 
 | Name | Purpose |
@@ -33,7 +31,7 @@ The five exposed commands/functions are identical across ports:
 
 ## Install from GitHub (development version)
 
-For the latest development version — and, until the R package is on CRAN, the way to install it:
+For the latest development version:
 
 ```r
 # R
