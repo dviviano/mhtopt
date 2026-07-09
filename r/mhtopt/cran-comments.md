@@ -5,35 +5,32 @@ to CRAN.
 
 ## Test environments
 
+* win-builder, R-devel (win-builder.r-project.org) — Status: 1 NOTE
 * Local Windows 10, R 4.3.3
-* win-builder (devel and release) — _to be run at submission time_
-* macOS-latest (R release) via GitHub Actions — _to be run at submission time_
-* Ubuntu-latest (R release, devel, oldrel-1) via GitHub Actions — _to be run at submission time_
 
 ## R CMD check results
 
-On a clean check the only finding is:
+win-builder (R-devel) returns **1 NOTE**:
 
 * checking CRAN incoming feasibility ... NOTE
   Maintainer: 'Erick Rosas Lopez <erosaslpez@ucsd.edu>'
   New submission
+  Possibly misspelled words in DESCRIPTION:
+    BH, Bonferroni, Holm, Niehaus, Viviano, Wuthrich
 
-The "New submission" NOTE is expected for a first-time submission.
+  - "New submission" is expected for a first-time submission.
+  - The flagged words are all spelled correctly: Viviano, Wuthrich (Wuethrich),
+    and Niehaus are the author surnames of the cited paper; BH (for
+    Benjamini-Hochberg), Bonferroni, and Holm are standard names of
+    multiple-testing procedures.
 
-The following additional findings appear only in the local Windows check
-environment and do not occur on CRAN's build servers, so they are noted here
-for transparency:
+The arXiv reference in the Description field is given in the arXiv DOI form
+<doi:10.48550/arXiv.2104.13367>. The package URL/BugReports point to the public
+repository https://github.com/dviviano/mhtopt.
 
-* WARNING: "'qpdf' is needed for checks on size reduction of PDFs" —
-  qpdf is not installed locally; it is present on CRAN's servers.
-* NOTE: "unable to verify current time" — the local clock could not reach a
-  network time service during the check.
-* NOTE: HTML manual validation skipped ("no command 'tidy' found") — tidy is
-  not installed locally.
-
-The package's URL and BugReports point to https://github.com/dviviano/mhtopt,
-which is public at submission time, so the incoming-feasibility URL check
-resolves with status 200.
+(The local Windows check additionally reports a qpdf WARNING and "unable to
+verify current time" / missing-'tidy' NOTEs; these are local-environment
+artifacts and do not appear on win-builder or CRAN's servers.)
 
 ## Downstream dependencies
 
