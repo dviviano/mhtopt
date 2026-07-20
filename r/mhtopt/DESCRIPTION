@@ -11,9 +11,12 @@ Description: Implements the optimal multiple hypothesis testing correction from
     Viviano, Wuthrich, and Niehaus (2026) <doi:10.48550/arXiv.2104.13367>. Derives the
     optimal per-test significance level from the economic incentives of research
     production, providing a correction that lies between Bonferroni (too
-    conservative) and unadjusted (too permissive). Supports two cost models:
-    Linear (FDA calibration) and Cobb-Douglas (J-PAL calibration). Reports
-    optimal, Bonferroni, Holm, BH, and unadjusted results side by side.
+    conservative) and unadjusted (too permissive). Supports two cost models: a
+    Linear one calibrated to United States Food and Drug Administration (FDA)
+    clinical-trial costs, and a Cobb-Douglas one calibrated to Abdul Latif
+    Jameel Poverty Action Lab (J-PAL) project costs. Reports optimal,
+    Bonferroni, Holm, Benjamini-Hochberg (BH), and unadjusted results side by
+    side.
 License: MIT + file LICENSE
 URL: https://github.com/dviviano/mhtopt
 BugReports: https://github.com/dviviano/mhtopt/issues

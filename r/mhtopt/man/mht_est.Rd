@@ -127,14 +127,17 @@ mht_est(fit, vars = c("cyl", "hp", "wt", "am"), alpha_bar = 0.05,
 mht_est(fit, vars = c("cyl", "hp", "wt"), alpha_bar = 0.05,
                onesided = FALSE)
 
-# With estimatr::lm_robust (if installed):
-# fit_r <- estimatr::lm_robust(mpg ~ cyl + hp + wt,
-#            clusters = ~am, data = mtcars)
-# mht_est(fit_r, vars = c("cyl", "hp", "wt"), alpha_bar = 0.05)
+# With estimatr::lm_robust(), when that suggested package is available
+if (requireNamespace("estimatr", quietly = TRUE)) {
+  fit_r <- estimatr::lm_robust(mpg ~ cyl + hp + wt, data = mtcars)
+  print(mht_est(fit_r, vars = c("cyl", "hp", "wt"), alpha_bar = 0.05))
+}
 
-# With fixest::feols (if installed):
-# fit_fe <- fixest::feols(mpg ~ cyl + hp + wt | gear, data = mtcars)
-# mht_est(fit_fe, vars = c("cyl", "hp", "wt"), alpha_bar = 0.05)
+# With fixest::feols(), when that suggested package is available
+if (requireNamespace("fixest", quietly = TRUE)) {
+  fit_fe <- fixest::feols(mpg ~ cyl + hp + wt | gear, data = mtcars)
+  print(mht_est(fit_fe, vars = c("cyl", "hp", "wt"), alpha_bar = 0.05))
+}
 
 }
 \references{
